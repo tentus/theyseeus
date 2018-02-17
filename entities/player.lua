@@ -1,6 +1,6 @@
 Player = Class{
     __includes = Minotaur,
-    force = 5000,
+    force = 7000,
 }
 
 function Player:update(dt)
