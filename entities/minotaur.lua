@@ -40,6 +40,7 @@ end
 function Minotaur:createBody(world, x, y)
     self.body = love.physics.newBody(world, x or 0, y or 0, "dynamic")
     self.body:setLinearDamping(10)
+    self.body:setMass(30)
 
     self.shape   = love.physics.newCircleShape(self.radius)
     self.fixture = love.physics.newFixture(self.body, self.shape)
