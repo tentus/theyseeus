@@ -1,5 +1,7 @@
 WorldScene = {
     npcs = {},
+    pickups = {},
+    showInventory = false,
     showMap = false,
     -- map = sti map,
     -- physics = physics world,
@@ -20,6 +22,14 @@ function WorldScene:update(dt)
     self.player:update(dt)
     self.map:update(dt)
 
+    for k, pickup in pairs(self.pickups) do
+        if pickup.dead then
+            table.remove(self.pickups, k)
+        else
+            pickup:update(dt)
+        end
+    end
+
     self:changeRegion()
 end
 
@@ -39,10 +49,18 @@ function WorldScene:draw()
         self.npcs[i]:draw()
     end
 
+    for _, pickup in pairs(self.pickups) do
+        pickup:draw()
+    end
+
     -- Draw "player"
     self.player:draw()
 
     love.graphics.pop()
+
+    if self.showInventory then
+        InventoryManager:draw()
+    end
 
     if self.showMap then
         RegionManager:draw()
@@ -55,6 +73,8 @@ end
 function WorldScene:keypressed(key)
     if key == "escape" or key == "backspace" then
         Gamestate.switch(MenuScene)
+    elseif key == "i" then
+        self.showInventory = not self.showInventory
     elseif key == "p" then
         self.showMap = not self.showMap
     end
@@ -82,9 +102,19 @@ function WorldScene:loadRegion(enteringFrom)
 
     -- Prepare physics world
     self.physics = love.physics.newWorld(0, 0)
+
+    local function beginContact(a, b, c)
+        -- we bind the entities to their fixture userdata, so they can handle their own logic on collision
+        if a.getUserData then a = a:getUserData() end
+        if b.getUserData then b = b:getUserData() end
+        if a and a.beginContact then a:beginContact(b, c) end
+        if b and b.beginContact then b:beginContact(a, c) end
+    end
+    self.physics:setCallbacks(beginContact)    -- omitting other callbacks for brevity
+
     self.map:box2d_init(self.physics)
 
-    self:spawnNPCs()
+    self:spawnEntities()
 
     -- create our player instance (we'll move them after the map loads)
     local spawn = self:findSpawn(enteringFrom)
@@ -95,11 +125,16 @@ function WorldScene:loadRegion(enteringFrom)
     end
 end
 
-function WorldScene:spawnNPCs()
+function WorldScene:spawnEntities()
     self.npcs = {}
+    self.pickups = {}
     for _, object in pairs(self.map.objects) do
         if object.type == "NPC" then
             table.insert(self.npcs, NPC(object.x, object.y, self.physics))
+        elseif object.type == "Yarn" then
+            if not InventoryManager:hasYarn(RegionManager:coords()) then
+                table.insert(self.pickups, Yarn(object.x, object.y, self.physics))
+            end
         end
     end
 end
