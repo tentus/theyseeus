@@ -30,6 +30,8 @@ function SplashScene:draw()
         x,
         y
     )
+
+    Fader:draw()
 end
 
 function SplashScene:keypressed()
@@ -41,6 +43,7 @@ function SplashScene:proceed()
         self.time.passed = 0
         self.step = self.step + 1
         self:updateImageProperties()
+        Fader:start(255, 1)
     end
 end
 

@@ -16,3 +16,7 @@ function love.load()
     Gamestate.registerEvents()
     Gamestate.switch(SplashScene)
 end
+
+function love.update(dt)
+    Fader:update(dt)
+end
