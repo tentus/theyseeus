@@ -44,6 +44,8 @@ function SplashScene:proceed()
         self.step = self.step + 1
         self:updateImageProperties()
         Fader:start(255, 1)
+    else
+        Gamestate.switch(MenuScene)
     end
 end
 
