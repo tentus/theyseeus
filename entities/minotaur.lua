@@ -23,11 +23,7 @@ function Minotaur:init(x, y, world)
     end
 
     -- set up physics body
-    self.body = love.physics.newBody(world, x, y, "dynamic")
-    self.body:setLinearDamping(10)
-
-    self.shape   = love.physics.newCircleShape(self.radius)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
+    self:createBody(world, x, y)
 end
 
 function Minotaur:draw()
@@ -39,4 +35,12 @@ function Minotaur:draw()
         label = label .. "\n" .. k .. ": " .. v
     end
     love.graphics.printf(label, x - self.offsets.x, y - self.offsets.y, self.image:getWidth(), "center")
+end
+
+function Minotaur:createBody(world, x, y)
+    self.body = love.physics.newBody(world, x or 0, y or 0, "dynamic")
+    self.body:setLinearDamping(10)
+
+    self.shape   = love.physics.newCircleShape(self.radius)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
 end

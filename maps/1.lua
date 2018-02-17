@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 23,
+  nextobjectid = 14,
   properties = {},
   tilesets = {
     {
@@ -364,7 +364,7 @@ return {
       properties = {},
       objects = {
         {
-          id = 17,
+          id = 9,
           name = "1",
           type = "NPC",
           shape = "point",
@@ -377,7 +377,7 @@ return {
           properties = {}
         },
         {
-          id = 19,
+          id = 10,
           name = "2",
           type = "NPC",
           shape = "point",
@@ -390,7 +390,7 @@ return {
           properties = {}
         },
         {
-          id = 20,
+          id = 11,
           name = "3",
           type = "NPC",
           shape = "point",
@@ -403,7 +403,7 @@ return {
           properties = {}
         },
         {
-          id = 21,
+          id = 12,
           name = "4",
           type = "NPC",
           shape = "point",
@@ -416,12 +416,12 @@ return {
           properties = {}
         },
         {
-          id = 22,
+          id = 13,
           name = "5",
           type = "NPC",
           shape = "point",
-          x = 2515.15,
-          y = 3281.82,
+          x = 2515,
+          y = 3281,
           width = 0,
           height = 0,
           rotation = 0,
