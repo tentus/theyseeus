@@ -11,6 +11,7 @@ function love.load()
     end
 
     requireDir('scenes')
+    requireDir('singletons')
 
     Gamestate.registerEvents()
     Gamestate.switch(SplashScene)
