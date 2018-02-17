@@ -39,6 +39,14 @@ MenuScene = {
                 end
             },
             {
+                function()
+                    return "Music Volume: " .. Music.volume
+                end,
+                function()
+                    Music:changeVolume(-25)
+                end
+            },
+            {
                 "Back",
                 function()
                     MenuScene:goTo("root")
