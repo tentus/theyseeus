@@ -10,6 +10,7 @@ function love.load()
         end
     end
 
+    requireDir('entities')
     requireDir('scenes')
     requireDir('singletons')
 
