@@ -9,7 +9,7 @@ MenuScene = {
                     return "Play"
                 end,
                 function()
-                    -- todo
+                    Gamestate.switch(WorldScene)
                 end
             },
             {
