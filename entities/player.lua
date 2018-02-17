@@ -1,6 +1,9 @@
 Player = Class{
     __includes = Minotaur,
-    force = 7000,
+    defaultForce = 7000,
+    currentForce = 7000,
+    maxForce = 30000,
+    acceleration = 10000,
 }
 
 function Player:update(dt)
@@ -13,5 +16,14 @@ function Player:update(dt)
     if kd("w") or kd("up")    then y = y - 1 end
     if kd("s") or kd("down")  then y = y + 1 end
 
-    self.body:applyForce(x * self.force, y * self.force)
+    if (x ~= 0 or y ~= 0) and kd("space") then
+        self.currentForce = math.min((self.currentForce + (dt * self.acceleration)), self.maxForce)
+        print(self.currentForce)
+    else
+        -- you loose your accumulated boost the moment you let off the gas
+        -- this does not equate to losing your speed, since we're using applied forces
+        self.currentForce = self.defaultForce
+    end
+
+    self.body:applyForce(x * self.currentForce, y * self.currentForce)
 end
