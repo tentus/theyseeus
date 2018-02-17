@@ -1,7 +1,8 @@
 WorldScene = {
+    npcs = {},
     -- map = sti map,
     -- physics = physics world,
-    -- player = Player instance
+    -- player = Player instance,
 }
 
 function WorldScene:init()
@@ -16,6 +17,12 @@ function WorldScene:init()
     -- find the player and create them
     local spawn = self:findSpawn()
     self.player = Player(spawn.x, spawn.y, self.physics)
+
+    for _, object in pairs(self.map.objects) do
+        if object.type == "NPC" then
+            table.insert(self.npcs, NPC(object.x, object.y, self.physics))
+        end
+    end
 end
 
 function WorldScene:update(dt)
@@ -35,6 +42,10 @@ function WorldScene:draw()
 
     -- Draw map
     self.map:draw(tx, ty)
+
+    for i=1, #self.npcs do
+        self.npcs[i]:draw()
+    end
 
     -- Draw "player"
     self.player:draw()
