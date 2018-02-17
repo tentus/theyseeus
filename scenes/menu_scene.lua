@@ -19,6 +19,12 @@ MenuScene = {
                 end
             },
             {
+                "Credits",
+                function()
+                    Gamestate.switch(CreditsScene)
+                end
+            },
+            {
                 "Quit",
                 function()
                     love.event.quit()
