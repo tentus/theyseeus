@@ -40,7 +40,7 @@ function Yarn:createBody(world, x, y)
 
     self.shape   = love.physics.newCircleShape(self.radius)
     self.fixture = love.physics.newFixture(self.body, self.shape)
-    --self.fixture:setSensor(true)
+    self.fixture:setSensor(true)
     self.fixture:setUserData(self)
 end
 
