@@ -1,5 +1,5 @@
 Minotaur = Class{
-    radius = 63,
+    radius = 31,
     image = love.graphics.newImage("assets/sprites/minotaur.png"),
     offsets = {},
     attributes = {
@@ -14,8 +14,8 @@ Minotaur = Class{
 
 function Minotaur:init(x, y, world)
     -- set offsets for image drawing, since it won't change
-    self.offsets.x = self.image:getWidth() / 2
-    self.offsets.y = self.image:getHeight() / 2
+    self.offsets.x = self.image:getWidth() * 0.5
+    self.offsets.y = self.image:getHeight() * 0.75
 
     -- choose some attributes (todo: this doesn't seem as random as it should be?)
     for k, v in pairs(self.attributes.possible) do
@@ -39,8 +39,8 @@ end
 
 function Minotaur:createBody(world, x, y)
     self.body = love.physics.newBody(world, x or 0, y or 0, "dynamic")
-    self.body:setLinearDamping(5)
-    self.body:setMass(200)
+    self.body:setLinearDamping(10)
+    self.body:setMass(75)
 
     self.shape   = love.physics.newCircleShape(self.radius)
     self.fixture = love.physics.newFixture(self.body, self.shape)
