@@ -22,6 +22,7 @@ function WorldScene:init()
 end
 
 function WorldScene:update(dt)
+    DaylightManager:update(dt)
     self.physics:update(dt)
     self.player:update(dt)
     self.map:update(dt)
@@ -72,6 +73,7 @@ function WorldScene:draw()
         RegionManager:draw()
     end
 
+    DaylightManager:draw()
     Fader:draw()
     FPS:draw()
 end
