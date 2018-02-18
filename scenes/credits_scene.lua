@@ -23,10 +23,13 @@ love2d.org
 hump by Matthias Richter
 github.com/vrld/hump
 
+Inspect by Enrique García Cota
+github.com/kikito/inspect.lua
+
 jumper by Roland Yonaba
 github.com/Yonaba/Jumper
 
-STI by Landon Manning
+Simple Tiled Implementation by Landon Manning
 github.com/karai17/Simple-Tiled-Implementation
 
 
