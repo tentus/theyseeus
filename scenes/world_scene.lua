@@ -145,14 +145,24 @@ function WorldScene:spawnEntities()
         misc = {},
     }
     for _, object in pairs(self.map.objects) do
+        local obj, type
         if object.type == "NPC" then
-            table.insert(self.entities.npcs, NPC(object.x, object.y, self.physics))
+            type = "npcs"
+            obj = NPC(object.x, object.y, self.physics)
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
-                table.insert(self.entities.pickups, Yarn(object.x, object.y, self.physics))
+                type = "npcs"
+                obj = Yarn(object.x, object.y, self.physics)
             end
+        elseif object.type == "Sign" then
+            type = "misc"
+            obj = Sign(object.x, object.y, self.physics, object.name)
         elseif object.type == "Kid" then
-            table.insert(self.entities.misc, Kid(object.x, object.y, self.physics, object.name))
+            type = "misc"
+            obj = Kid(object.x, object.y, self.physics, object.name)
+        end
+        if obj then
+            table.insert(self.entities[type], obj)
         end
     end
 end
