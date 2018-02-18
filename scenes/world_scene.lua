@@ -4,6 +4,7 @@ WorldScene = {
         pickups = {},   -- stuff the player can collect
         misc    = {},   -- semi-static entities, like signs
     },
+    pointsOfInterest = {},      -- places the NPCs will wander to
     showInventory = false,
     showMap = false,
     -- map = sti map,
@@ -146,11 +147,13 @@ function WorldScene:spawnEntities()
         pickups = {},
         misc = {},
     }
+    self.pointsOfInterest = {}
     for _, object in pairs(self.map.objects) do
         local obj, type
         if object.type == "NPC" then
             type = "npcs"
             obj = NPC(object.x, object.y, self.physics)
+            table.insert(self.pointsOfInterest, {object.x, object.y})
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
                 type = "npcs"
