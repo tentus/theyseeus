@@ -1,7 +1,7 @@
 DialogScene = {
     cursor = 1,
     dialog = {},
-    dialogFont = love.graphics.newFont(12),   -- the default
+    dialogFont = love.graphics.getFont(),   -- the default
     hint = "Press space to continue.  ",
     hintFont = love.graphics.newFont(10),
     height = 64,
