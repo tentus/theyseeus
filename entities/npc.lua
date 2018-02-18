@@ -6,9 +6,20 @@ NPC = Class{
         y = 0,
     },
     force = 4000,
+    sleeping = true,
+    hearing = {},
 }
 
+function NPC:init(x, y, world)
+    Minotaur.init(self, x, y, world)
+    self:setHearing(192)
+end
+
 function NPC:update(dt)
+    if self.sleeping then
+        return
+    end
+
     local x, y = self.body:getPosition()
     local px, py = WorldScene.player.body:getPosition()
 
@@ -27,4 +38,27 @@ function NPC:update(dt)
         if self.pathnode.y > y then v = 1 end
     end
     self.body:applyForce(h * self.force, v * self.force)
+end
+
+function NPC:draw()
+    Minotaur.draw(self)
+    if self.sleeping then
+        love.graphics.print("z z Z Z Z", self.body:getX(), self.body:getY() - 128)
+    end
+end
+
+function NPC:setHearing(radius)
+    self.hearing.shape   = love.physics.newCircleShape(0, -16, radius)
+    self.hearing.fixture = love.physics.newFixture(self.body, self.hearing.shape)
+    self.hearing.fixture:setSensor(true)
+    self.hearing.fixture:setUserData({
+        beginContact = function(_, other)
+            if other.classname == "Player" then
+                self.sleeping = false
+            end
+        end
+    })
+
+    -- each shape affixed will affect the mass, so we have to reset it each time
+    self.body:setMass(1)
 end
