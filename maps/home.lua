@@ -9,6 +9,7 @@ return {
   tilewidth = 64,
   tileheight = 64,
   nextobjectid = 17,
+  backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
     {
