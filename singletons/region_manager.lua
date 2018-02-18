@@ -29,19 +29,21 @@ function RegionManager:init()
 end
 
 function RegionManager:draw()
-    local size = 32
+    local w, h = 48, 32
     for y=1, self.height do
         for x=1, self.width do
             local text = self.chosen[y][x]
+            local opacity = 128
             if x == self.x and y == self.y then
                 text = '[' .. text .. ']'
+                opacity = 192
             end
 
-            love.graphics.setColor(0, 0, 0, 128)
-            love.graphics.rectangle('fill', (x * size) + 4, (y * size) - 4, 24, 24)
+            love.graphics.setColor(0, 0, 0, opacity)
+            love.graphics.rectangle('fill', (x * w) + 4, (y * h) - 4, w - 8, h - 8)
 
             love.graphics.setColor(255, 255, 255)
-            love.graphics.printf(text, x * size, y * size, size, "center")
+            love.graphics.printf(text, x * w, y * h, w, "center")
         end
     end
 end
