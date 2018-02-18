@@ -1,4 +1,5 @@
 Minotaur = Class{
+    classname = 'Minotaur',
     radius = 31,
     image = love.graphics.newImage("assets/sprites/minotaur.png"),
     offsets = {},
@@ -40,8 +41,11 @@ end
 function Minotaur:createBody(world, x, y)
     self.body = love.physics.newBody(world, x or 0, y or 0, "dynamic")
     self.body:setLinearDamping(10)
-    self.body:setMass(75)
 
     self.shape   = love.physics.newCircleShape(self.radius)
     self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setUserData(self)
+
+    -- each shape affixed will affect the mass, so we have to reset it each time
+    self.body:setMass(1)
 end
