@@ -1,5 +1,6 @@
 NPC = Class{
     __includes = Minotaur,
+    classname = 'NPC',
     pathnode = {
         x = 0,
         y = 0,

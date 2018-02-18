@@ -1,5 +1,6 @@
 Yarn = Class{
     __includes = Killable,
+    classname = 'Yarn',
     radius = 32,
     rotation = 0,
     spinrate = 1,

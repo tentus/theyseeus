@@ -1,5 +1,6 @@
 Player = Class{
     __includes = Minotaur,
+    classname = 'Player',
     defaultForce = 5000,
     currentForce = 5000,
     maxForce = 25000,
