@@ -1,6 +1,8 @@
 WorldScene = {
-    npcs = {},
-    pickups = {},
+    entities = {
+        npcs = {},
+        pickups = {},
+    },
     showInventory = false,
     showMap = false,
     -- map = sti map,
@@ -23,15 +25,13 @@ function WorldScene:update(dt)
     self.player:update(dt)
     self.map:update(dt)
 
-    for _, npc in pairs(self.npcs) do
-        npc:update(dt)
-    end
-
-    for k, pickup in pairs(self.pickups) do
-        if pickup.dead then
-            table.remove(self.pickups, k)
-        else
-            pickup:update(dt)
+    for _, group in pairs(self.entities) do
+        for k, ent in pairs(group) do
+            if ent.dead then
+                table.remove(group, k)
+            else
+                ent:update(dt)
+            end
         end
     end
 
@@ -50,12 +50,10 @@ function WorldScene:draw()
     -- Draw map
     self.map:draw(tx, ty)
 
-    for i=1, #self.npcs do
-        self.npcs[i]:draw()
-    end
-
-    for _, pickup in pairs(self.pickups) do
-        pickup:draw()
+    for _, group in pairs(self.entities) do
+        for _, ent in pairs(group) do
+            ent:draw()
+        end
     end
 
     -- Draw "player"
@@ -134,14 +132,16 @@ function WorldScene:loadRegion(enteringFrom)
 end
 
 function WorldScene:spawnEntities()
-    self.npcs = {}
-    self.pickups = {}
+    self.entities = {
+        npcs = {},
+        pickups = {},
+    }
     for _, object in pairs(self.map.objects) do
         if object.type == "NPC" then
-            table.insert(self.npcs, NPC(object.x, object.y, self.physics))
+            table.insert(self.entities.npcs, NPC(object.x, object.y, self.physics))
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
-                table.insert(self.pickups, Yarn(object.x, object.y, self.physics))
+                table.insert(self.entities.pickups, Yarn(object.x, object.y, self.physics))
             end
         end
     end
