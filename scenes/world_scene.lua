@@ -22,6 +22,10 @@ function WorldScene:update(dt)
     self.player:update(dt)
     self.map:update(dt)
 
+    for _, npc in pairs(self.npcs) do
+        npc:update(dt)
+    end
+
     for k, pickup in pairs(self.pickups) do
         if pickup.dead then
             table.remove(self.pickups, k)
@@ -123,6 +127,9 @@ function WorldScene:loadRegion(enteringFrom)
     else
         self.player:createBody(self.physics, spawn.x, spawn.y)
     end
+
+    -- calculate what can be walked on and rig up a pathfinder
+    self.pathManager = PathManager(self.map)
 end
 
 function WorldScene:spawnEntities()
