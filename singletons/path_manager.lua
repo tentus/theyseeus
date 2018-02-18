@@ -50,7 +50,7 @@ function PathManager:getNextPathNode(startX, startY, endX, endY)
     -- if we can't find a route, default to staying in place
     local node = {x = startX, y = startY}
 
-    local path = self.finder:getPath(
+    local path, pathLength = self.finder:getPath(
         math.floor(startX / self.tilewidth),
         math.floor(startY / self.tileheight),
         math.floor(endX / self.tilewidth),
@@ -63,5 +63,5 @@ function PathManager:getNextPathNode(startX, startY, endX, endY)
         node.y = (path[2].y * self.tileheight) + (self.tileheight / 2)
     end
 
-    return node
+    return node, pathLength
 end
