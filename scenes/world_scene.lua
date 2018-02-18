@@ -1,7 +1,8 @@
 WorldScene = {
     entities = {
-        npcs = {},
-        pickups = {},
+        npcs    = {},   -- foes that can turn hostile
+        pickups = {},   -- stuff the player can collect
+        misc    = {},   -- semi-static entities, like signs
     },
     showInventory = false,
     showMap = false,
@@ -137,6 +138,7 @@ function WorldScene:spawnEntities()
     self.entities = {
         npcs = {},
         pickups = {},
+        misc = {},
     }
     for _, object in pairs(self.map.objects) do
         if object.type == "NPC" then
@@ -145,6 +147,8 @@ function WorldScene:spawnEntities()
             if not InventoryManager:hasYarn(RegionManager:coords()) then
                 table.insert(self.entities.pickups, Yarn(object.x, object.y, self.physics))
             end
+        elseif object.type == "Dialog" then
+            table.insert(self.entities.misc, Kid(object.x, object.y, self.physics, object.name))
         end
     end
 end
