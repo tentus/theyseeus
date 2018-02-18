@@ -43,6 +43,8 @@ end
 function WorldScene:draw()
     love.graphics.push()
 
+    love.graphics.setBackgroundColor(self.map.backgroundcolor or {0,0,0})
+
     -- determine how much we need to translate around to see the player
     local width, height = love.window.getMode()
     local tx = (width / 2) - self.player.body:getX()
@@ -145,14 +147,24 @@ function WorldScene:spawnEntities()
         misc = {},
     }
     for _, object in pairs(self.map.objects) do
+        local obj, type
         if object.type == "NPC" then
-            table.insert(self.entities.npcs, NPC(object.x, object.y, self.physics))
+            type = "npcs"
+            obj = NPC(object.x, object.y, self.physics)
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
-                table.insert(self.entities.pickups, Yarn(object.x, object.y, self.physics))
+                type = "npcs"
+                obj = Yarn(object.x, object.y, self.physics)
             end
-        elseif object.type == "Dialog" then
-            table.insert(self.entities.misc, Kid(object.x, object.y, self.physics, object.name))
+        elseif object.type == "Sign" then
+            type = "misc"
+            obj = Sign(object.x, object.y, self.physics, object.name)
+        elseif object.type == "Kid" then
+            type = "misc"
+            obj = Kid(object.x, object.y, self.physics, object.name)
+        end
+        if obj then
+            table.insert(self.entities[type], obj)
         end
     end
 end

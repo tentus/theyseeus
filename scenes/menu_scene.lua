@@ -64,6 +64,10 @@ MenuScene = {
     logo = love.graphics.newImage("assets/logos/theyseeus_logo.png"),
 }
 
+function MenuScene:enter()
+    love.graphics.setBackgroundColor(0,0,0)
+end
+
 function MenuScene:draw()
     local width, height = love.window.getMode()
     local halfWidth = width / 2
