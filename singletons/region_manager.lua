@@ -25,7 +25,7 @@ function RegionManager:init()
     end
 
     -- the point of origin is always the same
-    self.chosen[self.y][self.x] = self.whitelist[1]
+    self.chosen[self.y][self.x] = 'home'
 end
 
 function RegionManager:draw()
