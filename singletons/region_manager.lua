@@ -5,8 +5,8 @@ RegionManager = {
     },
 
     -- current overall position in the region grid
-    x = 1,
-    y = 1,
+    x = 3,
+    y = 3,
 
     -- how big a grid we'll generate
     width = 5,
