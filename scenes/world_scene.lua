@@ -29,7 +29,7 @@ function WorldScene:update(dt)
         for k, ent in pairs(group) do
             if ent.dead then
                 table.remove(group, k)
-            else
+            elseif ent.update then
                 ent:update(dt)
             end
         end
@@ -52,7 +52,9 @@ function WorldScene:draw()
 
     for _, group in pairs(self.entities) do
         for _, ent in pairs(group) do
-            ent:draw()
+            if ent.draw then
+                ent:draw()
+            end
         end
     end
 
