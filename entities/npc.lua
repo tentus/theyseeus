@@ -53,7 +53,7 @@ function NPC:setHearing(radius)
     self.hearing.fixture:setSensor(true)
     self.hearing.fixture:setUserData({
         beginContact = function(_, other)
-            if other.classname == "Player" then
+            if other.classname == "Player" or other.classname == "NPC" then
                 self.sleeping = false
             end
         end
