@@ -14,7 +14,8 @@ function WorldScene:init()
 
     love.physics.setMeter(64)
 
-    self:loadRegion("North")
+    -- special case for init
+    self:loadRegion("Start")
 end
 
 function WorldScene:update(dt)
