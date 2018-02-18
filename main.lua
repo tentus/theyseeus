@@ -3,6 +3,7 @@ Gamestate   = require "libraries.hump.gamestate"
 sti         = require "libraries.sti"
 Grid        = require "libraries.jumper.grid"
 Pathfinder  = require "libraries.jumper.pathfinder"
+inspect     = require "libraries.inspect"
 
 function love.load()
     local requireDir = function(dir)
