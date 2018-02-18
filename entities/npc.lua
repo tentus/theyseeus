@@ -13,6 +13,9 @@ NPC = Class{
 function NPC:init(x, y, world)
     Minotaur.init(self, x, y, world)
     self:setHearing(192)
+
+    -- make some NPCs faster than others, to make chases more interesting
+    self.force = self.force + math.random(1, 1000)
 end
 
 function NPC:update(dt)
