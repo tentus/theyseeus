@@ -48,6 +48,11 @@ function RegionManager:draw()
     end
 end
 
+function RegionManager:warpHome()
+    self.x = 3
+    self.y = 3
+end
+
 function RegionManager:coords()
     return self.x, self.y
 end

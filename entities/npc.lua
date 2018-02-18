@@ -1,5 +1,5 @@
 NPC = Class{
-    __includes = Minotaur,
+    __includes = {Minotaur, Damagable, Killable},
     classname = 'NPC',
     pathnode = {
         x = 0,
@@ -13,12 +13,17 @@ NPC = Class{
 function NPC:init(x, y, world)
     Minotaur.init(self, x, y, world)
     self:setHearing(192)
+
+    -- make some NPCs faster than others, to make chases more interesting
+    self.force = self.force + math.random(1, 1000)
 end
 
 function NPC:update(dt)
     if self.sleeping then
         return
     end
+
+    Damagable.update(self, dt)
 
     local x, y = self.body:getPosition()
     local px, py = WorldScene.player.body:getPosition()
@@ -61,4 +66,10 @@ function NPC:setHearing(radius)
 
     -- each shape affixed will affect the mass, so we have to reset it each time
     self.body:setMass(1)
+end
+
+function NPC:beginContact(other)
+    if other.damage then
+        other:damage()
+    end
 end
