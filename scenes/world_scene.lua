@@ -73,6 +73,8 @@ function WorldScene:draw()
         RegionManager:draw()
     end
 
+    self.player:drawHUD()
+
     DaylightManager:draw()
     Fader:draw()
     FPS:draw()
