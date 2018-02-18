@@ -151,7 +151,7 @@ function WorldScene:spawnEntities()
             if not InventoryManager:hasYarn(RegionManager:coords()) then
                 table.insert(self.entities.pickups, Yarn(object.x, object.y, self.physics))
             end
-        elseif object.type == "Dialog" then
+        elseif object.type == "Kid" then
             table.insert(self.entities.misc, Kid(object.x, object.y, self.physics, object.name))
         end
     end
