@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 14,
+  nextobjectid = 15,
   properties = {},
   tilesets = {
     {
@@ -240,8 +240,8 @@ return {
           name = "North",
           type = "Spawn",
           shape = "point",
-          x = 2048,
-          y = 640,
+          x = 2623.39,
+          y = 702.182,
           width = 0,
           height = 0,
           rotation = 0,
@@ -281,6 +281,31 @@ return {
           shape = "point",
           x = 2048,
           y = 3456,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Pickups",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 14,
+          name = "Yarn",
+          type = "Yarn",
+          shape = "point",
+          x = 2206.67,
+          y = 2468,
           width = 0,
           height = 0,
           rotation = 0,

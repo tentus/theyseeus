@@ -46,6 +46,10 @@ function RegionManager:draw()
     end
 end
 
+function RegionManager:coords()
+    return self.x, self.y
+end
+
 function RegionManager:current()
     return self.chosen[self.y][self.x]
 end
