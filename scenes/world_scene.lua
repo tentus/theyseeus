@@ -43,6 +43,8 @@ end
 function WorldScene:draw()
     love.graphics.push()
 
+    love.graphics.setBackgroundColor(self.map.backgroundcolor or {0,0,0})
+
     -- determine how much we need to translate around to see the player
     local width, height = love.window.getMode()
     local tx = (width / 2) - self.player.body:getX()
