@@ -9,7 +9,9 @@ function love.load()
     local requireDir = function(dir)
         local files = love.filesystem.getDirectoryItems(dir)
         for _, file in pairs(files) do
-            require(dir .. '/' .. string.gsub( file, ".lua", ""))
+            if string.sub(file, -4) == ".lua" then
+                require(dir .. '/' .. string.gsub( file, ".lua", ""))
+            end
         end
     end
 
