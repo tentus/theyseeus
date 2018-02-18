@@ -36,6 +36,15 @@ function Player:update(dt)
     self.body:applyForce(x * self.currentForce, y * self.currentForce)
 end
 
+function Player:draw()
+    if self:invincible() then
+        love.graphics.setColor(255, 0, 0)
+        Minotaur.draw(self)
+        love.graphics.setColor(255, 255, 255)
+    else
+        Minotaur.draw(self)
+    end
+end
 
 function Player:drawHUD()
     for i=1, self.maxHealth do
