@@ -1,9 +1,7 @@
 CreditsScene = {
     speed = 100,
+    logo = love.graphics.newImage("assets/logos/theyseeus_logo.png"),
     text = [[
-They See Us
-
-
 
 Colin Johnson
 twitter.com/crittecol
@@ -33,12 +31,17 @@ github.com/karai17/Simple-Tiled-Implementation
 
 
 
+"Mark of the Beast" by Nate Piekos
+blambot.com
+
+
+
 Thank you for playing!
 ]]
 }
 
 function CreditsScene:enter()
-    self.y = love.graphics.getHeight() + 10
+    self.y = love.graphics.getHeight() + self.logo:getHeight()
     local _, count = string.gsub(self.text, "\n", "")
     self.limit = count * -18
 end
@@ -51,7 +54,9 @@ function CreditsScene:update(dt)
 end
 
 function CreditsScene:draw()
-    love.graphics.printf(self.text, 0, math.floor(self.y), love.graphics.getWidth(), "center")
+    local width, height = love.window.getMode()
+    love.graphics.draw(self.logo, width / 2, math.floor(self.y), 0, 1, 1, self.logo:getWidth() / 2, self.logo:getHeight())
+    love.graphics.printf(self.text, 0, math.floor(self.y), width, "center")
 end
 
 function CreditsScene:keypressed()
