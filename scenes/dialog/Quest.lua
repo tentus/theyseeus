@@ -1,7 +1,7 @@
 return {
     {
         function()
-            if InventoryManager.count >= 5 then
+            if InventoryManager:totalYarn() >= 5 then
                 DialogScene.cursor = 5
             else
                 DialogScene.cursor = 2
@@ -20,6 +20,10 @@ return {
     },
     {
         "Wow! You got them!",
-        function() Gamestate.switch(CreditsScene) end
+        function()
+            InventoryManager:reset()
+            Player:kill()
+            Gamestate.switch(CreditsScene)
+        end
     },
 }
