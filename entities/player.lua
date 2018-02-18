@@ -14,6 +14,8 @@ Player = Class{
 }
 
 function Player:update(dt)
+    Damagable.update(self, dt)
+
     local kd = love.keyboard.isDown
     local x, y = 0, 0
 

@@ -20,6 +20,8 @@ function NPC:update(dt)
         return
     end
 
+    Damagable.update(self, dt)
+
     local x, y = self.body:getPosition()
     local px, py = WorldScene.player.body:getPosition()
 
