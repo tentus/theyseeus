@@ -1,5 +1,5 @@
 NPC = Class{
-    __includes = Minotaur,
+    __includes = {Minotaur, Damagable, Killable},
     classname = 'NPC',
     pathnode = {
         x = 0,
@@ -61,4 +61,10 @@ function NPC:setHearing(radius)
 
     -- each shape affixed will affect the mass, so we have to reset it each time
     self.body:setMass(1)
+end
+
+function NPC:beginContact(other)
+    if other.damage then
+        other:damage()
+    end
 end
