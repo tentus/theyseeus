@@ -1,6 +1,9 @@
 WorldScene = {
-    npcs = {},
-    pickups = {},
+    entities = {
+        npcs    = {},   -- foes that can turn hostile
+        pickups = {},   -- stuff the player can collect
+        misc    = {},   -- semi-static entities, like signs
+    },
     showInventory = false,
     showMap = false,
     -- map = sti map,
@@ -14,7 +17,8 @@ function WorldScene:init()
 
     love.physics.setMeter(64)
 
-    self:loadRegion("North")
+    -- special case for init
+    self:loadRegion("Start")
 end
 
 function WorldScene:update(dt)
@@ -22,15 +26,13 @@ function WorldScene:update(dt)
     self.player:update(dt)
     self.map:update(dt)
 
-    for _, npc in pairs(self.npcs) do
-        npc:update(dt)
-    end
-
-    for k, pickup in pairs(self.pickups) do
-        if pickup.dead then
-            table.remove(self.pickups, k)
-        else
-            pickup:update(dt)
+    for _, group in pairs(self.entities) do
+        for k, ent in pairs(group) do
+            if ent.dead then
+                table.remove(group, k)
+            elseif ent.update then
+                ent:update(dt)
+            end
         end
     end
 
@@ -49,12 +51,12 @@ function WorldScene:draw()
     -- Draw map
     self.map:draw(tx, ty)
 
-    for i=1, #self.npcs do
-        self.npcs[i]:draw()
-    end
-
-    for _, pickup in pairs(self.pickups) do
-        pickup:draw()
+    for _, group in pairs(self.entities) do
+        for _, ent in pairs(group) do
+            if ent.draw then
+                ent:draw()
+            end
+        end
     end
 
     -- Draw "player"
@@ -133,15 +135,20 @@ function WorldScene:loadRegion(enteringFrom)
 end
 
 function WorldScene:spawnEntities()
-    self.npcs = {}
-    self.pickups = {}
+    self.entities = {
+        npcs = {},
+        pickups = {},
+        misc = {},
+    }
     for _, object in pairs(self.map.objects) do
         if object.type == "NPC" then
-            table.insert(self.npcs, NPC(object.x, object.y, self.physics))
+            table.insert(self.entities.npcs, NPC(object.x, object.y, self.physics))
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
-                table.insert(self.pickups, Yarn(object.x, object.y, self.physics))
+                table.insert(self.entities.pickups, Yarn(object.x, object.y, self.physics))
             end
+        elseif object.type == "Dialog" then
+            table.insert(self.entities.misc, Kid(object.x, object.y, self.physics, object.name))
         end
     end
 end
