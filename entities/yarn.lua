@@ -45,8 +45,10 @@ function Yarn:createBody(world, x, y)
     self.fixture:setUserData(self)
 end
 
-function Yarn:beginContact()
-    InventoryManager:collectYarn(RegionManager:coords())
-    self.body:destroy()
-    self:kill()
+function Yarn:beginContact(other)
+    if other.classname == "Player" then
+        InventoryManager:collectYarn(RegionManager:coords())
+        self.body:destroy()
+        self:kill()
+    end
 end
