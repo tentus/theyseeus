@@ -156,7 +156,7 @@ function WorldScene:spawnEntities()
         if object.type == "NPC" then
             type = "npcs"
             obj = NPC(object.x, object.y, self.physics)
-            table.insert(self.pointsOfInterest, {object.x, object.y})
+            table.insert(self.pointsOfInterest, SpawnPoint(object.x, object.y))
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
                 type = "npcs"
