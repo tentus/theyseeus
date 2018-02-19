@@ -59,6 +59,10 @@ function Player:incrementHealth()
     self.health = self.maxHealth
 end
 
+function Player:heal()
+    self.health = math.min(self.health + 1, self.maxHealth)
+end
+
 function Player:kill()
     self.health = self.maxHealth
     RegionManager:warpHome()
