@@ -2,6 +2,7 @@ Minotaur = Class{
     classname = 'Minotaur',
     radius = 31,
     image = love.graphics.newImage("assets/sprites/minotaur.png"),
+    shadow = love.graphics.newImage("assets/sprites/shadow.png"),
     offsets = {},
     attributes = {
         possible = {
@@ -58,6 +59,7 @@ end
 
 function Minotaur:draw()
     local x, y = self.body:getPosition()
+    love.graphics.draw(self.shadow, x - 32, y + 20, 0, 1, 0.3)
     self.anims[self.currentAnim]:draw(self.image, x - self.offsets.x, y - self.offsets.y)
 
     -- todo: overlay attributes visually
