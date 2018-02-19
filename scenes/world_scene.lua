@@ -153,7 +153,7 @@ function WorldScene:spawnEntities()
             obj = NPC(object.x, object.y, self.physics)
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
-                type = "npcs"
+                type = "pickups"
                 obj = Yarn(object.x, object.y, self.physics)
             end
         elseif object.type == "Sign" then
