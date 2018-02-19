@@ -53,6 +53,11 @@ function Player:drawHUD()
     end
 end
 
+function Player:incrementHealth()
+    self.maxHealth = self.maxHealth + 1
+    self.health = self.maxHealth
+end
+
 function Player:kill()
     self.health = self.maxHealth
     RegionManager:warpHome()
