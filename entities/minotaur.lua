@@ -1,7 +1,7 @@
 Minotaur = Class{
     classname = 'Minotaur',
     radius = 31,
-    image = love.graphics.newImage("assets/sprites/testanim.png"),
+    image = love.graphics.newImage("assets/sprites/testAnim.png"),
     offsets = {},
     attributes = {
         possible = {
