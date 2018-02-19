@@ -2,6 +2,9 @@ InventoryManager = {
     -- which yarns have been collected (keyed by region coords)
     yarn = {},
 
+    -- which upgrades have been collected
+    upgrades = {},
+
     image = love.graphics.newImage("assets/sprites/yarn.png"),
     font = love.graphics.newFont(16),
 }
@@ -18,17 +21,24 @@ function InventoryManager:draw()
 end
 
 function InventoryManager:collectYarn(regionX, regionY)
-    if not self:hasYarn(regionX, regionY) then
-        self.yarn[regionX .. 'x' .. regionY] = true
-    end
+    self.yarn[regionX .. 'x' .. regionY] = true
 end
 
 function InventoryManager:hasYarn(regionX, regionY)
     return self.yarn[regionX .. 'x' .. regionY] == true
 end
 
+function InventoryManager:collectUpgrade(regionX, regionY)
+    self.upgrades[regionX .. 'x' .. regionY] = true
+end
+
+function InventoryManager:hasUpgrade(regionX, regionY)
+    return self.yarn[regionX .. 'x' .. regionY] == true
+end
+
 function InventoryManager:reset()
     self.yarn = {}
+    self.upgrades = {}
 end
 
 function InventoryManager:totalYarn()
