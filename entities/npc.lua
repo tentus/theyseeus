@@ -12,7 +12,7 @@ function NPC:init(x, y, world)
     self:setHearing(192)
 
     -- make some NPCs faster than others, to make chases more interesting
-    self.force = self.force + math.random(1, 1000)
+    self.force = self.force + love.math.random(1, 1000)
 end
 
 function NPC:update(dt)
@@ -58,7 +58,7 @@ end
 
 function NPC:pickNewGoal()
     local count = #WorldScene.pointsOfInterest
-    local pick = WorldScene.pointsOfInterest[math.random(count)]
+    local pick = WorldScene.pointsOfInterest[love.math.random(count)]
     if pick ~= self.goal then
         self.goal = pick
     elseif count > 1 then       -- don't wanna end up in an infinite loop

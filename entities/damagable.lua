@@ -27,7 +27,7 @@ function Damagable:damage()
     if self.kill and self.health < 1 then
         self:kill()
     else
-        self.damage_audio[math.random(#self.damage_audio)]:play()
+        self.damage_audio[love.math.random(#self.damage_audio)]:play()
         self.invincibility.remaining = self.invincibility.length
     end
 end

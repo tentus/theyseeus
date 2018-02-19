@@ -20,7 +20,7 @@ function RegionManager:init()
     for y=1, self.height do
         self.chosen[y] = {}
         for x=1, self.width do
-            self.chosen[y][x] = self.whitelist[math.random(#self.whitelist)]
+            self.chosen[y][x] = self.whitelist[love.math.random(#self.whitelist)]
         end
     end
 

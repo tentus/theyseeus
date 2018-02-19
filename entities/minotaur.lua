@@ -31,7 +31,7 @@ function Minotaur:init(x, y, world)
 
     -- choose some attributes (todo: this doesn't seem as random as it should be?)
     for k, v in pairs(self.attributes.possible) do
-        self.attributes.chosen[k] = v[math.random(#v)]
+        self.attributes.chosen[k] = v[love.math.random(#v)]
     end
 
     -- set up physics body
