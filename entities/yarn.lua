@@ -38,7 +38,6 @@ end
 function Yarn:beginContact(other)
     if other.classname == "Player" then
         InventoryManager:collectYarn(RegionManager:coords())
-        self.body:destroy()
         self:kill()
     end
 end

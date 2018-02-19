@@ -1,7 +1,7 @@
 RegionManager = {
     -- a list of all production-read maps
     whitelist = {
-        1, 2, 3
+        1, 2, 3, 4
     },
 
     -- current overall position in the region grid
@@ -29,7 +29,9 @@ function RegionManager:init()
 end
 
 function RegionManager:draw()
-    local w, h = 48, 32
+    local w, h = 56, 32
+    local tr = love.graphics.getWidth() - ((self.width + 2) * w)
+    local spacing = 8
     for y=1, self.height do
         for x=1, self.width do
             local text = self.chosen[y][x]
@@ -40,10 +42,10 @@ function RegionManager:draw()
             end
 
             love.graphics.setColor(0, 0, 0, opacity)
-            love.graphics.rectangle('fill', (x * w) + 4, (y * h) - 4, w - 8, h - 8)
+            love.graphics.rectangle('fill', (x * w) + tr, (y * h), w - spacing, h - spacing)
 
             love.graphics.setColor(255, 255, 255)
-            love.graphics.printf(text, x * w, y * h, w, "center")
+            love.graphics.printf(text, (x * w) + tr - (spacing / 2), (y * h) + (spacing / 2), w, "center")
         end
     end
 end
