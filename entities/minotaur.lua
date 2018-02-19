@@ -33,11 +33,14 @@ function Minotaur:draw()
     local x, y = self.body:getPosition()
     love.graphics.draw(self.image, x - self.offsets.x, y - self.offsets.y)
 
+    -- todo: overlay attributes visually
+    --[[
     local label = "\n"
     for k, v in pairs(self.attributes.chosen) do
         label = label .. "\n" .. k .. ": " .. v
     end
     love.graphics.printf(label, x - self.offsets.x, y - self.offsets.y, self.image:getWidth(), "center")
+    ]]
 end
 
 function Minotaur:createBody(world, x, y)
