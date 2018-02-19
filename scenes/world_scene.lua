@@ -157,6 +157,9 @@ function WorldScene:spawnEntities()
             type = "npcs"
             obj = NPC(object.x, object.y, self.physics)
             table.insert(self.pointsOfInterest, SpawnPoint(object.x, object.y))
+        elseif object.type == "Health" then
+            type = "pickups"
+            obj = Health(object.x, object.y, self.physics)
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
                 type = "pickups"
