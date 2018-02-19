@@ -1,3 +1,5 @@
+-- implements the ":getTargetPosition()" pseudo interface
+
 Minotaur = Class{
     classname = 'Minotaur',
     radius = 31,
@@ -48,4 +50,8 @@ function Minotaur:createBody(world, x, y)
 
     -- each shape affixed will affect the mass, so we have to reset it each time
     self.body:setMass(1)
+end
+
+function Minotaur:getTargetPosition()
+    return self.body:getPosition()
 end

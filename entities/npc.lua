@@ -1,12 +1,9 @@
 NPC = Class{
     __includes = {Minotaur, Damagable, Killable},
     classname = 'NPC',
-    pathnode = {
-        x = 0,
-        y = 0,
-    },
     force = 4000,
-    sleeping = true,
+    goal = nil,
+    angry = false,
     hearing = {},
 }
 
@@ -19,36 +16,52 @@ function NPC:init(x, y, world)
 end
 
 function NPC:update(dt)
-    if self.sleeping then
-        return
-    end
-
     Damagable.update(self, dt)
 
+    -- we do not set the goal at spawn, because not all spawn points will have been registered yet
+    if not self.goal then
+        self:pickNewGoal()
+    end
+
     local x, y = self.body:getPosition()
-    local px, py = WorldScene.player.body:getPosition()
+    local px, py = self.goal:getTargetPosition()
 
     -- we recalc constantly because we're constantly catching up to our destination
-    self.pathnode = WorldScene.pathManager:getNextPathNode(x, y, px, py)
+    local node, len = WorldScene.pathManager:getNextPathNode(x, y, px, py)
+
+    -- if we've arrived at our destination, pick a new goal for the next update
+    -- we're using anger here to avoid getting distracted after near-misses
+    if not self.angry and len == 0 then
+        self:pickNewGoal()
+        return
+    end
 
     -- we don't apply force unless we're far enough from it to be worthwhile, to avoid jitter
     local threshold = 4
     local h, v = 0, 0
-    if math.abs(self.pathnode.x - x) > threshold then
-        if self.pathnode.x < x then h = -1 end
-        if self.pathnode.x > x then h = 1 end
+    if math.abs(node.x - x) > threshold then
+        if node.x < x then h = -1 end
+        if node.x > x then h = 1 end
     end
-    if math.abs(self.pathnode.y - y) > threshold then
-        if self.pathnode.y < y then v = -1 end
-        if self.pathnode.y > y then v = 1 end
+    if math.abs(node.y - y) > threshold then
+        if node.y < y then v = -1 end
+        if node.y > y then v = 1 end
     end
-    self.body:applyForce(h * self.force, v * self.force)
+
+    if h ~= 0 or v ~= 0 then
+        -- npcs move much slower when they're not angry
+        local force = self.angry and self.force or (self.force / 4)
+        self.body:applyForce(h * force, v * force)
+    end
 end
 
-function NPC:draw()
-    Minotaur.draw(self)
-    if self.sleeping then
-        love.graphics.print("z z Z Z Z", self.body:getX(), self.body:getY() - 128)
+function NPC:pickNewGoal()
+    local count = #WorldScene.pointsOfInterest
+    local pick = WorldScene.pointsOfInterest[math.random(count)]
+    if pick ~= self.goal then
+        self.goal = pick
+    elseif count > 1 then       -- don't wanna end up in an infinite loop
+        self:pickNewGoal()
     end
 end
 
@@ -58,8 +71,10 @@ function NPC:setHearing(radius)
     self.hearing.fixture:setSensor(true)
     self.hearing.fixture:setUserData({
         beginContact = function(_, other)
-            if other.classname == "Player" or other.classname == "NPC" then
-                self.sleeping = false
+            -- todo: implement Hatred system
+            if other.getTargetPosition then
+                self.goal = other
+                self.angry = true
             end
         end
     })
