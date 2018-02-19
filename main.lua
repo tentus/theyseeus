@@ -20,6 +20,8 @@ function love.load()
     requireDir('scenes')
     requireDir('singletons')
 
+    Music:play("assets/audio/bgm.ogg")
+
     Gamestate.registerEvents()
     Gamestate.switch(SplashScene)
 end
