@@ -5,7 +5,7 @@ WorldScene = {
         misc    = {},   -- semi-static entities, like signs
     },
     pointsOfInterest = {},      -- places the NPCs will wander to
-    showInventory = false,
+    showInventory = true,
     showMap = false,
     -- map = sti map,
     -- physics = physics world,
@@ -159,8 +159,13 @@ function WorldScene:spawnEntities()
             table.insert(self.pointsOfInterest, SpawnPoint(object.x, object.y))
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
-                type = "npcs"
+                type = "pickups"
                 obj = Yarn(object.x, object.y, self.physics)
+            end
+        elseif object.type == "Upgrade" then
+            if not InventoryManager:hasUpgrade(RegionManager:coords()) then
+                type = "pickups"
+                obj = Upgrade(object.x, object.y, self.physics)
             end
         elseif object.type == "Sign" then
             type = "misc"

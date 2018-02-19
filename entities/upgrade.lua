@@ -1,14 +1,14 @@
-Yarn = Class{
+Upgrade = Class{
     __includes = Killable,
-    classname = 'Yarn',
+    classname = 'Upgrade',
     radius = 32,
     sprite = {
-        image = love.graphics.newImage("assets/sprites/yarn.png"),
+        image = love.graphics.newImage("assets/sprites/upgrade.png"),
     },
-    glow = GlowEffect(),
+    glow = GlowEffect()
 }
 
-function Yarn:init(x, y, world)
+function Upgrade:init(x, y, world)
     -- set offsets for image drawing, since it won't change
     self.sprite.x = self.sprite.image:getWidth() / 2
     self.sprite.y = self.sprite.image:getHeight() / 2
@@ -16,17 +16,17 @@ function Yarn:init(x, y, world)
     self:createBody(world, x, y)
 end
 
-function Yarn:draw()
+function Upgrade:draw()
     local x, y = self.body:getPosition()
     self.glow:draw(x, y)
     love.graphics.draw(self.sprite.image, x - self.sprite.x, y - self.sprite.y)
 end
 
-function Yarn:update(dt)
+function Upgrade:update(dt)
     self.glow:update(dt)
 end
 
-function Yarn:createBody(world, x, y)
+function Upgrade:createBody(world, x, y)
     self.body = love.physics.newBody(world, x or 0, y or 0, "static")
 
     self.shape   = love.physics.newCircleShape(self.radius)
@@ -35,9 +35,10 @@ function Yarn:createBody(world, x, y)
     self.fixture:setUserData(self)
 end
 
-function Yarn:beginContact(other)
+function Upgrade:beginContact(other)
     if other.classname == "Player" then
-        InventoryManager:collectYarn(RegionManager:coords())
+        InventoryManager:collectUpgrade(RegionManager:coords())
+        other:incrementHealth()
         self:kill()
     end
 end

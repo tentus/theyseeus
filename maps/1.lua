@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 15,
+  nextobjectid = 16,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -307,6 +307,19 @@ return {
           shape = "point",
           x = 2046,
           y = 2048,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "Upgrade",
+          type = "Upgrade",
+          shape = "point",
+          x = 834.061,
+          y = 3263.27,
           width = 0,
           height = 0,
           rotation = 0,
