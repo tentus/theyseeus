@@ -1,19 +1,13 @@
 -- no autoloader in lua :'(
-require 'entities.minotaur'
+require 'entities.sign'
 
 Kid = Class{
-    __includes = Minotaur,
+    __includes = Sign,      -- sorry, kid
     classname = 'Kid',
-    dialog = "",
+    height = 128,
+    image = love.graphics.newImage("assets/sprites/kid.png"),
 }
 
 function Kid:init(x, y, world, dialog)
-    Minotaur.init(self, x, y, world)
-    self.body:setType("static")
-
-    self.dialog = dialog
-end
-
-function Kid:beginContact()
-    Gamestate.push(DialogScene, self.dialog)
+    Sign.init(self, x, y, world, dialog)
 end
