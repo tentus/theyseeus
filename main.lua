@@ -6,16 +6,18 @@ Pathfinder  = require "libraries.jumper.pathfinder"
 inspect     = require "libraries.inspect"
 anim8       = require "libraries.animation.anim8"
 
-function love.load()
-    local requireDir = function(dir)
-        local files = love.filesystem.getDirectoryItems(dir)
-        for _, file in pairs(files) do
-            if string.sub(file, -4) == ".lua" then
-                require(dir .. '/' .. string.gsub( file, ".lua", ""))
-            end
+requireDir = function(dir)
+    local files = love.filesystem.getDirectoryItems(dir)
+    for _, file in pairs(files) do
+        if string.sub(file, -4) == ".lua" then
+            require(dir .. '/' .. string.gsub( file, ".lua", ""))
+        else
+            requireDir(dir .. '/' .. file)
         end
     end
+end
 
+function love.load()
     requireDir('entities')
     requireDir('scenes')
     requireDir('singletons')
