@@ -4,7 +4,7 @@ WorldScene = {
         pickups = {},   -- stuff the player can collect
         misc    = {},   -- semi-static entities, like signs
     },
-    showInventory = false,
+    showInventory = true,
     showMap = false,
     -- map = sti map,
     -- physics = physics world,
