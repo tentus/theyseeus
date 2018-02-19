@@ -31,6 +31,9 @@ function WorldScene:update(dt)
     for _, group in pairs(self.entities) do
         for k, ent in pairs(group) do
             if ent.dead then
+                if ent.body then
+                    ent.body:destroy()
+                end
                 table.remove(group, k)
             elseif ent.update then
                 ent:update(dt)
