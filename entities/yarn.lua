@@ -6,6 +6,7 @@ Yarn = Class{
         image = love.graphics.newImage("assets/sprites/yarn.png"),
     },
     glow = GlowEffect(),
+    death_audio = love.audio.newSource("assets/audio/collect.ogg", "static"),
 }
 
 function Yarn:init(x, y, world)

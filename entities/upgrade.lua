@@ -5,7 +5,8 @@ Upgrade = Class{
     sprite = {
         image = love.graphics.newImage("assets/sprites/upgrade.png"),
     },
-    glow = GlowEffect()
+    glow = GlowEffect(),
+    death_audio = love.audio.newSource("assets/audio/collect.ogg", "static"),
 }
 
 function Upgrade:init(x, y, world)
