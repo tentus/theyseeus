@@ -1,5 +1,5 @@
 Upgrade = Class{
-    __includes = Killable,
+    __includes = {Interactable, Killable},
     classname = 'Upgrade',
     radius = 32,
     sprite = {
@@ -36,10 +36,8 @@ function Upgrade:createBody(world, x, y)
     self.fixture:setUserData(self)
 end
 
-function Upgrade:beginContact(other)
-    if other.classname == "Player" then
-        InventoryManager:collectUpgrade(RegionManager:coords())
-        other:incrementHealth()
-        self:kill()
-    end
+function Upgrade:playerContact(other)
+    InventoryManager:collectUpgrade(RegionManager:coords())
+    other:incrementHealth()
+    self:kill()
 end

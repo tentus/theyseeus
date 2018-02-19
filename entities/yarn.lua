@@ -1,5 +1,5 @@
 Yarn = Class{
-    __includes = Killable,
+    __includes = {Interactable, Killable},
     classname = 'Yarn',
     radius = 32,
     sprite = {
@@ -36,9 +36,7 @@ function Yarn:createBody(world, x, y)
     self.fixture:setUserData(self)
 end
 
-function Yarn:beginContact(other)
-    if other.classname == "Player" then
-        InventoryManager:collectYarn(RegionManager:coords())
-        self:kill()
-    end
+function Yarn:playerContact()
+    InventoryManager:collectYarn(RegionManager:coords())
+    self:kill()
 end

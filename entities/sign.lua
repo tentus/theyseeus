@@ -1,4 +1,5 @@
 Sign = Class{
+    __includes = {Interactable},
     classname = 'Sign',
     dialog = "",
 
@@ -22,8 +23,6 @@ function Sign:draw()
     love.graphics.draw(self.image, x - (self.size / 2), y - (self.size / 2))
 end
 
-function Sign:beginContact(other)
-    if other.classname == "Player" then
-        Gamestate.push(DialogScene, self.dialog)
-    end
+function Sign:playerContact(other)
+    Gamestate.push(DialogScene, self.dialog)
 end
