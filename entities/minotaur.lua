@@ -1,5 +1,3 @@
--- implements the ":getTargetPosition()" pseudo interface
-
 Minotaur = Class{
     classname = 'Minotaur',
     radius = 31,
@@ -13,12 +11,22 @@ Minotaur = Class{
         },
         chosen = {},
     },
+    currentAnim = "walkDown",
+    anims = {},
 }
 
 function Minotaur:init(x, y, world)
+    local gridsize = 128
     -- set offsets for image drawing, since it won't change
-    self.offsets.x = self.image:getWidth() * 0.5
-    self.offsets.y = self.image:getHeight() * 0.75
+    self.offsets.x = gridsize * 0.5
+    self.offsets.y = gridsize * 0.75
+
+    local grid = anim8.newGrid(gridsize, gridsize, self.image:getWidth(), self.image:getHeight())
+    self.anims = {
+        walkUp    = anim8.newAnimation(grid(1,1, 2,1), .2),
+        walkRight = anim8.newAnimation(grid(1,2, 2,2), .2),
+        walkDown  = anim8.newAnimation(grid(1,3, 2,3, 3,3, 4,3), .2),
+    }
 
     -- choose some attributes (todo: this doesn't seem as random as it should be?)
     for k, v in pairs(self.attributes.possible) do
@@ -29,9 +37,28 @@ function Minotaur:init(x, y, world)
     self:createBody(world, x, y)
 end
 
+function Minotaur:update(dt)
+    local threshold = 2
+    local xVel, yVel = self.body:getLinearVelocity()
+    local absX, absY = math.abs(xVel), math.abs(yVel)
+
+    -- only animate if we're moving
+    if absX > threshold or absY > threshold then
+        if absX > threshold and absX > absY then
+            self.currentAnim = "walkRight"
+            self.anims[self.currentAnim].flippedH = (xVel < 0)
+        elseif yVel > threshold then
+            self.currentAnim = "walkDown"
+        elseif yVel < -threshold then
+            self.currentAnim = "walkUp"
+        end
+        self.anims[self.currentAnim]:update(dt)
+    end
+end
+
 function Minotaur:draw()
     local x, y = self.body:getPosition()
-    love.graphics.draw(self.image, x - self.offsets.x, y - self.offsets.y)
+    self.anims[self.currentAnim]:draw(self.image, x - self.offsets.x, y - self.offsets.y)
 
     -- todo: overlay attributes visually
     --[[

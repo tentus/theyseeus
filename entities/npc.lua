@@ -17,6 +17,7 @@ end
 
 function NPC:update(dt)
     Damagable.update(self, dt)
+    Minotaur.update(self, dt)
 
     -- we do not set the goal at spawn, because not all spawn points will have been registered yet
     if not self.goal then
