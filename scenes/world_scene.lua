@@ -156,6 +156,11 @@ function WorldScene:spawnEntities()
                 type = "pickups"
                 obj = Yarn(object.x, object.y, self.physics)
             end
+        elseif object.type == "Upgrade" then
+            if not InventoryManager:hasUpgrade(RegionManager:coords()) then
+                type = "pickups"
+                obj = Upgrade(object.x, object.y, self.physics)
+            end
         elseif object.type == "Sign" then
             type = "misc"
             obj = Sign(object.x, object.y, self.physics, object.name)
