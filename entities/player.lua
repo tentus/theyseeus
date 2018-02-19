@@ -14,7 +14,11 @@ Player = Class{
 }
 
 function Player:update(dt)
+
     Damagable.update(self, dt)
+    Minotaur.update(self, dt)
+
+    self.currentAnimation = self.idleAnimation
 
     local kd = love.keyboard.isDown
     local x, y = 0, 0
@@ -23,7 +27,7 @@ function Player:update(dt)
     if kd("a") or kd("left")  then x = x - 1 end
     if kd("d") or kd("right") then x = x + 1 end
     if kd("w") or kd("up")    then y = y - 1 end
-    if kd("s") or kd("down")  then y = y + 1 end
+    if kd("s") or kd("down")  then y = y + 1 self.currentAnimation = self.walkDownAnimation end
 
     if (x ~= 0 or y ~= 0) and kd("space") then
         self.currentForce = math.min((self.currentForce + (dt * self.acceleration)), self.maxForce)

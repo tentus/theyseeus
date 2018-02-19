@@ -4,6 +4,7 @@ sti         = require "libraries.sti"
 Grid        = require "libraries.jumper.grid"
 Pathfinder  = require "libraries.jumper.pathfinder"
 inspect     = require "libraries.inspect"
+anim8       = require "libraries.animation.anim8"
 
 function love.load()
     local requireDir = function(dir)
