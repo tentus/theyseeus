@@ -1,5 +1,5 @@
 Upgrade = Class{
-    __includes = {Interactable, Killable},
+    __includes = {Interactable, Killable, Sensable},
     classname = 'Upgrade',
     radius = 32,
     sprite = {
@@ -25,15 +25,6 @@ end
 
 function Upgrade:update(dt)
     self.glow:update(dt)
-end
-
-function Upgrade:createBody(world, x, y)
-    self.body = love.physics.newBody(world, x or 0, y or 0, "static")
-
-    self.shape   = love.physics.newCircleShape(self.radius)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setSensor(true)
-    self.fixture:setUserData(self)
 end
 
 function Upgrade:playerContact(other)
