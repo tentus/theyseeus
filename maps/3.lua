@@ -8,7 +8,7 @@ return {
   height = 48,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 16,
+  nextobjectid = 17,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -288,6 +288,31 @@ return {
           shape = "point",
           x = 2714,
           y = 1253,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Dialog",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 16,
+          name = "Roadsign",
+          type = "Sign",
+          shape = "point",
+          x = 1769,
+          y = 2216,
           width = 0,
           height = 0,
           rotation = 0,
