@@ -1,9 +1,9 @@
 Killable = Class{
     dead = false,
-    death_audio = love.audio.newSource("assets/audio/die.ogg", "static"),
+    death_audio = "assets/audio/die.ogg",
 }
 
 function Killable:kill()
     self.dead = true
-    self.death_audio:play()
+    AudioManager:play(self.death_audio)
 end

@@ -3,7 +3,7 @@ Yarn = Class{
     classname = 'Yarn',
     sprite = Sprite("assets/sprites/yarn.png"),
     glow = GlowEffect(),
-    death_audio = love.audio.newSource("assets/audio/collect.ogg", "static"),
+    death_audio = "assets/audio/collect.ogg",
 }
 
 function Yarn:init(x, y, world)

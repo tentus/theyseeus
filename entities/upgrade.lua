@@ -4,7 +4,7 @@ Upgrade = Class{
     radius = 32,
     sprite = Sprite("assets/sprites/upgrade.png"),
     glow = GlowEffect(),
-    death_audio = love.audio.newSource("assets/audio/collect.ogg", "static"),
+    death_audio = "assets/audio/collect.ogg",
 }
 
 function Upgrade:init(x, y, world)

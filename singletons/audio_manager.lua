@@ -1,7 +1,15 @@
 AudioManager = {
+    cache = {},
     volume = 100,
     --streaming: Source,
 }
+
+function AudioManager:play(file)
+    if not self.cache[file] then
+        self.cache[file] = love.audio.newSource(file, "static")
+    end
+    love.audio.play(self.cache[file])
+end
 
 function AudioManager:stream(file)
     self.streaming = love.audio.newSource(file, "stream")

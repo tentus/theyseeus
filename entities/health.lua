@@ -3,7 +3,7 @@ Health = Class{
     classname = 'Health',
     radius = 16,
     sprite = Sprite("assets/sprites/health_icon.png"),
-    death_audio = love.audio.newSource("assets/audio/collect.ogg", "static"),
+    death_audio = "assets/audio/collect.ogg",
 }
 
 function Health:init(x, y, world)
