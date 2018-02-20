@@ -7,7 +7,7 @@ Upgrade = Class{
     death_audio = "assets/audio/collect.ogg",
 }
 
-function Upgrade:init(x, y, world)
+function Upgrade:init(world, x, y)
     self:createBody(world, x, y)
 end
 

@@ -146,7 +146,7 @@ function WorldScene:loadRegion(enteringFrom)
     -- create our player instance (we'll move them after the map loads)
     local spawn = self:findSpawn(enteringFrom)
     if not self.player then
-        self.player = Player(spawn.x, spawn.y, self.physics)
+        self.player = Player(self.physics, spawn.x, spawn.y)
     else
         self.player:createBody(self.physics, spawn.x, spawn.y)
     end
@@ -168,27 +168,27 @@ function WorldScene:spawnEntities()
         local obj, type
         if object.type == "NPC" then
             type = "npcs"
-            obj = NPC(object.x, object.y, self.physics)
+            obj = NPC(self.physics, object.x, object.y)
             table.insert(self.pointsOfInterest, SpawnPoint(object.x, object.y))
         elseif object.type == "Health" then
             type = "pickups"
-            obj = Health(object.x, object.y, self.physics)
+            obj = Health(self.physics, object.x, object.y)
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
                 type = "pickups"
-                obj = Yarn(object.x, object.y, self.physics)
+                obj = Yarn(self.physics, object.x, object.y)
             end
         elseif object.type == "Upgrade" then
             if not InventoryManager:hasUpgrade(RegionManager:coords()) then
                 type = "pickups"
-                obj = Upgrade(object.x, object.y, self.physics)
+                obj = Upgrade(self.physics, object.x, object.y)
             end
         elseif object.type == "Sign" then
             type = "misc"
-            obj = Sign(object.x, object.y, self.physics, object.name)
+            obj = Sign(self.physics, object.x, object.y, object.name)
         elseif object.type == "Kid" then
             type = "misc"
-            obj = Kid(object.x, object.y, self.physics, object.name)
+            obj = Kid(self.physics, object.x, object.y, object.name)
         end
         if obj then
             table.insert(self.entities[type], obj)

@@ -6,7 +6,7 @@ Yarn = Class{
     death_audio = "assets/audio/collect.ogg",
 }
 
-function Yarn:init(x, y, world)
+function Yarn:init(world, x, y)
     self:createBody(world, x, y)
 end
 

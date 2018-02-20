@@ -15,7 +15,7 @@ Minotaur = Class{
     anims = {},
 }
 
-function Minotaur:init(x, y, world)
+function Minotaur:init(world, x, y)
     local gridsize = 128
     -- set offsets for image drawing, since it won't change
     self.offsets.x = gridsize * 0.5

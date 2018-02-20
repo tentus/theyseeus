@@ -7,8 +7,8 @@ NPC = Class{
     hearing = {},
 }
 
-function NPC:init(x, y, world)
-    Minotaur.init(self, x, y, world)
+function NPC:init(world, x, y)
+    Minotaur.init(self, world, x, y)
     self:setHearing(192)
 
     -- make some NPCs faster than others, to make chases more interesting

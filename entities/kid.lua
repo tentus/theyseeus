@@ -9,8 +9,8 @@ Kid = Class{
     sprite = Sprite("assets/sprites/kid.png"),
 }
 
-function Kid:init(x, y, world, dialog)
-    Sign.init(self, x, y, world, dialog)
+function Kid:init(world, x, y, dialog)
+    Sign.init(self, world, x, y, dialog)
 end
 
 function Kid:draw()

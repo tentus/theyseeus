@@ -6,7 +6,7 @@ Health = Class{
     death_audio = "assets/audio/collect.ogg",
 }
 
-function Health:init(x, y, world)
+function Health:init(world, x, y)
     self:createBody(world, x, y)
 end
 

@@ -9,7 +9,7 @@ Sign = Class{
     sprite = Sprite("assets/sprites/sign.png"),
 }
 
-function Sign:init(x, y, world, dialog)
+function Sign:init(world, x, y, dialog)
     -- the pins in Tiled look higher than they are, so we push ourselves up a little
     self.body = love.physics.newBody(world, x, y - 16, "static")
     self.shape   = love.physics.newRectangleShape(self.width, self.height)
