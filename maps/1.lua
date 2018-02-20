@@ -228,7 +228,7 @@ return {
     },
     {
       type = "objectgroup",
-      name = "Spawn Points",
+      name = "Player",
       visible = true,
       opacity = 1,
       offsetx = 0,

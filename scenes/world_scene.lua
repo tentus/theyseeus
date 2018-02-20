@@ -1,10 +1,8 @@
 WorldScene = {
-    entities = {
-        npcs    = {},   -- foes that can turn hostile
-        pickups = {},   -- stuff the player can collect
-        misc    = {},   -- semi-static entities, like signs
+    entityLayers = {
+        "Minotaurs", "Pickups", "Misc", "Player"
     },
-    pointsOfInterest = {},      -- places the NPCs will wander to
+    pointsOfInterest = {},      -- places the Minotaurs will wander to
     showInventory = true,
     showMap = false,
     transition = 0,
@@ -36,21 +34,7 @@ function WorldScene:update(dt)
 
     DaylightManager:update(dt)
     self.physics:update(dt)
-    self.player:update(dt)
     self.map:update(dt)
-
-    for _, group in pairs(self.entities) do
-        for k, ent in pairs(group) do
-            if ent.dead then
-                if ent.body then
-                    ent.body:destroy()
-                end
-                table.remove(group, k)
-            elseif ent.update then
-                ent:update(dt)
-            end
-        end
-    end
 
     self:changeRegion()
 end
@@ -68,17 +52,6 @@ function WorldScene:draw()
 
     -- Draw map
     self.map:draw(tx, ty)
-
-    for _, group in pairs(self.entities) do
-        for _, ent in pairs(group) do
-            if ent.draw then
-                ent:draw()
-            end
-        end
-    end
-
-    -- Draw "player"
-    self.player:draw()
 
     love.graphics.pop()
 
@@ -141,15 +114,45 @@ function WorldScene:loadRegion(enteringFrom)
 
     self.map:box2d_init(self.physics)
 
+    -- entities are rendered & updated by map layers they spawn from
+    for _, entType in pairs(self.entityLayers) do
+        local layer = self.map.layers[entType]
+        layer.ents = {}
+        function layer:update(dt)
+            for k, ent in pairs(self.ents) do
+                if ent.dead then
+                    if ent.body then
+                        ent.body:destroy()
+                    end
+                    table.remove(self.ents, k)
+                elseif ent.update then
+                    ent:update(dt)
+                end
+            end
+        end
+        function layer:draw()
+            for _, ent in pairs(self.ents) do
+                if ent.draw then
+                    ent:draw()
+                end
+            end
+        end
+    end
+
     self:spawnEntities()
 
-    -- create our player instance (we'll move them after the map loads)
+    -- create our player instance based on the spawn points we just created
     local spawn = self:findSpawn(enteringFrom)
     if not self.player then
         self.player = Player(self.physics, spawn.x, spawn.y)
     else
         self.player:createBody(self.physics, spawn.x, spawn.y)
     end
+
+    -- since we persist the player outside the normal layers we have to alias it back in too
+    self.map.layers["Player"].ents = {
+        self.player
+    }
 
     -- calculate what can be walked on and rig up a pathfinder
     self.pathManager = PathManager(self.map)
@@ -158,11 +161,6 @@ function WorldScene:loadRegion(enteringFrom)
 end
 
 function WorldScene:spawnEntities()
-    self.entities = {
-        npcs = {},
-        pickups = {},
-        misc = {},
-    }
     self.pointsOfInterest = {}
     for _, object in pairs(self.map.objects) do
         local obj, entType
@@ -191,7 +189,7 @@ function WorldScene:spawnEntities()
             obj = Kid(self.physics, object.x, object.y, object.name)
         end
         if obj then
-            table.insert(self.entities[entType], obj)
+            table.insert(self.map.layers[entType].ents, obj)
         end
     end
 end
