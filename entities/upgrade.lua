@@ -2,25 +2,19 @@ Upgrade = Class{
     __includes = {Interactable, Killable, Sensable},
     classname = 'Upgrade',
     radius = 32,
-    sprite = {
-        image = love.graphics.newImage("assets/sprites/upgrade.png"),
-    },
+    sprite = Sprite("assets/sprites/upgrade.png"),
     glow = GlowEffect(),
     death_audio = love.audio.newSource("assets/audio/collect.ogg", "static"),
 }
 
 function Upgrade:init(x, y, world)
-    -- set offsets for image drawing, since it won't change
-    self.sprite.x = self.sprite.image:getWidth() / 2
-    self.sprite.y = self.sprite.image:getHeight() / 2
-
     self:createBody(world, x, y)
 end
 
 function Upgrade:draw()
     local x, y = self.body:getPosition()
     self.glow:draw(x, y)
-    love.graphics.draw(self.sprite.image, x - self.sprite.x, y - self.sprite.y)
+    self.sprite:draw(x, y)
 end
 
 function Upgrade:update(dt)

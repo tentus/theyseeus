@@ -1,25 +1,19 @@
 Yarn = Class{
     __includes = {Interactable, Killable, Sensable},
     classname = 'Yarn',
-    sprite = {
-        image = love.graphics.newImage("assets/sprites/yarn.png"),
-    },
+    sprite = Sprite("assets/sprites/yarn.png"),
     glow = GlowEffect(),
     death_audio = love.audio.newSource("assets/audio/collect.ogg", "static"),
 }
 
 function Yarn:init(x, y, world)
-    -- set offsets for image drawing, since it won't change
-    self.sprite.x = self.sprite.image:getWidth() / 2
-    self.sprite.y = self.sprite.image:getHeight() / 2
-
     self:createBody(world, x, y)
 end
 
 function Yarn:draw()
     local x, y = self.body:getPosition()
     self.glow:draw(x, y)
-    love.graphics.draw(self.sprite.image, x - self.sprite.x, y - self.sprite.y)
+    self.sprite:draw(x, y)
 end
 
 function Yarn:update(dt)

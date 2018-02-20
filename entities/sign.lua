@@ -6,7 +6,7 @@ Sign = Class{
     -- our body the same dimensions as a normal tile
     width = 64,
     height = 64,
-    image = love.graphics.newImage("assets/sprites/sign.png"),
+    sprite = Sprite("assets/sprites/sign.png"),
 }
 
 function Sign:init(x, y, world, dialog)
@@ -21,7 +21,7 @@ end
 
 function Sign:draw()
     local x, y = self.body:getPosition()
-    love.graphics.draw(self.image, x - (self.width / 2), y - (self.height / 2))
+    self.sprite:draw(x, y)
 end
 
 function Sign:playerContact(other)
