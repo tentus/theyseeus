@@ -1,14 +1,14 @@
-Music = {
+AudioManager = {
     volume = 100,
 }
 
-function Music:play(file)
+function AudioManager:play(file)
     self.bgm = love.audio.newSource(file, "stream")
     self.bgm:setLooping(true)
     love.audio.play(self.bgm)
 end
 
-function Music:changeVolume(increment)
+function AudioManager:changeVolume(increment)
     -- adjust the volume, staying inside 100
     self.volume = self.volume + increment
     if self.volume > 100 then

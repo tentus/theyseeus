@@ -46,10 +46,10 @@ MenuScene = {
             },
             {
                 function()
-                    return "Music Volume: " .. Music.volume
+                    return "Music Volume: " .. AudioManager.volume
                 end,
                 function()
-                    Music:changeVolume(-25)
+                    AudioManager:changeVolume(-25)
                 end
             },
             {
