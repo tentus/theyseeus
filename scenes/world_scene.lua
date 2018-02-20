@@ -16,6 +16,7 @@ WorldScene = {
 function WorldScene:init()
     -- populate our region arrangement from a whitelist of maps
     RegionManager:init()
+    WeatherManager:init()
 
     love.physics.setMeter(64)
 
@@ -28,10 +29,12 @@ function WorldScene:update(dt)
         self.transition = self.transition - dt
         if self.transition <= 0 then
             self:loadRegion(self.enteringFrom)
+            WeatherManager:reroll()
         end
         return
     end
 
+    WeatherManager:update(dt)
     DaylightManager:update(dt)
     self.physics:update(dt)
     self.map:update(dt)
@@ -65,6 +68,7 @@ function WorldScene:draw()
 
     self.player:drawHUD()
 
+    WeatherManager:draw()
     DaylightManager:draw()
     Fader:draw()
     FPS:draw()
