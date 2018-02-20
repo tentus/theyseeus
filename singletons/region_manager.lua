@@ -63,14 +63,12 @@ function RegionManager:current()
     return self.chosen[self.y][self.x]
 end
 
-function RegionManager:moveHorizontal(x)
+function RegionManager:move(x, y)
     self.x = (self.x + x) % self.width
     if self.x < 1 then
         self.x = self.width
     end
-end
 
-function RegionManager:moveVertical(y)
     self.y = (self.y + y) % self.height
     if self.y < 1 then
         self.y = self.height

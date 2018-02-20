@@ -7,6 +7,9 @@ WorldScene = {
     pointsOfInterest = {},      -- places the NPCs will wander to
     showInventory = true,
     showMap = false,
+    transition = 0,
+    transitionLength = 0.25,
+    enteringFrom = "Start",
     -- map = sti map,
     -- physics = physics world,
     -- player = Player instance,
@@ -23,6 +26,14 @@ function WorldScene:init()
 end
 
 function WorldScene:update(dt)
+    if self.transition > 0 then
+        self.transition = self.transition - dt
+        if self.transition <= 0 then
+            self:loadRegion(self.enteringFrom)
+        end
+        return
+    end
+
     DaylightManager:update(dt)
     self.physics:update(dt)
     self.player:update(dt)
@@ -142,6 +153,8 @@ function WorldScene:loadRegion(enteringFrom)
 
     -- calculate what can be walked on and rig up a pathfinder
     self.pathManager = PathManager(self.map)
+
+    Fader:start(255, self.transitionLength)
 end
 
 function WorldScene:spawnEntities()
@@ -186,20 +199,28 @@ end
 function WorldScene:changeRegion()
     local buffer = 512
     local x, y = self.player.body:getPosition()
+    local df, dx, dy = nil, 0, 0
 
     if x < buffer then
-        RegionManager:moveHorizontal(-1)
-        self:loadRegion("East")
+        dx = -1
+        df = "East"
     elseif x > (self.map.width * self.map.tilewidth) - buffer then
-        RegionManager:moveHorizontal(1)
-        self:loadRegion("West")
+        dx = 1
+        df = "West"
     end
 
     if y < buffer then
-        RegionManager:moveVertical(-1)
-        self:loadRegion("South")
+        dy = -1
+        df = "South"
     elseif y > (self.map.height * self.map.tileheight) - buffer then
-        RegionManager:moveVertical(1)
-        self:loadRegion("North")
+        dy = 1
+        df = "North"
+    end
+
+    if df then
+        RegionManager:move(dx, dy)
+        Fader:start(0, self.transitionLength)
+        self.transition = self.transitionLength
+        self.enteringFrom = df
     end
 end
