@@ -2,7 +2,6 @@ Minotaur = Class{
     classname = 'Minotaur',
     radius = 31,
     image = love.graphics.newImage("assets/sprites/minotaur.png"),
-    shadow = love.graphics.newImage("assets/sprites/shadow.png"),
     offsets = {},
     attributes = {
         possible = {
@@ -36,6 +35,9 @@ function Minotaur:init(x, y, world)
 
     -- set up physics body
     self:createBody(world, x, y)
+
+    -- set the shadow here, so it is inherited properly
+    self.shadow = ShadowEffect(32, -20)
 end
 
 function Minotaur:update(dt)
@@ -59,7 +61,7 @@ end
 
 function Minotaur:draw()
     local x, y = self.body:getPosition()
-    love.graphics.draw(self.shadow, x - 32, y + 20, 0, 1, 0.3)
+    self.shadow:draw(x, y)
     self.anims[self.currentAnim]:draw(self.image, x - self.offsets.x, y - self.offsets.y)
 
     -- todo: overlay attributes visually
