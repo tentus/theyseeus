@@ -165,33 +165,33 @@ function WorldScene:spawnEntities()
     }
     self.pointsOfInterest = {}
     for _, object in pairs(self.map.objects) do
-        local obj, type
+        local obj, entType
         if object.type == "NPC" then
-            type = "npcs"
+            entType = "Minotaurs"
             obj = NPC(self.physics, object.x, object.y)
             table.insert(self.pointsOfInterest, SpawnPoint(object.x, object.y))
         elseif object.type == "Health" then
-            type = "pickups"
+            entType = "Pickups"
             obj = Health(self.physics, object.x, object.y)
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
-                type = "pickups"
+                entType = "Pickups"
                 obj = Yarn(self.physics, object.x, object.y)
             end
         elseif object.type == "Upgrade" then
             if not InventoryManager:hasUpgrade(RegionManager:coords()) then
-                type = "pickups"
+                entType = "Pickups"
                 obj = Upgrade(self.physics, object.x, object.y)
             end
         elseif object.type == "Sign" then
-            type = "misc"
+            entType = "Misc"
             obj = Sign(self.physics, object.x, object.y, object.name)
         elseif object.type == "Kid" then
-            type = "misc"
+            entType = "Misc"
             obj = Kid(self.physics, object.x, object.y, object.name)
         end
         if obj then
-            table.insert(self.entities[type], obj)
+            table.insert(self.entities[entType], obj)
         end
     end
 end
