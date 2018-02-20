@@ -60,7 +60,7 @@ MenuScene = {
             },
         },
     },
-    lineHeight = 20,
+    lineHeight = 36,
     logo = love.graphics.newImage("assets/logos/theyseeus_logo.png"),
 }
 
@@ -77,7 +77,7 @@ function MenuScene:draw()
 
     for i=1, #self.options[self.level] do
         if i == self.cursor then
-            love.graphics.print('->', halfWidth - 20, halfHeight + (i * self.lineHeight))
+            love.graphics.print('->', halfWidth - 32, halfHeight + (i * self.lineHeight))
         end
 
         love.graphics.print(self:value(self.options[self.level][i][1]), halfWidth, halfHeight + (i * self.lineHeight))

@@ -6,18 +6,14 @@ InventoryManager = {
     upgrades = {},
 
     image = love.graphics.newImage("assets/sprites/yarn.png"),
-    font = love.graphics.newFont(16),
 }
 
 function InventoryManager:draw()
     local height = love.graphics.getHeight()
-    local reset = love.graphics.getFont()
 
     love.graphics.draw(self.image, 8, height - 40, 0, 0.5, 0.5)
 
-    love.graphics.setFont(self.font)
     love.graphics.print(' x ' .. self:totalYarn(), 40, height - 32)
-    love.graphics.setFont(reset)
 end
 
 function InventoryManager:collectYarn(regionX, regionY)

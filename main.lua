@@ -23,6 +23,9 @@ function love.load()
     requireDir('singletons')
 
     AudioManager:stream("assets/audio/bgm.ogg")
+    love.graphics.setFont(
+        love.graphics.newFont(16)
+    )
 
     Gamestate.registerEvents()
     Gamestate.switch(SplashScene)

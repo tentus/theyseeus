@@ -1,7 +1,6 @@
 DialogScene = {
     cursor = 1,
     dialog = {},
-    dialogFont = love.graphics.getFont(),   -- the default
     hint = "Press space to continue.  ",
     hintFont = love.graphics.newFont(10),
     height = 64,
@@ -22,6 +21,7 @@ function DialogScene:draw()
     -- draw underlying screen
     self.from:draw()
 
+    local reset = love.graphics.getFont()
     local width, height = love.window.getMode()
 
     love.graphics.setColor(0, 0, 0, 224)
@@ -32,7 +32,7 @@ function DialogScene:draw()
     love.graphics.printf(self.hint, 8, height - 16, width - 16, "right")
 
     love.graphics.setColor(255, 255, 255)
-    love.graphics.setFont(self.dialogFont)
+    love.graphics.setFont(reset)
     love.graphics.printf(self:getCurrent(), 8, height - self.height + 4, width - 16, "left")
 end
 
