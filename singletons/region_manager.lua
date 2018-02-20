@@ -8,6 +8,12 @@ RegionManager = {
     x = 3,
     y = 3,
 
+    -- where we warp back to
+    home = {
+        x = 3,
+        y = 3
+    },
+
     -- how big a grid we'll generate
     width = 5,
     height = 5,
@@ -25,7 +31,7 @@ function RegionManager:init()
     end
 
     -- the point of origin is always the same
-    self.chosen[self.y][self.x] = 'home'
+    self.chosen[self.home.y][self.home.x] = 'home'
 end
 
 function RegionManager:draw()
@@ -51,8 +57,8 @@ function RegionManager:draw()
 end
 
 function RegionManager:warpHome()
-    self.x = 3
-    self.y = 3
+    self.x = self.home.x
+    self.y = self.home.y
 end
 
 function RegionManager:coords()
