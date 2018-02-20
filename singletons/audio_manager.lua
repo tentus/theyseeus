@@ -1,11 +1,12 @@
 AudioManager = {
     volume = 100,
+    --streaming: Source,
 }
 
-function AudioManager:play(file)
-    self.bgm = love.audio.newSource(file, "stream")
-    self.bgm:setLooping(true)
-    love.audio.play(self.bgm)
+function AudioManager:stream(file)
+    self.streaming = love.audio.newSource(file, "stream")
+    self.streaming:setLooping(true)
+    love.audio.play(self.streaming)
 end
 
 function AudioManager:changeVolume(increment)
@@ -17,7 +18,7 @@ function AudioManager:changeVolume(increment)
         self.volume = 100
     end
 
-    if self.bgm then
-        self.bgm:setVolume(self.volume / 100)
+    if self.streaming then
+        self.streaming:setVolume(self.volume / 100)
     end
 end
