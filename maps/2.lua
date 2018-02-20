@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 16,
+  nextobjectid = 17,
   backgroundcolor = { 153, 136, 119 },
   properties = {},
   tilesets = {
@@ -320,6 +320,19 @@ return {
           shape = "point",
           x = 3392.09,
           y = 3070.7,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 16,
+          name = "Health",
+          type = "Health",
+          shape = "point",
+          x = 3200.67,
+          y = 890.667,
           width = 0,
           height = 0,
           rotation = 0,

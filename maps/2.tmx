@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#998877" nextobjectid="16">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#998877" nextobjectid="17">
  <tileset firstgid="1" source="bg_tileset.tsx"/>
  <tileset firstgid="65" source="object_tileset.tsx"/>
  <layer name="bg" width="64" height="64">
@@ -160,6 +160,9 @@
    <point/>
   </object>
   <object id="15" name="Upgrade" type="Upgrade" x="3392.09" y="3070.7">
+   <point/>
+  </object>
+  <object id="16" name="Health" type="Health" x="3200.67" y="890.667">
    <point/>
   </object>
  </objectgroup>
