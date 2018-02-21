@@ -3,18 +3,18 @@ return {
         function()
             local rx, ry = RegionManager:coords()
             local hx, hy = RegionManager.home.x, RegionManager.home.y
-            local area
+            local a1, a2
             if ry < hy then
-                area = "north"
+                a1 = "north"
             elseif ry > hy then
-                area = "south"
+                a1 = "south"
             end
             if rx < hx then
-                area = area .. "east"
+                a2 = "east"
             elseif rx > hx then
-                area = area .. "west"
+                a2 = "west"
             end
-            return "Welcome to the " .. area .. " woodlands."
+            return "Welcome to the " .. (a1 or "") .. (a2 or "") .. " woodlands."
         end
     },
 }
