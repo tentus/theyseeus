@@ -141,20 +141,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Player">
-  <object id="1" name="North" type="Spawn" x="2048" y="640">
-   <point/>
-  </object>
-  <object id="2" name="West" type="Spawn" x="640" y="2048">
-   <point/>
-  </object>
-  <object id="3" name="East" type="Spawn" x="3456" y="2048">
-   <point/>
-  </object>
-  <object id="4" name="South" type="Spawn" x="2048" y="3456">
-   <point/>
-  </object>
- </objectgroup>
  <objectgroup name="Pickups">
   <object id="14" name="Yarn" type="Yarn" x="2046" y="2048">
    <point/>
@@ -188,6 +174,20 @@
    <point/>
   </object>
   <object id="13" name="5" type="NPC" x="2515" y="3281">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Player">
+  <object id="1" name="North" type="Spawn" x="2048" y="640">
+   <point/>
+  </object>
+  <object id="2" name="West" type="Spawn" x="640" y="2048">
+   <point/>
+  </object>
+  <object id="3" name="East" type="Spawn" x="3456" y="2048">
+   <point/>
+  </object>
+  <object id="4" name="South" type="Spawn" x="2048" y="3456">
    <point/>
   </object>
  </objectgroup>
