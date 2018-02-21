@@ -40,6 +40,19 @@ function WorldScene:update(dt)
     self.map:update(dt)
 
     self:changeRegion()
+
+    -- now that we're done with other updates, bring our your dead
+    for _, entType in pairs(self.entityLayers) do
+        local layer = self.map.layers[entType]
+        for k, ent in pairs(layer.ents) do
+            if ent.dead then
+                if ent.body then
+                    ent.body:destroy()
+                end
+                table.remove(layer.ents, k)
+            end
+        end
+    end
 end
 
 function WorldScene:draw()
@@ -124,12 +137,7 @@ function WorldScene:loadRegion(enteringFrom)
         layer.ents = {}
         function layer:update(dt)
             for k, ent in pairs(self.ents) do
-                if ent.dead then
-                    if ent.body then
-                        ent.body:destroy()
-                    end
-                    table.remove(self.ents, k)
-                elseif ent.update then
+                if not ent.dead and ent.update then
                     ent:update(dt)
                 end
             end
