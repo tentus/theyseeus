@@ -8,6 +8,10 @@ WorldScene = {
     transition = 0,
     transitionLength = 0.25,
     enteringFrom = "Start",
+    background = {
+        padding = 8, -- number of tiles on each side we add to the background
+        -- batch = SpriteBatch,
+    },
     -- map = sti map,
     -- physics = physics world,
     -- player = Player instance,
@@ -58,13 +62,15 @@ end
 function WorldScene:draw()
     love.graphics.push()
 
-    love.graphics.setBackgroundColor(self.map.backgroundcolor or {0,0,0})
-
     -- determine how much we need to translate around to see the player
     local width, height = love.window.getMode()
     local tx = (width / 2) - self.player.body:getX()
     local ty = (height / 2) - self.player.body:getY()
     love.graphics.translate(tx, ty)
+
+    if self.background.batch then
+        love.graphics.draw(self.background.batch, self.background.x, self.background.y)
+    end
 
     -- Draw map
     self.map:draw(tx, ty)
@@ -116,6 +122,7 @@ end
 function WorldScene:loadRegion(enteringFrom)
     -- Load map
     self.map = sti("maps/" .. RegionManager:current() .. ".lua", {"box2d"})
+    self:setBackground(self.map)
 
     -- Prepare physics world
     self.physics = love.physics.newWorld(0, 0)
@@ -232,5 +239,36 @@ function WorldScene:changeRegion()
         Fader:start(0, self.transitionLength)
         self.transition = self.transitionLength
         self.enteringFrom = df
+    end
+end
+
+function WorldScene:setBackground(map)
+    local firstTile = function(map)
+        for _, layer in pairs(map.layers) do
+            if layer.type == "tilelayer" then
+                for y=1, map.height do
+                    for x=1, map.width do
+                        if layer.data[y][x] then return layer.data[y][x] end
+                    end
+                end
+            end
+        end
+    end
+    local tile = firstTile(map)
+
+    if tile then
+        local bg = self.background
+        local w = (bg.padding * 2) + map.width
+        local h = (bg.padding * 2) + map.height
+        bg.batch = love.graphics.newSpriteBatch(
+            map.tilesets[tile.tileset].image, w * h
+        )
+        bg.x = -bg.padding * map.tilewidth
+        bg.y = -bg.padding * map.tileheight
+        for y=0, (h - 1) do
+            for x=0, (w - 1) do
+                bg.batch:add(tile.quad, x * map.tilewidth, y * map.tileheight)
+            end
+        end
     end
 end

@@ -44,8 +44,6 @@ Thank you for playing!
 }
 
 function CreditsScene:enter()
-    love.graphics.setBackgroundColor(0,0,0)
-
     self.y = love.graphics.getHeight() + self.logo:getHeight()
     local _, count = string.gsub(self.text, "\n", "")
     self.limit = count * -18
