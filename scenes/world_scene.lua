@@ -1,4 +1,5 @@
 WorldScene = {
+    entered = false,
     entityLayers = {
         "Minotaurs", "Pickups", "Misc", "Player"
     },
@@ -104,6 +105,7 @@ function WorldScene:keypressed(key)
 end
 
 function WorldScene:enter()
+    self.entered = true
     self.map:resize(love.window.getMode())
 end
 

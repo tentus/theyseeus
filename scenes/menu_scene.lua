@@ -95,6 +95,12 @@ function MenuScene:keypressed(key)
         end
     elseif key == "return" or key == "space" or key == "tab" then
         self.options[self.level][self.cursor][2]()
+    elseif key == "escape" then
+        if self.level ~= "root" then
+            self:goTo("root")
+        elseif WorldScene.entered then
+            Gamestate.switch(WorldScene)
+        end
     end
 end
 
