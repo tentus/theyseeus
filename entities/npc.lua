@@ -27,26 +27,28 @@ function NPC:update(dt)
     local x, y = self.body:getPosition()
     local px, py = self.goal:getTargetPosition()
 
-    -- we recalc constantly because we're constantly catching up to our destination
-    local node, len = WorldScene.pathManager:getNextPathNode(x, y, px, py)
-
-    -- if we've arrived at our destination, pick a new goal for the next update
-    -- we're using anger here to avoid getting distracted after near-misses
-    if not self.angry and len == 0 then
+    -- once we're within touching distance of our goal, pick a new goal for the next update
+    if not self.angry and math.abs(px - x) < self.radius and math.abs(py - y) < self.radius then
         self:pickNewGoal()
+        self.nextNode = nil
         return
+    end
+
+    -- recalc constantly when angry or every time we get close to a static goal
+    if not self.nextNode or self.angry or (math.abs(self.nextNode.x - x) < self.radius and math.abs(self.nextNode.y - y) < self.radius) then
+        self.nextNode = WorldScene.pathManager:getNextPathNode(x, y, px, py)
     end
 
     -- we don't apply force unless we're far enough from it to be worthwhile, to avoid jitter
     local threshold = 4
     local h, v = 0, 0
-    if math.abs(node.x - x) > threshold then
-        if node.x < x then h = -1 end
-        if node.x > x then h = 1 end
+    if math.abs(self.nextNode.x - x) > threshold then
+        if self.nextNode.x < x then h = -1 end
+        if self.nextNode.x > x then h = 1 end
     end
-    if math.abs(node.y - y) > threshold then
-        if node.y < y then v = -1 end
-        if node.y > y then v = 1 end
+    if math.abs(self.nextNode.y - y) > threshold then
+        if self.nextNode.y < y then v = -1 end
+        if self.nextNode.y > y then v = 1 end
     end
 
     if h ~= 0 or v ~= 0 then

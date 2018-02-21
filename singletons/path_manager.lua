@@ -30,7 +30,6 @@ function PathManager:init(map)
             -- sti organizes the data as rows
             for y, tiles in pairs(layer.data) do
                 for x, _ in pairs(tiles) do
-                    -- remember, our grid is 2x resolution, so we have extra fills to do
                     temp[y][x] = self.filled
                 end
             end
@@ -45,23 +44,35 @@ function PathManager:init(map)
 end
 
 function PathManager:getNextPathNode(startX, startY, endX, endY)
-    -- we're expecting the inputs to be in physics units, which we convert to tile coords
-
     -- if we can't find a route, default to staying in place
     local node = {x = startX, y = startY}
 
+    -- we're expecting the inputs to be in physics units, which we convert to tile coords
     local path, pathLength = self.finder:getPath(
-        math.floor(startX / self.tilewidth),
-        math.floor(startY / self.tileheight),
-        math.floor(endX / self.tilewidth),
-        math.floor(endY / self.tileheight)
+        math.floor(startX / self.tilewidth) + 1,
+        math.floor(startY / self.tileheight) + 1,
+        math.floor(endX / self.tilewidth) + 1,
+        math.floor(endY / self.tileheight) + 1
     )
 
-    -- skip the first step, since it's our current position
-    if path and #path > 1 then
-        node.x = (path[2].x * self.tilewidth) + (self.tilewidth / 2)
-        node.y = (path[2].y * self.tileheight) + (self.tileheight / 2)
+    if pathLength > 1 then
+        local last = self:lastNodeInSight(path)
+        node.x = (last.x * self.tilewidth) - (self.tilewidth / 2)
+        node.y = (last.y * self.tileheight) - (self.tileheight / 2)
     end
 
     return node, pathLength
+end
+
+function PathManager:lastNodeInSight(path)
+    -- if the first two nodes have the same x values, look for the first change in x values
+    local lookat = (path[1].x == path[2].x) and "x" or "y"
+    for node, count in path:iter() do
+        if (node[lookat] ~= path[1][lookat]) then
+            return path[count - 1]
+        end
+    end
+
+    -- the whole path is one long line, so go with the final node
+    return path[#path]
 end
