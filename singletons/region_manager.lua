@@ -1,7 +1,7 @@
 RegionManager = {
     -- a list of all production-read maps
     whitelist = {
-        1, 2, 3, 4
+        1, 2, 3, 4, 5
     },
 
     -- current overall position in the region grid
