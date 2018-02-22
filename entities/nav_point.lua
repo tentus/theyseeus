@@ -1,16 +1,16 @@
 -- implements the ":getTargetPosition()" pseudo interface
 
-SpawnPoint = Class{
-    classname = 'SpawnPoint',
+NavPoint = Class{
+    classname = 'NavPoint',
     x = 0,
     y = 0,
 }
 
-function SpawnPoint:init(x, y)
+function NavPoint:init(x, y)
     self.x = x
     self.y = y
 end
 
-function SpawnPoint:getTargetPosition()
+function NavPoint:getTargetPosition()
     return self.x, self.y
 end

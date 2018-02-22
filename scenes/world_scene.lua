@@ -194,7 +194,7 @@ function WorldScene:spawnEntities()
         if object.type == "NPC" then
             entType = "Minotaurs"
             obj = NPC(self.physics, object.x, object.y)
-            table.insert(self.navPoints, SpawnPoint(object.x, object.y))
+            table.insert(self.navPoints, NavPoint(object.x, object.y))
         elseif object.type == "Health" then
             entType = "Pickups"
             obj = Health(self.physics, object.x, object.y)
