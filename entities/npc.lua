@@ -59,8 +59,8 @@ function NPC:update(dt)
 end
 
 function NPC:pickNewGoal()
-    local count = #WorldScene.pointsOfInterest
-    local pick = WorldScene.pointsOfInterest[love.math.random(count)]
+    local count = #WorldScene.navPoints
+    local pick = WorldScene.navPoints[love.math.random(count)]
     if pick ~= self.goal then
         self.goal = pick
     elseif count > 1 then       -- don't wanna end up in an infinite loop

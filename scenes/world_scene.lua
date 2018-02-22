@@ -3,7 +3,7 @@ WorldScene = {
     entityLayers = {
         "Minotaurs", "Pickups", "Misc", "Player"
     },
-    pointsOfInterest = {},      -- places the Minotaurs will wander to
+    navPoints = {},      -- places the Minotaurs will wander to
     showInventory = true,
     showMap = false,
     transition = 0,
@@ -188,13 +188,13 @@ function WorldScene:loadRegion(enteringFrom)
 end
 
 function WorldScene:spawnEntities()
-    self.pointsOfInterest = {}
+    self.navPoints = {}
     for _, object in pairs(self.map.objects) do
         local obj, entType
         if object.type == "NPC" then
             entType = "Minotaurs"
             obj = NPC(self.physics, object.x, object.y)
-            table.insert(self.pointsOfInterest, SpawnPoint(object.x, object.y))
+            table.insert(self.navPoints, SpawnPoint(object.x, object.y))
         elseif object.type == "Health" then
             entType = "Pickups"
             obj = Health(self.physics, object.x, object.y)
