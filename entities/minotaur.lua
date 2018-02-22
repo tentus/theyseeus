@@ -87,5 +87,9 @@ function Minotaur:createBody(world, x, y)
 end
 
 function Minotaur:getTargetPosition()
+    -- this shouldn't happen, but an errant coord is better than a crash if the GC is running slow
+    if self.body:isDestroyed() then
+        return 0, 0
+    end
     return self.body:getPosition()
 end
