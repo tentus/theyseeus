@@ -8,7 +8,7 @@ return {
   height = 48,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 8,
+  nextobjectid = 13,
   backgroundcolor = { 245, 121, 0 },
   properties = {},
   tilesets = {
@@ -433,6 +433,83 @@ return {
       draworder = "topdown",
       properties = {},
       objects = {}
+    },
+    {
+      type = "objectgroup",
+      name = "Nav",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 8,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 1220,
+          y = 2020,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 1916,
+          y = 2100,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 4080,
+          y = 2296,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 3372,
+          y = 2392,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 5044,
+          y = 824,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "objectgroup",
