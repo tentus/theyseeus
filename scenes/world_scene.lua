@@ -189,12 +189,17 @@ end
 
 function WorldScene:spawnEntities()
     self.navPoints = {}
+
     for _, object in pairs(self.map.objects) do
+        -- we'll use npc spawn points as well as explicit NavPoints to make the npcs wander
+        if object.type == "NPC" or object.type == "NavPoint"  then
+            table.insert(self.navPoints, NavPoint(object.x, object.y))
+        end
+
         local obj, entType
         if object.type == "NPC" then
             entType = "Minotaurs"
             obj = NPC(self.physics, object.x, object.y)
-            table.insert(self.navPoints, NavPoint(object.x, object.y))
         elseif object.type == "Health" then
             entType = "Pickups"
             obj = Health(self.physics, object.x, object.y)
@@ -215,6 +220,7 @@ function WorldScene:spawnEntities()
             entType = "Misc"
             obj = Kid(self.physics, object.x, object.y, object.name)
         end
+
         if obj then
             table.insert(self.map.layers[entType].ents, obj)
         end
