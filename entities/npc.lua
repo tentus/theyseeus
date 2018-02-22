@@ -76,6 +76,10 @@ function NPC:setHearing(radius)
         beginContact = function(_, other)
             -- todo: implement Hatred system
             if other.getTargetPosition then
+                -- don't let npcs attack each other if it's not onscreen
+                -- this is a mix of rule-of-cool and "wait why is that dying sound playing"
+                if other.classname ~= "Player" and not WorldScene:onScreen(self.body:getPosition()) then return end
+
                 self.goal = other
                 self.angry = true
             end

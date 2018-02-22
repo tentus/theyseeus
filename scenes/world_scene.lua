@@ -113,6 +113,12 @@ function WorldScene:resize(w, h)
     self.map:resize(w, h)
 end
 
+function WorldScene:onScreen(x, y)
+    local w, h = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
+    local px, py = self.player.body:getPosition()
+    return not (x < px-w or x > px+w or y < py-h or y > py+h)
+end
+
 function WorldScene:findSpawn(name)
     for _, object in pairs(self.map.objects) do
         if object.name == name then
