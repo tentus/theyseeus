@@ -19,6 +19,12 @@ MenuScene = {
                 end
             },
             {
+                "Stats",
+                function()
+                    MenuScene:goTo("stats")
+                end
+            },
+            {
                 "Credits",
                 function()
                     Gamestate.switch(CreditsScene)
@@ -54,6 +60,16 @@ MenuScene = {
             },
             {
                 "Back",
+                function()
+                    MenuScene:goTo("root")
+                end
+            },
+        },
+        stats = {
+            {
+                function()
+                    return Logger:print()
+                end,
                 function()
                     MenuScene:goTo("root")
                 end
