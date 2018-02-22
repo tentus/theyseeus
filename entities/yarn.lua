@@ -1,26 +1,26 @@
 Yarn = Class{
-    __includes = {Interactable, Killable, Sensable},
+    __includes = {Killable, Sensable},
     classname = 'Yarn',
     sprite = Sprite("assets/sprites/yarn.png"),
     glow = GlowEffect(),
     death_audio = "assets/audio/collect.ogg",
 }
 
-function Yarn:init(world, x, y)
-    self:createBody(world, x, y)
+function Yarn:init(x, y)
+    Sensable.init(self, x, y)
 end
 
 function Yarn:draw()
-    local x, y = self.body:getPosition()
-    self.glow:draw(x, y)
-    self.sprite:draw(x, y)
+    self.glow:draw(self.x, self.y)
+    self.sprite:draw(self.x, self.y)
 end
 
 function Yarn:update(dt)
+    Sensable.update(self, dt)
     self.glow:update(dt)
 end
 
-function Yarn:playerContact()
+function Yarn:playerSensed(player)
     InventoryManager:collectYarn(RegionManager:coords())
     self:kill()
     Logger:add("Yarn Collected")

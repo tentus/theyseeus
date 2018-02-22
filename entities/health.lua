@@ -1,21 +1,20 @@
 Health = Class{
-    __includes = {Interactable, Killable, Sensable},
+    __includes = {Killable, Sensable},
     classname = 'Health',
     radius = 16,
     sprite = Sprite("assets/sprites/health_icon.png"),
     death_audio = "assets/audio/collect.ogg",
 }
 
-function Health:init(world, x, y)
-    self:createBody(world, x, y)
+function Health:init(x, y)
+    Sensable.init(self, x, y)
 end
 
 function Health:draw()
-    local x, y = self.body:getPosition()
-    self.sprite:draw(x, y)
+    self.sprite:draw(self.x, self.y)
 end
 
-function Health:playerContact(player)
+function Health:playerSensed(player)
     player:heal()
     self:kill()
     Logger:add("Health Collected")

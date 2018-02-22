@@ -1,29 +1,28 @@
 Upgrade = Class{
-    __includes = {Interactable, Killable, Sensable},
+    __includes = {Killable, Sensable},
     classname = 'Upgrade',
-    radius = 32,
     sprite = Sprite("assets/sprites/upgrade.png"),
     glow = GlowEffect(),
     death_audio = "assets/audio/collect.ogg",
 }
 
-function Upgrade:init(world, x, y)
-    self:createBody(world, x, y)
+function Upgrade:init(x, y)
+    Sensable.init(self, x, y)
 end
 
 function Upgrade:draw()
-    local x, y = self.body:getPosition()
-    self.glow:draw(x, y)
-    self.sprite:draw(x, y)
+    self.glow:draw(self.x, self.y)
+    self.sprite:draw(self.x, self.y)
 end
 
 function Upgrade:update(dt)
+    Sensable.update(self, dt)
     self.glow:update(dt)
 end
 
-function Upgrade:playerContact(other)
+function Upgrade:playerSensed(player)
     InventoryManager:collectUpgrade(RegionManager:coords())
-    other:incrementHealth()
+    player:incrementHealth()
     self:kill()
     Logger:add("Upgrades Collected")
 end

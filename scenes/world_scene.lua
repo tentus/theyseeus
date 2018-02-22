@@ -207,16 +207,16 @@ function WorldScene:spawnEntities()
             Logger:add("NPCs Spawned")
         elseif object.type == "Health" then
             entType = "Pickups"
-            obj = Health(self.physics, object.x, object.y)
+            obj = Health(object.x, object.y)
         elseif object.type == "Yarn" then
             if not InventoryManager:hasYarn(RegionManager:coords()) then
                 entType = "Pickups"
-                obj = Yarn(self.physics, object.x, object.y)
+                obj = Yarn(object.x, object.y)
             end
         elseif object.type == "Upgrade" then
             if not InventoryManager:hasUpgrade(RegionManager:coords()) then
                 entType = "Pickups"
-                obj = Upgrade(self.physics, object.x, object.y)
+                obj = Upgrade(object.x, object.y)
             end
         elseif object.type == "Sign" then
             entType = "Misc"
