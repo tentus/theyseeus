@@ -63,8 +63,14 @@ function Player:heal()
     self.health = math.min(self.health + 1, self.maxHealth)
 end
 
+function Player:damage()
+    Damagable.damage(self)
+    Logger:add("Damage taken")
+end
+
 function Player:kill()
     self.health = self.maxHealth
     RegionManager:warpHome()
     WorldScene:loadRegion("Start")
+    Logger:add("Deaths")
 end

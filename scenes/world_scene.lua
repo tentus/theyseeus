@@ -46,6 +46,8 @@ function WorldScene:update(dt)
 
     self:changeRegion()
 
+    Logger:add("Playtime", dt)
+
     -- now that we're done with other updates, bring our your dead
     for _, entType in pairs(self.entityLayers) do
         local layer = self.map.layers[entType]
@@ -185,6 +187,8 @@ function WorldScene:loadRegion(enteringFrom)
     self.pathManager = PathManager(self.map)
 
     Fader:start(255, self.transitionLength)
+
+    Logger:add("Transitions")
 end
 
 function WorldScene:spawnEntities()
@@ -200,6 +204,7 @@ function WorldScene:spawnEntities()
         if object.type == "NPC" then
             entType = "Minotaurs"
             obj = NPC(self.physics, object.x, object.y)
+            Logger:add("NPCs Spawned")
         elseif object.type == "Health" then
             entType = "Pickups"
             obj = Health(self.physics, object.x, object.y)

@@ -18,4 +18,5 @@ end
 function Health:playerContact(player)
     player:heal()
     self:kill()
+    Logger:add("Health Collected")
 end

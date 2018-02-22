@@ -95,3 +95,8 @@ function NPC:beginContact(other)
         other:damage()
     end
 end
+
+function NPC:kill()
+    Killable.kill(self)
+    Logger:add("NPCs killed")
+end

@@ -25,4 +25,5 @@ function Upgrade:playerContact(other)
     InventoryManager:collectUpgrade(RegionManager:coords())
     other:incrementHealth()
     self:kill()
+    Logger:add("Upgrades Collected")
 end

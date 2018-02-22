@@ -23,4 +23,5 @@ end
 function Yarn:playerContact()
     InventoryManager:collectYarn(RegionManager:coords())
     self:kill()
+    Logger:add("Yarn Collected")
 end
