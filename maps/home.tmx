@@ -133,6 +133,9 @@
   <object id="25" name="AboutHealthPickups" type="Sign" x="1344" y="852">
    <point/>
   </object>
+  <object id="26" name="AboutDaylight" type="Sign" x="3109.15" y="2398.88">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup name="Minotaurs">
   <object id="14" name="Quest" type="Kid" x="2116.33" y="1341.33">
@@ -153,9 +156,6 @@
    <point/>
   </object>
   <object id="16" name="Start" type="Spawn" x="2049.33" y="1719.67">
-   <point/>
-  </object>
-  <object id="26" name="AboutDaylight" type="Sign" x="3109.15" y="2398.88">
    <point/>
   </object>
  </objectgroup>

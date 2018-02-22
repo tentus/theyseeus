@@ -472,6 +472,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 26,
+          name = "AboutDaylight",
+          type = "Sign",
+          shape = "point",
+          x = 3109.15,
+          y = 2398.88,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -569,19 +582,6 @@ return {
           shape = "point",
           x = 2049.33,
           y = 1719.67,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 26,
-          name = "AboutDaylight",
-          type = "Sign",
-          shape = "point",
-          x = 3109.15,
-          y = 2398.88,
           width = 0,
           height = 0,
           rotation = 0,
