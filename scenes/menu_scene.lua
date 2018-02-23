@@ -116,20 +116,20 @@ function MenuScene:draw()
     FPS:draw()
 end
 
-function MenuScene:keypressed(key)
-    if key == "up" or key == "w" then
+function MenuScene:update(dt)
+    if Bindings:pressed('up') then
         self.cursor = self.cursor - 1
         if self.cursor < 1 then
             self.cursor = #self.options[self.level]
         end
-    elseif key == "down" or key == "s" then
+    elseif Bindings:pressed('down') then
         self.cursor = self.cursor + 1
         if self.cursor > #self.options[self.level] then
             self.cursor = 1
         end
-    elseif key == "return" or key == "space" or key == "tab" then
+    elseif Bindings:pressed('action') then
         self.options[self.level][self.cursor][2]()
-    elseif key == "escape" then
+    elseif Bindings:pressed('cancel') then
         if self.level ~= "root" then
             self:goTo("root")
         elseif WorldScene.entered then

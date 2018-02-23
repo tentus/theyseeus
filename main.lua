@@ -30,4 +30,5 @@ end
 
 function love.update(dt)
     Fader:update(dt)
+    Bindings:update()
 end

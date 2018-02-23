@@ -31,6 +31,10 @@ function WorldScene:init()
 end
 
 function WorldScene:update(dt)
+    if Bindings:pressed('cancel') then
+        Gamestate.switch(MenuScene)
+    end
+
     if self.transition > 0 then
         self.transition = self.transition - dt
         if self.transition <= 0 then
@@ -93,9 +97,7 @@ function WorldScene:draw()
 end
 
 function WorldScene:keypressed(key)
-    if key == "escape" or key == "backspace" then
-        Gamestate.switch(MenuScene)
-    elseif key == "p" then
+    if key == "p" then
         self.showMap = not self.showMap
     end
 end
