@@ -1,8 +1,5 @@
 Class       = require "libraries.hump.class"
 Gamestate   = require "libraries.hump.gamestate"
-sti         = require "libraries.sti"
-Grid        = require "libraries.jumper.grid"
-Pathfinder  = require "libraries.jumper.pathfinder"
 inspect     = require "libraries.inspect"
 anim8       = require "libraries.animation.anim8"
 

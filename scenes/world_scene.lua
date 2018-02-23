@@ -1,3 +1,5 @@
+local sti = require "libraries.sti"
+
 WorldScene = {
     entered = false,
     entityLayers = {
