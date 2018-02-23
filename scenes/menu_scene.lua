@@ -45,6 +45,18 @@ MenuScene = {
                 end
             },
             {
+                "VSYNC",
+                function()
+                    MenuScene:setWindowFlag("vsync")
+                end
+            },
+            {
+                "Window Border",
+                function()
+                    MenuScene:setWindowFlag("borderless")
+                end
+            },
+            {
                 "Toggle FPS",
                 function()
                     FPS:toggle()
@@ -131,4 +143,10 @@ end
 function MenuScene:goTo(level)
     self.cursor = 1
     self.level = level
+end
+
+function MenuScene:setWindowFlag(flag)
+    local w, h, f = love.window.getMode()
+    f[flag] = not f[flag]
+    love.window.setMode(w, h, f)
 end
