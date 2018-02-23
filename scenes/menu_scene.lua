@@ -63,6 +63,12 @@ MenuScene = {
                 end
             },
             {
+                "Toggle HUD",
+                function()
+                    HUD:toggle()
+                end
+            },
+            {
                 function()
                     return "Music Volume: " .. AudioManager.volume
                 end,

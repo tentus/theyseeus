@@ -9,8 +9,6 @@ Player = Class{
     -- override default health
     health = 3,
     maxHealth = 3,
-    healthIcon = love.graphics.newImage("assets/sprites/health_icon.png"),
-    damageIcon = love.graphics.newImage("assets/sprites/damage_icon.png"),
 }
 
 function Player:update(dt)
@@ -44,13 +42,6 @@ function Player:draw()
         love.graphics.setColor(255, 255, 255)
     else
         Minotaur.draw(self)
-    end
-end
-
-function Player:drawHUD()
-    for i=1, self.maxHealth do
-        local icon = ((self.health < i) and self.damageIcon or self.healthIcon)
-        love.graphics.draw(icon, (i * 40) - 32, 8)
     end
 end
 

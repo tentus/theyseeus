@@ -6,7 +6,6 @@ WorldScene = {
         "Minotaurs", "Pickups", "Misc", "Player"
     },
     navPoints = {},      -- places the Minotaurs will wander to
-    showInventory = true,
     showMap = false,
     transition = 0,
     transitionLength = 0.25,
@@ -82,18 +81,13 @@ function WorldScene:draw()
 
     love.graphics.pop()
 
-    if self.showInventory then
-        InventoryManager:draw()
-    end
-
     if self.showMap then
         RegionManager:draw()
     end
 
-    self.player:drawHUD()
-
     WeatherManager:draw()
     DaylightManager:draw()
+    HUD:draw()
     Fader:draw()
     FPS:draw()
 end
@@ -101,8 +95,6 @@ end
 function WorldScene:keypressed(key)
     if key == "escape" or key == "backspace" then
         Gamestate.switch(MenuScene)
-    elseif key == "i" then
-        self.showInventory = not self.showInventory
     elseif key == "p" then
         self.showMap = not self.showMap
     end
