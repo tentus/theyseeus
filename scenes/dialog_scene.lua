@@ -36,10 +36,8 @@ function DialogScene:draw()
     love.graphics.printf(self:getCurrent(), 8, height - self.height + 4, width - 16, "left")
 end
 
-function DialogScene:keypressed(key)
-    if key == "return" or key == "space" or key == "tab" then
-        self:proceed()
-    end
+function DialogScene:keypressed()
+    self:proceed()
 end
 
 function DialogScene:getCurrent()

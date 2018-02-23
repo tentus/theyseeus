@@ -24,12 +24,10 @@ function DeathScene:draw()
     love.graphics.setColor(255, 255, 255)
 end
 
-function DeathScene:keypressed(key)
-    if key == "return" or key == "space" or key == "tab" then
-        RegionManager:warpHome()
-        WorldScene.player.health = WorldScene.player.maxHealth
-        WorldScene:loadRegion("Start")
-        Gamestate.pop()
-    end
+function DeathScene:keypressed()
+    RegionManager:warpHome()
+    WorldScene.player.health = WorldScene.player.maxHealth
+    WorldScene:loadRegion("Start")
+    Gamestate.pop()
 end
 
