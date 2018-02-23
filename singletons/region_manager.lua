@@ -20,18 +20,24 @@ RegionManager = {
 
     -- the arrangement of regions, set during init
     chosen = {},
+
+    -- which regions the players has visited
+    visited = {},
 }
 
 function RegionManager:init()
     for y=1, self.height do
         self.chosen[y] = {}
+        self.visited[y] = {}
         for x=1, self.width do
             self.chosen[y][x] = self.whitelist[love.math.random(#self.whitelist)]
+            self.visited[y][x] = false
         end
     end
 
     -- the point of origin is always the same
     self.chosen[self.home.y][self.home.x] = 'home'
+    self:markVisited()
 end
 
 function RegionManager:draw()
@@ -47,7 +53,7 @@ function RegionManager:draw()
                 opacity = 192
             end
 
-            love.graphics.setColor(0, 0, 0, opacity)
+            love.graphics.setColor(0, (self.visited[y][x] and 96 or 0), 0, opacity)
             love.graphics.rectangle('fill', (x * w) + tr, (y * h), w - spacing, h - spacing)
 
             love.graphics.setColor(255, 255, 255)
@@ -79,4 +85,9 @@ function RegionManager:move(x, y)
     if self.y < 1 then
         self.y = self.height
     end
+    self:markVisited()
+end
+
+function RegionManager:markVisited()
+    self.visited[self.y][self.x] = true
 end
