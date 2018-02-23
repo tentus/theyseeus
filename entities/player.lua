@@ -69,8 +69,6 @@ function Player:damage()
 end
 
 function Player:kill()
-    self.health = self.maxHealth
-    RegionManager:warpHome()
-    WorldScene:loadRegion("Start")
+    Gamestate.push(DeathScene)
     Logger:add("Deaths")
 end
