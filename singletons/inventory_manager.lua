@@ -1,34 +1,28 @@
 InventoryManager = {
-    -- which yarns have been collected (keyed by region coords)
-    yarn = {},
-
-    -- which upgrades have been collected
-    upgrades = {},
+    -- which items have been collected (keyed by region coords)
+    collected = {
+        Yarn = {},
+        Upgrade = {},
+    }
 }
 
-function InventoryManager:collectYarn(regionX, regionY)
-    self.yarn[regionX .. 'x' .. regionY] = true
+function InventoryManager:collect(thing, regionX, regionY)
+    self.collected[thing][regionX .. 'x' .. regionY] = true
+    Logger:add(thing .. " Collected")
 end
 
-function InventoryManager:hasYarn(regionX, regionY)
-    return self.yarn[regionX .. 'x' .. regionY] == true
-end
-
-function InventoryManager:collectUpgrade(regionX, regionY)
-    self.upgrades[regionX .. 'x' .. regionY] = true
-end
-
-function InventoryManager:hasUpgrade(regionX, regionY)
-    return self.yarn[regionX .. 'x' .. regionY] == true
+function InventoryManager:has(thing, regionX, regionY)
+    return self.collected[thing][regionX .. 'x' .. regionY] == true
 end
 
 function InventoryManager:reset()
-    self.yarn = {}
-    self.upgrades = {}
+    for _, section in pairs(self.collected) do
+        section = {}
+    end
 end
 
-function InventoryManager:totalYarn()
+function InventoryManager:total(thing)
     local count = 0
-    for _ in pairs(self.yarn) do count = count + 1 end
+    for _ in pairs(self.collected[thing]) do count = count + 1 end
     return count
 end

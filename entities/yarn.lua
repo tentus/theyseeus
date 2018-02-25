@@ -21,7 +21,6 @@ function Yarn:update(dt)
 end
 
 function Yarn:playerSensed(player)
-    InventoryManager:collectYarn(RegionManager:coords())
+    InventoryManager:collect(self.classname, RegionManager:coords())
     self:kill()
-    Logger:add("Yarn Collected")
 end

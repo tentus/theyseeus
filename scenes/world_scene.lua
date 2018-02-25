@@ -205,12 +205,12 @@ function WorldScene:spawnEntities()
             entType = "Pickups"
             obj = Health(object.x, object.y)
         elseif object.type == "Yarn" then
-            if not InventoryManager:hasYarn(RegionManager:coords()) then
+            if not InventoryManager:has(object.type, RegionManager:coords()) then
                 entType = "Pickups"
                 obj = Yarn(object.x, object.y)
             end
         elseif object.type == "Upgrade" then
-            if not InventoryManager:hasUpgrade(RegionManager:coords()) then
+            if not InventoryManager:has(object.type, RegionManager:coords()) then
                 entType = "Pickups"
                 obj = Upgrade(object.x, object.y)
             end
