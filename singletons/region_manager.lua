@@ -13,8 +13,10 @@ RegionManager = {
     },
 
     -- current overall position in the region grid
-    x = 3,
-    y = 3,
+    cursor = {
+        x = 3,
+        y = 3,
+    },
 
     -- where we warp back to
     home = {
@@ -84,7 +86,7 @@ function RegionManager:draw()
                     text = text .. "M"
                 end
 
-                if x == self.x and y == self.y then
+                if x == self.cursor.x and y == self.cursor.y then
                     text = '[' .. text .. ']'
                     opacity = 192
                 end
@@ -100,16 +102,16 @@ function RegionManager:draw()
 end
 
 function RegionManager:warpHome()
-    self.x = self.home.x
-    self.y = self.home.y
+    self.cursor.x = self.home.x
+    self.cursor.y = self.home.y
 end
 
 function RegionManager:coords()
-    return self.x, self.y
+    return self.cursor.x, self.cursor.y
 end
 
-function RegionManager:current()
-    return self.data[self.y][self.x]
+function RegionManager:currentCell()
+    return self.data[self.cursor.y][self.cursor.x]
 end
 
 function RegionManager:move(x, y)
@@ -117,13 +119,13 @@ function RegionManager:move(x, y)
         val = val + delta
         return (val < 1) and max or (val % max)
     end
-    self.x = within(self.x, x, self.width)
-    self.y = within(self.y, y, self.height)
+    self.cursor.x = within(self.cursor.x, x, self.width)
+    self.cursor.y = within(self.cursor.y, y, self.height)
     self:markVisited()
 end
 
 function RegionManager:markVisited()
-    self.data[self.y][self.x].visited = true
+    self:currentCell().visited = true
 end
 
 function RegionManager:chooseRandom()
