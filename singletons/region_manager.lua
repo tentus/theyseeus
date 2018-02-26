@@ -8,7 +8,7 @@ RegionManager = {
     pickups = {
         Yarn = 10,
         Upgrade = 6,
-        Map = 1,
+        Map = 2,
     },
 
     -- current overall position in the region grid
@@ -27,9 +27,6 @@ RegionManager = {
 
     -- the arrangement of regions, set during init
     data = {},
-
-    -- if the player hasn't found a map, they can't toggle on the draw
-    mapFound = false,
 }
 
 function RegionManager:init()
@@ -61,7 +58,8 @@ function RegionManager:init()
 end
 
 function RegionManager:draw()
-    if not self.mapFound then return end
+    local mapsFound = InventoryManager:total("Map")
+    if mapsFound == 0 then return end
 
     local w, h = 56, 32
     local tr = love.graphics.getWidth() - ((self.width + 2) * w)
@@ -69,18 +67,20 @@ function RegionManager:draw()
     for y=1, self.height do
         for x=1, self.width do
             local current = self.data[y][x]
-            local text = current.chosen
-            local opacity = 128
-            if x == self.x and y == self.y then
-                text = '[' .. text .. ']'
-                opacity = 192
+            if current.visited or mapsFound > 1 then
+                local text = current.chosen
+                local opacity = 128
+                if x == self.x and y == self.y then
+                    text = '[' .. text .. ']'
+                    opacity = 192
+                end
+
+                love.graphics.setColor(0, (current.visited and 96 or 0), 0, opacity)
+                love.graphics.rectangle('fill', (x * w) + tr, (y * h), w - spacing, h - spacing)
+
+                love.graphics.setColor(255, 255, 255)
+                love.graphics.printf(text, (x * w) + tr - (spacing / 2), (y * h) + (spacing / 2), w, "center")
             end
-
-            love.graphics.setColor(0, (current.visited and 96 or 0), 0, opacity)
-            love.graphics.rectangle('fill', (x * w) + tr, (y * h), w - spacing, h - spacing)
-
-            love.graphics.setColor(255, 255, 255)
-            love.graphics.printf(text, (x * w) + tr - (spacing / 2), (y * h) + (spacing / 2), w, "center")
         end
     end
 end

@@ -21,6 +21,6 @@ function Map:update(dt)
 end
 
 function Map:playerSensed(player)
-    RegionManager.mapFound = true
+    InventoryManager:collect(self.classname, RegionManager:coords())
     self:kill()
 end
