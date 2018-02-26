@@ -190,7 +190,7 @@ end
 function WorldScene:spawnEntities()
     -- define some types that can be treated the same
     local inventory = {
-        Yarn = 1, Upgrade = 1, Map = 1,
+        Yarn = 1, Upgrade = 1, Map = 1, Gem = 1,
     }
     local misc = {
         Sign = 1, Kid = 1,
