@@ -68,19 +68,19 @@ function RegionManager:draw()
     local gemsFound = InventoryManager:total("Gem")
     for y=1, self.height do
         for x=1, self.width do
-            local current = self.data[y][x]
-            if current.visited or mapsFound > 1 then
-                local text = current.chosen
+            local cell = self.data[y][x]
+            if cell.visited or mapsFound > 1 then
+                local text = cell.chosen
                 local opacity = 128
 
                 -- gems unlock more and more detail in the map
-                if gemsFound >= 1 and current.Yarn then
+                if gemsFound >= 1 and cell.Yarn then
                     text = text .. "Y"
                 end
-                if gemsFound >= 2 and current.Upgrade then
+                if gemsFound >= 2 and cell.Upgrade then
                     text = text .. "U"
                 end
-                if gemsFound >= 3 and current.Map then
+                if gemsFound >= 3 and cell.Map then
                     text = text .. "M"
                 end
 
@@ -89,7 +89,7 @@ function RegionManager:draw()
                     opacity = 192
                 end
 
-                love.graphics.setColor(0, (current.visited and 96 or 0), 0, opacity)
+                love.graphics.setColor(0, (cell.visited and 96 or 0), 0, opacity)
                 love.graphics.rectangle('fill', (x * w) + tr, (y * h), w - spacing, h - spacing)
 
                 love.graphics.setColor(255, 255, 255)
