@@ -21,6 +21,10 @@ function Map:update(dt)
 end
 
 function Map:playerSensed(player)
-    InventoryManager:collect(self.classname, RegionManager:coords())
+    local total = InventoryManager:collect(self.classname, RegionManager:coords())
     self:kill()
+
+    if total == 1 then
+        Gamestate.push(DialogScene, "AboutMap")
+    end
 end
