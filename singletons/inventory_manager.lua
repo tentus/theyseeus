@@ -4,6 +4,7 @@ InventoryManager = {
         Yarn = {},
         Upgrade = {},
         Map = {},
+        Gem = {},
     }
 }
 
