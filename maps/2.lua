@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 25,
+  nextobjectid = 26,
   backgroundcolor = { 153, 136, 119 },
   properties = {},
   tilesets = {
@@ -472,6 +472,19 @@ return {
           shape = "point",
           x = 3392.09,
           y = 3070.7,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 25,
+          name = "Map",
+          type = "Map",
+          shape = "point",
+          x = 848,
+          y = 3256,
           width = 0,
           height = 0,
           rotation = 0,

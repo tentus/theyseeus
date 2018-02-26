@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 30,
+  nextobjectid = 31,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -429,6 +429,19 @@ return {
           properties = {}
         },
         {
+          id = 30,
+          name = "Map",
+          type = "Map",
+          shape = "point",
+          x = 760.606,
+          y = 1793.94,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
           id = 18,
           name = "Health",
           type = "Health",
@@ -496,8 +509,8 @@ return {
           name = "NavPoint",
           type = "NavPoint",
           shape = "point",
-          x = 751.515,
-          y = 1751.52,
+          x = 963.515,
+          y = 1606.52,
           width = 0,
           height = 0,
           rotation = 0,
