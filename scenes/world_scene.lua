@@ -188,6 +188,14 @@ function WorldScene:loadRegion(enteringFrom)
 end
 
 function WorldScene:spawnEntities()
+    -- define some types that can be treated the same
+    local inventory = {
+        Yarn = 1, Upgrade = 1, Map = 1,
+    }
+    local misc = {
+        Sign = 1, Kid = 1,
+    }
+
     self.navPoints = {}
 
     for _, object in pairs(self.map.objects) do
@@ -204,22 +212,14 @@ function WorldScene:spawnEntities()
         elseif object.type == "Health" then
             entType = "Pickups"
             obj = Health(object.x, object.y)
-        elseif object.type == "Yarn" then
+        elseif inventory[object.type] then
             if not InventoryManager:has(object.type, RegionManager:coords()) then
                 entType = "Pickups"
-                obj = Yarn(object.x, object.y)
+                obj = _G[object.type](object.x, object.y)
             end
-        elseif object.type == "Upgrade" then
-            if not InventoryManager:has(object.type, RegionManager:coords()) then
-                entType = "Pickups"
-                obj = Upgrade(object.x, object.y)
-            end
-        elseif object.type == "Sign" then
+        elseif misc[object.type] then
             entType = "Misc"
-            obj = Sign(self.physics, object.x, object.y, object.name)
-        elseif object.type == "Kid" then
-            entType = "Misc"
-            obj = Kid(self.physics, object.x, object.y, object.name)
+            obj = _G[object.type](self.physics, object.x, object.y, object.name)
         end
 
         if obj then
