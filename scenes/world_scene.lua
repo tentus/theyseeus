@@ -127,7 +127,7 @@ end
 
 function WorldScene:loadRegion(enteringFrom)
     -- Load map
-    self.map = sti("maps/" .. RegionManager:current() .. ".lua", {"box2d"})
+    self.map = sti("maps/" .. RegionManager:current().chosen .. ".lua", {"box2d"})
     self:setBackground(self.map)
 
     -- Prepare physics world
@@ -213,7 +213,7 @@ function WorldScene:spawnEntities()
             entType = "Pickups"
             obj = Health(object.x, object.y)
         elseif inventory[object.type] then
-            if not InventoryManager:has(object.type, RegionManager:coords()) then
+            if RegionManager:current()[object.type] and not InventoryManager:has(object.type, RegionManager:coords()) then
                 entType = "Pickups"
                 obj = _G[object.type](object.x, object.y)
             end
