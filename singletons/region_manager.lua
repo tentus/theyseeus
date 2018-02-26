@@ -23,6 +23,9 @@ RegionManager = {
 
     -- which regions the players has visited
     visited = {},
+
+    -- if the player hasn't found a map, they can't toggle on the draw
+    mapFound = false,
 }
 
 function RegionManager:init()
@@ -41,6 +44,8 @@ function RegionManager:init()
 end
 
 function RegionManager:draw()
+    if not self.mapFound then return end
+
     local w, h = 56, 32
     local tr = love.graphics.getWidth() - ((self.width + 2) * w)
     local spacing = 8
