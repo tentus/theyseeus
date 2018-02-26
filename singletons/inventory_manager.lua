@@ -10,6 +10,7 @@ InventoryManager = {
 function InventoryManager:collect(thing, regionX, regionY)
     self.collected[thing][regionX .. 'x' .. regionY] = true
     Logger:add(thing .. " Collected")
+    return self:total(thing)
 end
 
 function InventoryManager:has(thing, regionX, regionY)
