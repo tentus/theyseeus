@@ -8,7 +8,7 @@ return {
   height = 48,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 22,
+  nextobjectid = 23,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -453,6 +453,19 @@ return {
           shape = "point",
           x = 2842.42,
           y = 2412.12,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 22,
+          name = "Gem",
+          type = "Gem",
+          shape = "point",
+          x = 1022.06,
+          y = 594.545,
           width = 0,
           height = 0,
           rotation = 0,
