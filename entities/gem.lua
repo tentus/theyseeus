@@ -21,7 +21,7 @@ function Gem:update(dt)
 end
 
 function Gem:playerSensed(player)
-    local total = InventoryManager:collect(self.classname, RegionManager:coords())
+    local total = InventoryManager:collect(self.classname)
     self:kill()
 
     if total == 1 then

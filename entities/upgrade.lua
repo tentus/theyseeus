@@ -21,7 +21,7 @@ function Upgrade:update(dt)
 end
 
 function Upgrade:playerSensed(player)
-    InventoryManager:collect(self.classname, RegionManager:coords())
+    InventoryManager:collect(self.classname)
     player:incrementHealth()
     self:kill()
 end

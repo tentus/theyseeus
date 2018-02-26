@@ -21,6 +21,6 @@ function Yarn:update(dt)
 end
 
 function Yarn:playerSensed(player)
-    InventoryManager:collect(self.classname, RegionManager:coords())
+    InventoryManager:collect(self.classname)
     self:kill()
 end
