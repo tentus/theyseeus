@@ -3,6 +3,7 @@ InventoryManager = {
     collected = {
         Yarn = {},
         Upgrade = {},
+        Map = {},
     }
 }
 
