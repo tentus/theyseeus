@@ -113,15 +113,12 @@ function RegionManager:current()
 end
 
 function RegionManager:move(x, y)
-    self.x = (self.x + x) % self.width
-    if self.x < 1 then
-        self.x = self.width
+    local within = function(val, delta, max)
+        val = val + delta
+        return (val < 1) and max or (val % max)
     end
-
-    self.y = (self.y + y) % self.height
-    if self.y < 1 then
-        self.y = self.height
-    end
+    self.x = within(self.x, x, self.width)
+    self.y = within(self.y, y, self.height)
     self:markVisited()
 end
 
