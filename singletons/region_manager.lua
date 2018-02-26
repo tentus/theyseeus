@@ -9,6 +9,7 @@ RegionManager = {
         Yarn = 10,
         Upgrade = 6,
         Map = 2,
+        Gem = 3,
     },
 
     -- current overall position in the region grid
@@ -64,12 +65,25 @@ function RegionManager:draw()
     local w, h = 56, 32
     local tr = love.graphics.getWidth() - ((self.width + 2) * w)
     local spacing = 8
+    local gemsFound = InventoryManager:total("Gem")
     for y=1, self.height do
         for x=1, self.width do
             local current = self.data[y][x]
             if current.visited or mapsFound > 1 then
                 local text = current.chosen
                 local opacity = 128
+
+                -- gems unlock more and more detail in the map
+                if gemsFound >= 1 and current.Yarn then
+                    text = text .. "Y"
+                end
+                if gemsFound >= 2 and current.Upgrade then
+                    text = text .. "U"
+                end
+                if gemsFound >= 3 and current.Map then
+                    text = text .. "M"
+                end
+
                 if x == self.x and y == self.y then
                     text = '[' .. text .. ']'
                     opacity = 192
