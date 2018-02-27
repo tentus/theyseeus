@@ -1,6 +1,6 @@
 CreditsScene = {
     speed = 100,
-    logo = love.graphics.newImage("assets/logos/theyseeus_logo.png"),
+    logo = Sprite("assets/logos/theyseeus_logo.png"),
     text = [[
 
 Colin Johnson
@@ -47,7 +47,7 @@ Thank you for playing!
 }
 
 function CreditsScene:enter()
-    self.y = love.graphics.getHeight() + self.logo:getHeight()
+    self.y = love.graphics.getHeight() + (self.logo.y * 2)
     local _, count = string.gsub(self.text, "\n", "")
     self.limit = count * -18
 end
@@ -61,7 +61,7 @@ end
 
 function CreditsScene:draw()
     local width, height = love.window.getMode()
-    love.graphics.draw(self.logo, width / 2, math.floor(self.y), 0, 1, 1, self.logo:getWidth() / 2, self.logo:getHeight())
+    self.logo:draw(width / 2, math.floor(self.y) - self.logo.y)
     love.graphics.printf(self.text, 0, math.floor(self.y), width, "center")
 end
 
