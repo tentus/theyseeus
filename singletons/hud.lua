@@ -23,6 +23,6 @@ function HUD:draw()
     local height = love.graphics.getHeight()
 
     -- yarn and coins total in bottom left
-    love.graphics.draw(self.icons.yarn, 8, height - 40, 0, 0.5, 0.5)
+    love.graphics.draw(self.icons.yarn, 8, height - 40)
     love.graphics.print(' x ' .. InventoryManager:total(Yarn.classname), 40, height - 32)
 end
