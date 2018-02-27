@@ -1,6 +1,6 @@
 Class       = require "libraries.hump.class"
 Gamestate   = require "libraries.hump.gamestate"
-inspect     = require "libraries.inspect"
+lovebird    = require "libraries.lovebird"
 anim8       = require "libraries.animation.anim8"
 
 requireDir = function(dir)
@@ -29,6 +29,7 @@ function love.load()
 end
 
 function love.update(dt)
+    lovebird.update()
     Fader:update(dt)
     Bindings:update()
 end
