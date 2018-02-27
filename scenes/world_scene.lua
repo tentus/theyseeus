@@ -189,6 +189,9 @@ end
 
 function WorldScene:spawnEntities()
     -- define some types that can be treated the same
+    local pickups = {
+        Health = 1, Coin = 1,
+    }
     local inventory = {
         Yarn = 1, Upgrade = 1, Map = 1, Gem = 1,
     }
@@ -209,9 +212,9 @@ function WorldScene:spawnEntities()
             entType = "Minotaurs"
             obj = NPC(self.physics, object.x, object.y)
             Logger:add("NPCs Spawned")
-        elseif object.type == "Health" then
+        elseif pickups[object.type] then
             entType = "Pickups"
-            obj = Health(object.x, object.y)
+            obj = _G[object.type](object.x, object.y)
         elseif inventory[object.type] then
             if RegionManager:currentCell()[object.type] and not InventoryManager:has(object.type, RegionManager:coords()) then
                 entType = "Pickups"
