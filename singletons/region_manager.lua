@@ -116,8 +116,8 @@ end
 
 function RegionManager:move(x, y)
     local within = function(val, delta, max)
-        val = val + delta
-        return (val < 1) and max or (val % max)
+        val = (val + delta) % max
+        return (val < 1) and max or val
     end
     self.cursor.x = within(self.cursor.x, x, self.width)
     self.cursor.y = within(self.cursor.y, y, self.height)
