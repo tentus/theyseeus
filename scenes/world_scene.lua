@@ -290,3 +290,9 @@ function WorldScene:setBackground(map)
         end
     end
 end
+
+-- returns both a random nav point and the size of the set we chose from
+function WorldScene:randNavPoint()
+    local count = #self.navPoints
+    return self.navPoints[love.math.random(count)], count
+end
