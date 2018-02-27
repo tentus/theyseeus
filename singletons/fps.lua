@@ -1,3 +1,4 @@
+-- the FPS counter is distinct from the HUD because we show it in other scenes
 FPS = {
     show = true,
 }
