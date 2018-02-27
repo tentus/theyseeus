@@ -12,7 +12,7 @@ Use the WASD/arrow keys to move, space to start charging, and the Esc key to ope
 * [anim8](github.com/kikito/anim8) by Enrique García Cota
 * [Baton](github.com/tesselode/baton) by Andrew Minnich
 * [HUMP](github.com/vrld/hump) by Matthias Richter
-* [Inspect](github.com/kikito/inspect.lua) by Enrique García Cota
+* [lovebird](github.com/rxi/lovebird) by rxi
 * [Jumper](github.com/Yonaba/Jumper) by Roland Yonaba
 * [Simple Tiled Implementation](github.com/karai17/Simple-Tiled-Implementation) by Landon Manning
 

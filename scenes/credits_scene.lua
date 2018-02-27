@@ -23,11 +23,14 @@ love2d.org
 hump by Matthias Richter
 github.com/vrld/hump
 
-anim8 & Inspect by Enrique García Cota
+anim8 by Enrique García Cota
 github.com/kikito/inspect.lua
 
 jumper by Roland Yonaba
 github.com/Yonaba/Jumper
+
+lovebird by rxi
+github.com/rxi/lovebird
 
 Simple Tiled Implementation by Landon Manning
 github.com/karai17/Simple-Tiled-Implementation
