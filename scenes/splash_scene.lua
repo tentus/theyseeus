@@ -3,6 +3,7 @@ SplashScene = {
     time = {
         passed = 0,
         limit = 4,
+        fade = 1,
     },
     logos = {
         Sprite("assets/logos/beardville_logo.png"),
@@ -18,6 +19,8 @@ function SplashScene:update(dt)
     self.time.passed = self.time.passed + dt
     if self.time.passed >= self.time.limit then
         self:proceed()
+    elseif self.time.passed >= (self.time.limit - self.time.fade) and not Fader:isActive() then
+        Fader:start(0, self.time.fade)
     end
 end
 
@@ -39,7 +42,7 @@ function SplashScene:proceed()
     if self.step < #self.logos then
         self.time.passed = 0
         self.step = self.step + 1
-        Fader:start(255, 1)
+        Fader:start(255, self.time.fade)
     else
         Gamestate.switch(MenuScene)
     end
