@@ -8,7 +8,8 @@ function InventoryManager:collect(thing)
     if not self.collected[thing] then
         self.collected[thing] = {}
     end
-    self.collected[thing][self:key(RegionManager:coords())] = true
+    local key = self:key(RegionManager:coords())
+    self.collected[thing][key] = (self.collected[thing][key] or 0) + 1
     Logger:add(thing .. " Collected")
     return self:total(thing)
 end
@@ -25,7 +26,9 @@ end
 
 function InventoryManager:total(thing)
     local count = 0
-    for _ in pairs(self.collected[thing] or {}) do count = count + 1 end
+    for _, v in pairs(self.collected[thing] or {}) do
+        count = count + v
+    end
     return count
 end
 
