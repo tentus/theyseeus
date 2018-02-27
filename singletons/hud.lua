@@ -3,7 +3,7 @@ HUD = {
     icons = {
         health = love.graphics.newImage("assets/sprites/health_icon.png"),
         damage = love.graphics.newImage("assets/sprites/damage_icon.png"),
-        yarn   = love.graphics.newImage("assets/sprites/yarn.png"),
+        yarn   = love.graphics.newImage("assets/sprites/items/yarn.png"),
     }
 }
 

@@ -1,26 +1,27 @@
-Yarn = Class{
+Upgrade = Class{
     __includes = {Killable, Sensable},
-    classname = 'Yarn',
-    sprite = Sprite("assets/sprites/yarn.png"),
+    classname = 'Upgrade',
+    sprite = Sprite("assets/sprites/items/upgrade.png"),
     glow = GlowEffect(),
     death_audio = "assets/audio/collect.ogg",
 }
 
-function Yarn:init(x, y)
+function Upgrade:init(x, y)
     Sensable.init(self, x, y)
 end
 
-function Yarn:draw()
+function Upgrade:draw()
     self.glow:draw(self.x, self.y)
     self.sprite:draw(self.x, self.y)
 end
 
-function Yarn:update(dt)
+function Upgrade:update(dt)
     Sensable.update(self, dt)
     self.glow:update(dt)
 end
 
-function Yarn:playerSensed(player)
+function Upgrade:playerSensed(player)
     InventoryManager:collect(self.classname)
+    player:incrementHealth()
     self:kill()
 end
