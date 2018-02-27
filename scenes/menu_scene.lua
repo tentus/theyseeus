@@ -5,8 +5,7 @@ MenuScene = {
         root = {   -- top menu
             {
                 function()
-                    -- todo: newgame vs continue
-                    return "Play"
+                    return WorldScene.entered and "Continue" or "Play"
                 end,
                 function()
                     Gamestate.switch(WorldScene)
