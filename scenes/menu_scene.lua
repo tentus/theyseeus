@@ -12,9 +12,15 @@ MenuScene = {
                 end
             },
             {
-                "Settings",
+                "Video Settings",
                 function()
                     MenuScene:goTo("settings")
+                end
+            },
+            {
+                "Audio Settings",
+                function()
+                    MenuScene:goTo("audio")
                 end
             },
             {
@@ -68,11 +74,35 @@ MenuScene = {
                 end
             },
             {
+                "Back",
                 function()
-                    return "Music Volume: " .. AudioManager.volume
+                    MenuScene:goTo("root")
+                end
+            },
+        },
+        audio = {
+            {
+                function()
+                    return "Master Volume: " .. AudioManager:getVolume("master")
                 end,
                 function()
-                    AudioManager:changeVolume(-25)
+                    AudioManager:changeVolume("master", -.1)
+                end
+            },
+            {
+                function()
+                    return "Music Volume: " .. AudioManager:getVolume("music")
+                end,
+                function()
+                    AudioManager:changeVolume("music", -.1)
+                end
+            },
+            {
+                function()
+                    return "SFX Volume: " .. AudioManager:getVolume("sfx")
+                end,
+                function()
+                    AudioManager:changeVolume("sfx", -.1)
                 end
             },
             {
