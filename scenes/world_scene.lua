@@ -19,7 +19,6 @@ WorldScene = {
 function WorldScene:init()
     -- populate our region arrangement from a whitelist of maps
     RegionManager:init()
-    WeatherManager:init()
 
     love.physics.setMeter(64)
 

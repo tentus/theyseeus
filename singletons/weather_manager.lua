@@ -18,12 +18,6 @@ WeatherManager = {
     },
 }
 
-function WeatherManager:init()
-    for _, weather in pairs(self.effects) do
-        weather.init(weather)
-    end
-end
-
 function WeatherManager:update(dt)
     for _, weather in pairs(self.effects) do
         if weather.enabled then
@@ -43,5 +37,8 @@ end
 function WeatherManager:reroll()
     for _, weather in pairs(self.effects) do
         weather.enabled = love.math.random(weather.chance) == 1
+        if weather.enabled and not weather.particles then
+            weather.init(weather)
+        end
     end
 end
