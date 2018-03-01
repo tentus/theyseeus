@@ -221,9 +221,13 @@ function WorldScene:spawnEntities()
         end
 
         if obj then
-            table.insert(self.map.layers[entType].ents, obj)
+            self:addEnt(entType, obj)
         end
     end
+end
+
+function WorldScene:addEnt(layer, ent)
+    table.insert(self.map.layers[layer].ents, ent)
 end
 
 function WorldScene:changeRegion()
