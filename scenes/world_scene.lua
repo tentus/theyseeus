@@ -196,16 +196,24 @@ function WorldScene:spawnEntities()
 
     self.navPoints = {}
 
+    local function snapToGrid(object)
+        local function snap(value, grid)
+            return value - (value % grid) + (grid / 2)
+        end
+        return snap(object.x, self.map.tilewidth), snap(object.y, self.map.tileheight)
+    end
+
     for _, object in pairs(self.map.objects) do
         -- we'll use npc spawn points as well as explicit NavPoints to make the npcs wander
         if object.type == "NPC" or object.type == "NavPoint"  then
-            table.insert(self.navPoints, NavPoint(object.x, object.y))
+            table.insert(self.navPoints, NavPoint(snapToGrid(object)))
         end
 
         local obj, entType
         if object.type == "NPC" then
+            local x, y = snapToGrid(object)
             entType = "Minotaurs"
-            obj = NPC(self.physics, object.x, object.y)
+            obj = NPC(self.physics, x, y)
             Logger:add("NPCs Spawned")
         elseif pickups[object.type] then
             entType = "Pickups"
@@ -216,8 +224,9 @@ function WorldScene:spawnEntities()
                 obj = _G[object.type](object.x, object.y)
             end
         elseif misc[object.type] then
+            local x, y = snapToGrid(object)
             entType = "Misc"
-            obj = _G[object.type](self.physics, object.x, object.y, object.name)
+            obj = _G[object.type](self.physics, x, y, object.name)
         end
 
         if obj then
