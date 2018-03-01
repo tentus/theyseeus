@@ -39,23 +39,13 @@ function NPC:update(dt)
         self.nextNode = WorldScene.pathManager:getNextPathNode(x, y, px, py)
     end
 
-    -- we don't apply force unless we're far enough from it to be worthwhile, to avoid jitter
-    local threshold = 4
-    local h, v = 0, 0
-    if math.abs(self.nextNode.x - x) > threshold then
-        if self.nextNode.x < x then h = -1 end
-        if self.nextNode.x > x then h = 1 end
-    end
-    if math.abs(self.nextNode.y - y) > threshold then
-        if self.nextNode.y < y then v = -1 end
-        if self.nextNode.y > y then v = 1 end
-    end
+    local threshold = self.radius
+    local h = math.min(math.max(self.nextNode.x - x, -threshold), threshold)
+    local v = math.min(math.max(self.nextNode.y - y, -threshold), threshold)
 
-    if h ~= 0 or v ~= 0 then
-        -- npcs move much slower when they're not angry
-        local force = self.angry and self.force or (self.force / 4)
-        self.body:applyForce(h * force, v * force)
-    end
+    -- npcs move much slower when they're not angry
+    local force = self.angry and self.force or (self.force / 4)
+    self.body:applyForce((h * force) / threshold, (v * force) / threshold)
 end
 
 function NPC:draw()
