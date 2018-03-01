@@ -58,6 +58,26 @@ function NPC:update(dt)
     end
 end
 
+function NPC:draw()
+    Minotaur.draw(self)
+
+    if npc_debug then
+        local x, y = self.body:getPosition()
+        love.graphics.circle("line", x, y, self.radius)
+        love.graphics.circle("line", x, y, self.hearing.shape:getRadius())
+        if self.nextNode then
+            local n = self.nextNode
+            love.graphics.circle("line", n.x, n.y, 4)
+            love.graphics.line(x, y, n.x, n.y)
+        end
+        if self.goal then
+            local gx, gy = self.goal:getTargetPosition()
+            love.graphics.line(x, y, gx, gy)
+            love.graphics.circle("line", gx, gy, 8)
+        end
+    end
+end
+
 function NPC:pickNewGoal()
     local pick, count = WorldScene:randNavPoint()
     if pick ~= self.goal then
