@@ -1,0 +1,35 @@
+RippleEffect = Class{
+    __includes = {Killable},
+    classname = 'RippleEffect',
+    death_audio = false,
+
+    scale = 0,      -- 0 to 1
+    duration = 0.5,   -- in seconds
+    image = love.graphics.newImage("assets/sprites/effects/ripple.png"),
+}
+
+function RippleEffect:init(x, y)
+    self.x = x
+    self.y = y
+    self.ox = self.image:getWidth() / 2
+    self.oy = self.image:getHeight() / 2
+end
+
+function RippleEffect:draw()
+    love.graphics.setColor(255, 255, 255, (1 - self.scale) * 255)
+    love.graphics.draw(
+        self.image,
+        self.x, self.y,
+        1,
+        self.scale, self.scale,
+        self.ox, self.oy
+    )
+    love.graphics.setColor(255, 255, 255)
+end
+
+function RippleEffect:update(dt)
+    self.scale = self.scale + (dt / self.duration)
+    if self.scale > 1 then
+        Killable:kill(self)
+    end
+end
