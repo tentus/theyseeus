@@ -1,5 +1,9 @@
 HUD = {
-    show = true,
+    show = {
+        health    = true,
+        inventory = true,
+        hearing   = true,
+    },
     images = {
         hearing = love.graphics.newImage("assets/sprites/hud/hearing.png"),
         health  = love.graphics.newImage("assets/sprites/hud/health_icon.png"),
@@ -9,17 +13,15 @@ HUD = {
     },
 }
 
-function HUD:toggle()
-    self.show = not self.show
+function HUD:toggle(which)
+    self.show[which] = not self.show[which]
 end
 
 function HUD:draw()
-    if not self.show then return end
-
     local width, height = love.window.getMode()
     local player = WorldScene.player
 
-    if InventoryManager:total(Horn.classname) > 0 then
+    if self.show.hearing and InventoryManager:total(Horn.classname) > 0 then
         local x, y = player.body:getPosition()
         for _, ent in pairs(WorldScene.map.layers["Minotaurs"].ents) do
             if ent.body and not ent.body:isDestroyed() then
@@ -35,15 +37,19 @@ function HUD:draw()
     end
 
     -- health in top left
-    for i=1, player.maxHealth do
-        local icon = ((player.health < i) and self.images.damage or self.images.health)
-        love.graphics.draw(icon, (i * 40) - 32, 8)
+    if self.show.health then
+        for i=1, player.maxHealth do
+            local icon = ((player.health < i) and self.images.damage or self.images.health)
+            love.graphics.draw(icon, (i * 40) - 32, 8)
+        end
     end
 
     -- yarn and coins total in bottom left
-    love.graphics.draw(self.images.yarn, 8, height - 40)
-    love.graphics.print(' x ' .. InventoryManager:total(Yarn.classname), 40, height - 32)
+    if self.show.inventory then
+        love.graphics.draw(self.images.yarn, 8, height - 40)
+        love.graphics.print(' x ' .. InventoryManager:total(Yarn.classname), 40, height - 32)
 
-    love.graphics.draw(self.images.coin, 8, height - 80)
-    love.graphics.print(' x ' .. InventoryManager:total(Coin.classname), 40, height - 64)
+        love.graphics.draw(self.images.coin, 8, height - 80)
+        love.graphics.print(' x ' .. InventoryManager:total(Coin.classname), 40, height - 64)
+    end
 end

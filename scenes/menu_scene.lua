@@ -12,6 +12,12 @@ MenuScene = {
                 end
             },
             {
+                "HUD Settings",
+                function()
+                    MenuScene:goTo("hud")
+                end
+            },
+            {
                 "Video Settings",
                 function()
                     MenuScene:goTo("settings")
@@ -68,9 +74,29 @@ MenuScene = {
                 end
             },
             {
-                "Toggle HUD",
+                "Back",
                 function()
-                    HUD:toggle()
+                    MenuScene:goTo("root")
+                end
+            },
+        },
+        hud = {
+            {
+                "Toggle Health",
+                function()
+                    HUD:toggle("health")
+                end
+            },
+            {
+                "Toggle Inventory",
+                function()
+                    HUD:toggle("inventory")
+                end
+            },
+            {
+                "Toggle Hearing",
+                function()
+                    HUD:toggle("hearing")
                 end
             },
             {
