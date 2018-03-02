@@ -8,7 +8,7 @@ return {
   height = 48,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 25,
+  nextobjectid = 32,
   backgroundcolor = { 245, 121, 0 },
   properties = {},
   tilesets = {
@@ -573,6 +573,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 25,
+          name = "Horn",
+          type = "Horn",
+          shape = "point",
+          x = 1986,
+          y = 578,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -656,8 +669,8 @@ return {
           name = "Coin",
           type = "Coin",
           shape = "point",
-          x = 1968,
-          y = 586,
+          x = 1216,
+          y = 616,
           width = 0,
           height = 0,
           rotation = 0,
@@ -791,7 +804,7 @@ return {
       properties = {},
       objects = {
         {
-          id = 1,
+          id = 26,
           name = "6",
           type = "NPC",
           shape = "point",
@@ -804,7 +817,7 @@ return {
           properties = {}
         },
         {
-          id = 2,
+          id = 27,
           name = "5",
           type = "NPC",
           shape = "point",
@@ -817,7 +830,7 @@ return {
           properties = {}
         },
         {
-          id = 3,
+          id = 28,
           name = "4",
           type = "NPC",
           shape = "point",
@@ -830,7 +843,7 @@ return {
           properties = {}
         },
         {
-          id = 4,
+          id = 29,
           name = "3",
           type = "NPC",
           shape = "point",
@@ -843,7 +856,7 @@ return {
           properties = {}
         },
         {
-          id = 5,
+          id = 30,
           name = "2",
           type = "NPC",
           shape = "point",
@@ -856,7 +869,7 @@ return {
           properties = {}
         },
         {
-          id = 7,
+          id = 31,
           name = "1",
           type = "NPC",
           shape = "point",

@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 39,
+  nextobjectid = 40,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -362,7 +362,7 @@ return {
     },
     {
       type = "tilelayer",
-      name = "decals",
+      name = "darken",
       x = 0,
       y = 0,
       width = 64,
@@ -596,6 +596,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 39,
+          name = "Horn",
+          type = "Horn",
+          shape = "point",
+          x = 3015.15,
+          y = 1060.61,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -692,8 +705,8 @@ return {
           name = "Coins",
           type = "Coins",
           shape = "point",
-          x = 3018,
-          y = 1058,
+          x = 2481.64,
+          y = 891.333,
           width = 0,
           height = 0,
           rotation = 0,

@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 38,
+  nextobjectid = 42,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -596,6 +596,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 38,
+          name = "Horn",
+          type = "Horn",
+          shape = "point",
+          x = 2497.33,
+          y = 1605.33,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -835,6 +848,45 @@ return {
           shape = "point",
           x = 2666,
           y = 1768,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 39,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 3045.45,
+          y = 690.909,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 40,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 2027.27,
+          y = 1306.06,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 41,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 675.758,
+          y = 796.97,
           width = 0,
           height = 0,
           rotation = 0,
