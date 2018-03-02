@@ -58,7 +58,7 @@ function PathManager:getNextPathNode(startX, startY, endX, endY)
         math.floor(endY / self.tileheight) + 1
     )
 
-    if pathLength > 1 then
+    if pathLength > 0 then
         local last = self:lastNodeInSight(path)
         node.x = (last.x * self.tilewidth) - (self.tilewidth / 2)
         node.y = (last.y * self.tileheight) - (self.tileheight / 2)
