@@ -2,7 +2,7 @@ Map = Class{
     __includes = {Killable, Sensable},
     classname = 'Map',
     sprite = Sprite("assets/sprites/items/map.png"),
-    glow = GlowEffect(),
+    glow = GlowComponent(),
     death_audio = "assets/audio/collect.ogg",
 }
 

@@ -2,7 +2,7 @@ Yarn = Class{
     __includes = {Killable, Sensable},
     classname = 'Yarn',
     sprite = Sprite("assets/sprites/items/yarn.png"),
-    glow = GlowEffect(),
+    glow = GlowComponent(),
     death_audio = "assets/audio/collect.ogg",
 }
 
