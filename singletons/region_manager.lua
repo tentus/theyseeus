@@ -1,7 +1,7 @@
 RegionManager = {
     -- a list of all production-read maps
     whitelist = {
-        1, 2, 3, 4, 5
+        1, 2, 3, 4, 5, 6
     },
 
     -- how many of each pickup we want to create
