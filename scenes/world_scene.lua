@@ -87,7 +87,7 @@ function WorldScene:draw()
     DaylightManager:draw()
     HUD:draw()
     Fader:draw()
-    FPS:draw()
+    HUD:drawFPS()
 end
 
 function WorldScene:keypressed(key)

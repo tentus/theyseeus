@@ -74,15 +74,15 @@ MenuScene = {
                     MenuScene:setWindowFlag("borderless")
                 end
             },
-            {
-                "Toggle FPS",
-                function()
-                    FPS:toggle()
-                end
-            },
             back
         },
         hud = {
+            {
+                "Toggle FPS",
+                function()
+                    HUD:toggle("fps")
+                end
+            },
             {
                 "Toggle Health",
                 function()
@@ -168,7 +168,7 @@ function MenuScene:draw()
         love.graphics.print(self:value(self.options[self.level][i][1]), halfWidth, halfHeight + (i * self.lineHeight))
     end
 
-    FPS:draw()
+    HUD:drawFPS()
 end
 
 function MenuScene:update(dt)

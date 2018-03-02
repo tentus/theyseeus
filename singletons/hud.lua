@@ -4,6 +4,7 @@ HUD = {
         health    = true,
         inventory = true,
         hearing   = true,
+        fps       = true,
     },
     images = {
         hearing = love.graphics.newImage("assets/sprites/hud/hearing.png"),
@@ -57,6 +58,13 @@ function HUD:draw()
         love.graphics.draw(self.images.coin, 0, -spacing * 2)
         love.graphics.print('x ' .. InventoryManager:total(Coin.classname), spacing, 8 - (spacing * 2))
         love.graphics.pop()
+    end
+end
+
+function HUD:drawFPS()
+    if self.show.fps then
+        local width, height = love.window.getMode()
+        love.graphics.printf(love.timer.getFPS(), -self.edge, height - 20 - self.edge, width, "right")
     end
 end
 
