@@ -15,7 +15,7 @@ end
 
 function Horn:playerSensed()
     WorldScene:addEnt("Pickups", RippleEffect(self.x, self.y, {255, 255, 128}))
-    InventoryManager:collect(self.classname)
+    local total = InventoryManager:collect(self.classname)
     self:kill()
 
     if total == 1 then
