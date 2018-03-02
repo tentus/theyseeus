@@ -93,7 +93,7 @@ end
 
 function WorldScene:enter()
     self.entered = true
-    self.map:resize(love.window.getMode())
+    self:resize(love.window.getMode())
 end
 
 function WorldScene:resize(w, h)
