@@ -10,6 +10,7 @@ RegionManager = {
         Upgrade = 6,
         Map = 2,
         Gem = 3,
+        Horn = 1,
     },
 
     -- current overall position in the region grid
