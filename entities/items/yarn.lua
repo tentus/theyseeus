@@ -21,6 +21,7 @@ function Yarn:update(dt)
 end
 
 function Yarn:playerSensed(player)
+    WorldScene:addEnt("Pickups", RippleEffect(self.x, self.y))
     InventoryManager:collect(self.classname)
     self:kill()
 end
