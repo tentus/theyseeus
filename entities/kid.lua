@@ -5,7 +5,7 @@ Kid = Class{
     __includes = Sign,      -- sorry, kid
     classname = 'Kid',
     height = 96,
-    shadow = ShadowComponent(32, -32),
+    shadow = ShadowComponent(32, -96),
     sprite = Sprite("assets/sprites/kid.png"),
 }
 

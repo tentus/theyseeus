@@ -5,17 +5,18 @@ ShadowComponent = Class{
     yScale = 0.3,
 }
 
-function ShadowComponent:init(x, y)
+function ShadowComponent:init(ox, oy)
     -- it's worth setting the position for this one manually, it can take some fussing
-    self.x = x
-    self.y = y
+    self.ox = ox
+    self.oy = oy
 end
 
 function ShadowComponent:draw(x, y)
     love.graphics.draw(
         self.image,
-        x - self.x, y - self.y,
+        x, y,
         0,
-        self.xScale, self.yScale
+        self.xScale, self.yScale,
+        self.ox, self.oy
     )
 end
