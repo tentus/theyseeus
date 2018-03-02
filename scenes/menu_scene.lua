@@ -101,6 +101,14 @@ MenuScene = {
                     HUD:toggle("hearing")
                 end
             },
+            {
+                function()
+                    return "Edge Distance: " .. HUD.edge
+                end,
+                function()
+                    HUD:changeEdge(10)
+                end
+            },
             back
         },
         audio = {

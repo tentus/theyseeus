@@ -1,4 +1,5 @@
 HUD = {
+    edge = 10,
     show = {
         health    = true,
         inventory = true,
@@ -36,20 +37,30 @@ function HUD:draw()
         love.graphics.setColor(255, 255, 255)
     end
 
+    local spacing = 40
+
     -- health in top left
     if self.show.health then
         for i=1, player.maxHealth do
             local icon = ((player.health < i) and self.images.damage or self.images.health)
-            love.graphics.draw(icon, (i * 40) - 32, 8)
+            love.graphics.draw(icon, ((i - 1) * spacing) + self.edge, self.edge)
         end
     end
 
     -- yarn and coins total in bottom left
     if self.show.inventory then
-        love.graphics.draw(self.images.yarn, 8, height - 40)
-        love.graphics.print(' x ' .. InventoryManager:total(Yarn.classname), 40, height - 32)
+        love.graphics.push()
+        love.graphics.translate(self.edge, height - self.edge)
+        love.graphics.draw(self.images.yarn, 0, -spacing)
+        love.graphics.print('x ' .. InventoryManager:total(Yarn.classname), spacing, 8 - spacing)
 
-        love.graphics.draw(self.images.coin, 8, height - 80)
-        love.graphics.print(' x ' .. InventoryManager:total(Coin.classname), 40, height - 64)
+        love.graphics.draw(self.images.coin, 0, -spacing * 2)
+        love.graphics.print('x ' .. InventoryManager:total(Coin.classname), spacing, 8 - (spacing * 2))
+        love.graphics.pop()
     end
+end
+
+function HUD:changeEdge(delta)
+    -- for now we assume the change is positive
+    self.edge = (self.edge + delta) % 200
 end
