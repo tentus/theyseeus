@@ -106,10 +106,6 @@ function RegionManager:warpHome()
     self.cursor.y = self.home.y
 end
 
-function RegionManager:coords()
-    return self.cursor.x, self.cursor.y
-end
-
 function RegionManager:currentCell()
     return self.data[self.cursor.y][self.cursor.x]
 end
