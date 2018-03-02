@@ -1,7 +1,7 @@
 Yarn = Class{
     __includes = {Killable, Sensable},
     classname = 'Yarn',
-    sprite = Sprite("assets/sprites/items/yarn.png"),
+    sprite = SpriteComponent("assets/sprites/items/yarn.png"),
     glow = GlowComponent(),
     death_audio = "assets/audio/collect.ogg",
 }

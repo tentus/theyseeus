@@ -2,7 +2,7 @@ Health = Class{
     __includes = {Killable, Sensable},
     classname = 'Health',
     radius = 16,
-    sprite = Sprite("assets/sprites/hud/health_icon.png"),
+    sprite = SpriteComponent("assets/sprites/hud/health_icon.png"),
     death_audio = "assets/audio/collect.ogg",
 }
 

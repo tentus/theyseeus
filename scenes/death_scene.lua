@@ -1,5 +1,5 @@
 DeathScene = {
-    image = Sprite("assets/logos/you_died.png"),
+    image = SpriteComponent("assets/logos/you_died.png"),
 }
 
 function DeathScene:enter(from)

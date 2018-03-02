@@ -2,7 +2,7 @@ Coin = Class{
     __includes = {Killable, Sensable},
     classname = 'Coin',
     radius = 16,
-    sprite = Sprite("assets/sprites/items/coin.png"),
+    sprite = SpriteComponent("assets/sprites/items/coin.png"),
     death_audio = "assets/audio/collect.ogg",
 }
 

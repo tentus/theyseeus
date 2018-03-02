@@ -1,7 +1,7 @@
 Gem = Class{
     __includes = {Killable, Sensable},
     classname = 'Gem',
-    sprite = Sprite("assets/sprites/items/gem.png"),
+    sprite = SpriteComponent("assets/sprites/items/gem.png"),
     glow = GlowComponent(),
     death_audio = "assets/audio/collect.ogg",
 }

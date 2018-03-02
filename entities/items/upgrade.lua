@@ -1,7 +1,7 @@
 Upgrade = Class{
     __includes = {Killable, Sensable},
     classname = 'Upgrade',
-    sprite = Sprite("assets/sprites/items/upgrade.png"),
+    sprite = SpriteComponent("assets/sprites/items/upgrade.png"),
     glow = GlowComponent(),
     death_audio = "assets/audio/collect.ogg",
 }

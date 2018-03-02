@@ -6,7 +6,7 @@ Sign = Class{
     -- our body the same dimensions as a normal tile
     width = 64,
     height = 64,
-    sprite = Sprite("assets/sprites/sign.png"),
+    sprite = SpriteComponent("assets/sprites/sign.png"),
 }
 
 function Sign:init(world, x, y, dialog)

@@ -6,7 +6,7 @@ Kid = Class{
     classname = 'Kid',
     height = 96,
     shadow = ShadowComponent(32, -96),
-    sprite = Sprite("assets/sprites/kid.png"),
+    sprite = SpriteComponent("assets/sprites/kid.png"),
 }
 
 function Kid:init(world, x, y, dialog)

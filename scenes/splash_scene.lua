@@ -6,8 +6,8 @@ SplashScene = {
         fade = 1,
     },
     logos = {
-        Sprite("assets/logos/beardville_logo.png"),
-        Sprite("assets/logos/love_logo.png"),
+        SpriteComponent("assets/logos/beardville_logo.png"),
+        SpriteComponent("assets/logos/love_logo.png"),
     },
 }
 

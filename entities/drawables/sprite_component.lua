@@ -1,8 +1,8 @@
--- intended to a child of other entities
-Sprite = Class{
+-- intended to a child of other entities, but is also handy directly in scenes
+SpriteComponent = Class{
 }
 
-function Sprite:init(imagePath)
+function SpriteComponent:init(imagePath)
     self.image = love.graphics.newImage(imagePath)
 
     -- set offsets for image drawing, since it won't change
@@ -10,6 +10,6 @@ function Sprite:init(imagePath)
     self.y = self.image:getHeight() / 2
 end
 
-function Sprite:draw(x, y)
+function SpriteComponent:draw(x, y)
     love.graphics.draw(self.image, x - self.x, y - self.y)
 end

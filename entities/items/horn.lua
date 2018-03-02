@@ -1,7 +1,7 @@
 Horn = Class{
     __includes = {Killable, Sensable},
     classname = 'Horn',
-    sprite = Sprite("assets/sprites/items/horn.png"),
+    sprite = SpriteComponent("assets/sprites/items/horn.png"),
     death_audio = "assets/audio/collect.ogg",
 }
 

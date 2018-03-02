@@ -144,7 +144,7 @@ MenuScene = {
         },
     },
     lineHeight = 36,
-    logo = Sprite("assets/logos/theyseeus_logo.png"),
+    logo = SpriteComponent("assets/logos/theyseeus_logo.png"),
 }
 
 function MenuScene:draw()
