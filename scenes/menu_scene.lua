@@ -1,8 +1,6 @@
 local back = {
     "Back",
-    function()
-        MenuScene:goTo("root")
-    end
+    "root"
 }
 
 MenuScene = {
@@ -15,32 +13,24 @@ MenuScene = {
                     return WorldScene.entered and "Continue" or "Play"
                 end,
                 function()
-                    Gamestate.switch(WorldScene)
+                    MenuScene:playGame()
                 end
             },
             {
                 "HUD Settings",
-                function()
-                    MenuScene:goTo("hud")
-                end
+                "hud"
             },
             {
                 "Video Settings",
-                function()
-                    MenuScene:goTo("settings")
-                end
+                "settings"
             },
             {
                 "Audio Settings",
-                function()
-                    MenuScene:goTo("audio")
-                end
+                "audio"
             },
             {
                 "Stats",
-                function()
-                    MenuScene:goTo("stats")
-                end
+                "stats"
             },
             {
                 "Credits",
@@ -149,9 +139,7 @@ MenuScene = {
                 function()
                     return Logger:print()
                 end,
-                function()
-                    MenuScene:goTo("root")
-                end
+                "root"
             },
         },
     },
@@ -189,12 +177,17 @@ function MenuScene:update(dt)
             self.cursor = 1
         end
     elseif Bindings:pressed('action') then
-        self.options[self.level][self.cursor][2]()
+        local action = self.options[self.level][self.cursor][2]
+        if type(action) == "function" then
+            action()
+        else
+            self:goTo(action)
+        end
     elseif Bindings:pressed('cancel') then
         if self.level ~= "root" then
             self:goTo("root")
         elseif WorldScene.entered then
-            Gamestate.switch(WorldScene)
+            self:playGame()
         end
     end
 end
@@ -210,6 +203,10 @@ end
 function MenuScene:goTo(level)
     self.cursor = 1
     self.level = level
+end
+
+function MenuScene:playGame()
+    Gamestate.switch(WorldScene)
 end
 
 function MenuScene:setWindowFlag(flag)
