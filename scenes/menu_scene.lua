@@ -1,3 +1,10 @@
+local back = {
+    "Back",
+    function()
+        MenuScene:goTo("root")
+    end
+}
+
 MenuScene = {
     level = "root",
     cursor = 1,
@@ -73,12 +80,7 @@ MenuScene = {
                     FPS:toggle()
                 end
             },
-            {
-                "Back",
-                function()
-                    MenuScene:goTo("root")
-                end
-            },
+            back
         },
         hud = {
             {
@@ -99,12 +101,7 @@ MenuScene = {
                     HUD:toggle("hearing")
                 end
             },
-            {
-                "Back",
-                function()
-                    MenuScene:goTo("root")
-                end
-            },
+            back
         },
         audio = {
             {
@@ -131,12 +128,7 @@ MenuScene = {
                     AudioManager:changeVolume("sfx", -.1)
                 end
             },
-            {
-                "Back",
-                function()
-                    MenuScene:goTo("root")
-                end
-            },
+            back
         },
         stats = {
             {
