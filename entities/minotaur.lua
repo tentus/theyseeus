@@ -37,7 +37,7 @@ function Minotaur:init(world, x, y)
     self:createBody(world, x, y)
 
     -- set the shadow here, so it is inherited properly
-    self.shadow = ShadowEffect(32, -20)
+    self.shadow = ShadowComponent(32, -20)
 end
 
 function Minotaur:update(dt)
