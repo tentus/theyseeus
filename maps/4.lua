@@ -362,7 +362,7 @@ return {
     },
     {
       type = "tilelayer",
-      name = "darken",
+      name = "decal",
       x = 0,
       y = 0,
       width = 64,
