@@ -24,7 +24,7 @@ function Explosion:init(x, y)
     self.particles = p
 end
 
-function Explosion:draw(x, y)
+function Explosion:draw()
     love.graphics.draw(self.particles)
 end
 
