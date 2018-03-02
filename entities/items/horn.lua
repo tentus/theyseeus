@@ -16,4 +16,8 @@ end
 function Horn:playerSensed()
     InventoryManager:collect(self.classname)
     self:kill()
+
+    if total == 1 then
+        Gamestate.push(DialogScene, "AboutHorn")
+    end
 end
