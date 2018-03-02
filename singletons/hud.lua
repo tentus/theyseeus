@@ -1,11 +1,11 @@
 HUD = {
     show = true,
-    hearing = love.graphics.newImage("assets/sprites/effects/hearing.png"),
-    icons = {
-        health = love.graphics.newImage("assets/sprites/hud/health_icon.png"),
-        damage = love.graphics.newImage("assets/sprites/hud/damage_icon.png"),
-        yarn   = love.graphics.newImage("assets/sprites/hud/yarn_icon.png"),
-        coin   = love.graphics.newImage("assets/sprites/hud/coin_icon.png"),
+    images = {
+        hearing = love.graphics.newImage("assets/sprites/hud/hearing.png"),
+        health  = love.graphics.newImage("assets/sprites/hud/health_icon.png"),
+        damage  = love.graphics.newImage("assets/sprites/hud/damage_icon.png"),
+        yarn    = love.graphics.newImage("assets/sprites/hud/yarn_icon.png"),
+        coin    = love.graphics.newImage("assets/sprites/hud/coin_icon.png"),
     },
 }
 
@@ -28,7 +28,7 @@ function HUD:draw()
                 local r = math.atan2(y2 - y, x2 - x)
 
                 love.graphics.setColor(255, 255, 255, math.min((512 / dist) * 128, 255))
-                love.graphics.draw(self.hearing, width / 2, height / 2, r, 1, 1, 0, 64)
+                love.graphics.draw(self.images.hearing, width / 2, height / 2, r, 1, 1, 0, 64)
             end
         end
         love.graphics.setColor(255, 255, 255)
@@ -36,14 +36,14 @@ function HUD:draw()
 
     -- health in top left
     for i=1, player.maxHealth do
-        local icon = ((player.health < i) and self.icons.damage or self.icons.health)
+        local icon = ((player.health < i) and self.images.damage or self.images.health)
         love.graphics.draw(icon, (i * 40) - 32, 8)
     end
 
     -- yarn and coins total in bottom left
-    love.graphics.draw(self.icons.yarn, 8, height - 40)
+    love.graphics.draw(self.images.yarn, 8, height - 40)
     love.graphics.print(' x ' .. InventoryManager:total(Yarn.classname), 40, height - 32)
 
-    love.graphics.draw(self.icons.coin, 8, height - 80)
+    love.graphics.draw(self.images.coin, 8, height - 80)
     love.graphics.print(' x ' .. InventoryManager:total(Coin.classname), 40, height - 64)
 end
