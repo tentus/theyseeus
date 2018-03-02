@@ -9,7 +9,7 @@ RegionManager = {
         Yarn = 10,
         Upgrade = 6,
         Map = 2,
-        Gem = 3,
+        Gem = 4,
         Horn = 1,
     },
 
@@ -65,6 +65,23 @@ function RegionManager:draw()
     local mapsFound = InventoryManager:total("Map")
     if mapsFound == 0 then return end
 
+    local function cellText(cell, gemsFound)
+        local text = cell.chosen
+
+        local list = {"Yarn", "Upgrade", "Map", "Horn"}
+        for i=1, math.min(gemsFound, #list) do
+            if cell[list[i]] then
+                text = text .. list[i]:sub(1,1)
+            end
+        end
+
+        if x == self.cursor.x and y == self.cursor.y then
+            text = '[' .. text .. ']'
+        end
+
+        return text
+    end
+
     local w, h = 56, 32
     local tr = love.graphics.getWidth() - ((self.width + 2) * w)
     local spacing = 8
@@ -73,24 +90,8 @@ function RegionManager:draw()
         for x=1, self.width do
             local cell = self.data[y][x]
             if cell.visited or mapsFound > 1 then
-                local text = cell.chosen
-                local opacity = 128
-
-                -- gems unlock more and more detail in the map
-                if gemsFound >= 1 and cell.Yarn then
-                    text = text .. "Y"
-                end
-                if gemsFound >= 2 and cell.Upgrade then
-                    text = text .. "U"
-                end
-                if gemsFound >= 3 and cell.Map then
-                    text = text .. "M"
-                end
-
-                if x == self.cursor.x and y == self.cursor.y then
-                    text = '[' .. text .. ']'
-                    opacity = 192
-                end
+                local text = cellText(cell, gemsFound)
+                local opacity = (x == self.cursor.x and y == self.cursor.y) and 192 or 128
 
                 love.graphics.setColor(0, (cell.visited and 96 or 0), 0, opacity)
                 love.graphics.rectangle('fill', (x * w) + tr, (y * h), w - spacing, h - spacing)
