@@ -4,6 +4,7 @@ HUD = {
         health    = true,
         inventory = true,
         hearing   = true,
+        map       = true,
         fps       = true,
     },
     images = {
@@ -46,6 +47,14 @@ function HUD:draw()
             local icon = ((player.health < i) and self.images.damage or self.images.health)
             love.graphics.draw(icon, ((i - 1) * spacing) + self.edge, self.edge)
         end
+    end
+
+    -- map in the top right
+    if self.show.map then
+        love.graphics.push()
+        love.graphics.translate(width - self.edge, self.edge)
+        RegionManager:draw()
+        love.graphics.pop()
     end
 
     -- yarn and coins total in bottom left

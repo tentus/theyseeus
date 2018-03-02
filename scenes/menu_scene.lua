@@ -84,6 +84,12 @@ MenuScene = {
                 end
             },
             {
+                "Toggle Map",
+                function()
+                    HUD:toggle("map")
+                end
+            },
+            {
                 "Toggle Health",
                 function()
                     HUD:toggle("health")

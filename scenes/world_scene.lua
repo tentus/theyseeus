@@ -6,7 +6,6 @@ WorldScene = {
         "Minotaurs", "Pickups", "Misc", "Player"
     },
     navPoints = {},      -- places the Minotaurs will wander to
-    showMap = false,
     transition = 0,
     transitionLength = 0.25,
     enteringFrom = "Start",
@@ -79,10 +78,6 @@ function WorldScene:draw()
 
     love.graphics.pop()
 
-    if self.showMap then
-        RegionManager:draw()
-    end
-
     WeatherManager:draw()
     DaylightManager:draw()
     HUD:draw()
@@ -92,7 +87,7 @@ end
 
 function WorldScene:keypressed(key)
     if key == "p" then
-        self.showMap = not self.showMap
+        HUD:toggle("map")
     end
 end
 

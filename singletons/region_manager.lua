@@ -75,29 +75,27 @@ function RegionManager:draw()
             end
         end
 
-        if x == self.cursor.x and y == self.cursor.y then
-            text = '[' .. text .. ']'
-        end
-
         return text
     end
 
     local w, h = 56, 32
-    local tr = love.graphics.getWidth() - ((self.width + 2) * w)
     local spacing = 8
+    local offset = ((self.width + 1) * w) - spacing
     local gemsFound = InventoryManager:total("Gem")
     for y=1, self.height do
+        local yPos = (y - 1) * h
         for x=1, self.width do
             local cell = self.data[y][x]
             if cell.visited or mapsFound > 1 then
+                local xPos = (x * w) - offset
                 local text = cellText(cell, gemsFound)
                 local opacity = (x == self.cursor.x and y == self.cursor.y) and 192 or 128
 
                 love.graphics.setColor(0, (cell.visited and 96 or 0), 0, opacity)
-                love.graphics.rectangle('fill', (x * w) + tr, (y * h), w - spacing, h - spacing)
+                love.graphics.rectangle('fill', xPos, yPos, w - spacing, h - spacing)
 
                 love.graphics.setColor(255, 255, 255)
-                love.graphics.printf(text, (x * w) + tr - (spacing / 2), (y * h) + (spacing / 2), w, "center")
+                love.graphics.printf(text, xPos - (spacing / 2), yPos + (spacing / 2), w, "center")
             end
         end
     end
