@@ -8,14 +8,14 @@ function InventoryManager:collect(thing)
     if not self.collected[thing] then
         self.collected[thing] = {}
     end
-    local key = self:key(RegionManager:coords())
+    local key = self:regionKey()
     self.collected[thing][key] = (self.collected[thing][key] or 0) + 1
     Logger:add(thing .. " Collected")
     return self:total(thing)
 end
 
-function InventoryManager:has(thing, regionX, regionY)
-    return self.collected[thing] and self.collected[thing][self:key(regionX, regionY)] == true
+function InventoryManager:has(thing)
+    return self.collected[thing] and (self.collected[thing][self:regionKey()] or 0) > 0
 end
 
 function InventoryManager:reset()
@@ -32,6 +32,7 @@ function InventoryManager:total(thing)
     return count
 end
 
-function InventoryManager:key(...)
-    return table.concat(arg, 'x')
+function InventoryManager:regionKey()
+    local c = RegionManager.cursor
+    return c.x .. 'x' .. c.y
 end

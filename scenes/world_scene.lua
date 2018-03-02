@@ -214,7 +214,7 @@ function WorldScene:spawnEntities()
             entType = "Pickups"
             obj = _G[object.type](object.x, object.y)
         elseif inventory[object.type] then
-            if RegionManager:currentCell()[object.type] and not InventoryManager:has(object.type, RegionManager:coords()) then
+            if RegionManager:currentCell()[object.type] and not InventoryManager:has(object.type) then
                 entType = "Pickups"
                 obj = _G[object.type](object.x, object.y)
             end
