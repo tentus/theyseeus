@@ -21,6 +21,7 @@ function Gem:update(dt)
 end
 
 function Gem:playerSensed(player)
+    WorldScene:addEnt("Pickups", RippleEffect(self.x, self.y, {128, 255, 255}))
     WorldScene:addEnt("Pickups", RippleEffect(self.x, self.y))
     local total = InventoryManager:collect(self.classname)
     self:kill()

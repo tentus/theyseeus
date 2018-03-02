@@ -8,7 +8,8 @@ RippleEffect = Class{
     image = love.graphics.newImage("assets/sprites/effects/ripple.png"),
 }
 
-function RippleEffect:init(x, y)
+function RippleEffect:init(x, y, rgb)
+    self.rgba = rgb or {255,255,255} -- alpha will get set each draw
     self.x = x
     self.y = y
     self.ox = self.image:getWidth() / 2
@@ -16,7 +17,8 @@ function RippleEffect:init(x, y)
 end
 
 function RippleEffect:draw()
-    love.graphics.setColor(255, 255, 255, (1 - self.scale) * 255)
+    self.rgba[4] = (1 - self.scale) * 255
+    love.graphics.setColor(self.rgba)
     love.graphics.draw(
         self.image,
         self.x, self.y,
