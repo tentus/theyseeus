@@ -1,4 +1,4 @@
-local sti = require "libraries.sti"
+local sti = require 'libraries.sti'
 
 WorldScene = {
     entered = false,
@@ -46,7 +46,7 @@ function WorldScene:update(dt)
 
     self:changeRegion()
 
-    Logger:add("Playtime", dt)
+    Logger:add('Playtime', dt)
 
     -- now that we're done with other updates, bring our your dead
     for _, entType in pairs(self.entityLayers) do

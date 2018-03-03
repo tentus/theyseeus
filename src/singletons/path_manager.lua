@@ -1,5 +1,5 @@
-local Grid       = require "libraries.jumper.grid"
-local Pathfinder = require "libraries.jumper.pathfinder"
+local Grid       = require 'libraries.jumper.grid'
+local Pathfinder = require 'libraries.jumper.pathfinder'
 
 PathManager = Class{
     tilewidth = 0,

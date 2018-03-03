@@ -1,7 +1,7 @@
-Class       = require "libraries.hump.class"
-Gamestate   = require "libraries.hump.gamestate"
-lovebird    = require "libraries.lovebird"
-anim8       = require "libraries.animation.anim8"
+Class       = require 'libraries.hump.class'
+Gamestate   = require 'libraries.hump.gamestate'
+lovebird    = require 'libraries.lovebird'
+anim8       = require 'libraries.animation.anim8'
 
 function love.load()
     local function requireDir(dir)
