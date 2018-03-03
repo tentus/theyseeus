@@ -202,11 +202,11 @@ function WorldScene:spawnEntities()
 
     for _, object in pairs(self.map.objects) do
         -- we'll use npc spawn points as well as explicit NavPoints to make the npcs wander
-        if object.type == 'NPC' or object.type == 'NavPoint'  then
+        if object.type == NPC.classname or object.type == NavPoint.classname  then
             table.insert(self.navPoints, NavPoint(snapToGrid(object)))
         end
 
-        if object.type == 'NPC' then
+        if object.type == NPC.classname then
             -- ramp up the difficulty by spawning more minotaurs as we find more yarn
             if yarn >= tonumber(object.name) then
                 local x, y = snapToGrid(object)
