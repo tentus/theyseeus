@@ -1,12 +1,12 @@
 -- intended to a child of other entities
-Explosion = Class{
+ExplosionEffect = Class{
     __includes = {Killable},
     classname = 'Explosion',
     death_audio = false,
     image = love.graphics.newImage('assets/sprites/effects/cloud.png'),
 }
 
-function Explosion:init(x, y)
+function ExplosionEffect:init(x, y)
     local p = love.graphics.newParticleSystem(self.image)
     p:setPosition(x, y)
     p:setEmissionRate(500)
@@ -24,11 +24,11 @@ function Explosion:init(x, y)
     self.particles = p
 end
 
-function Explosion:draw()
+function ExplosionEffect:draw()
     love.graphics.draw(self.particles)
 end
 
-function Explosion:update(dt)
+function ExplosionEffect:update(dt)
     self.particles:update(dt)
     if self.particles:getCount() == 0 then
         self:kill()
