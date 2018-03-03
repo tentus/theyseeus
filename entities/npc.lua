@@ -109,5 +109,5 @@ function NPC:kill()
     -- we're counting on the NPCs to have been spawned in the layer matching their type
     WorldScene:addEnt("Minotaurs", Explosion(self.body:getPosition()))
     Killable.kill(self)
-    Logger:add("NPCs killed")
+    Logger:add('NPCs killed')
 end

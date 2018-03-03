@@ -25,5 +25,5 @@ end
 
 function Sign:playerContact(other)
     Gamestate.push(DialogScene, self.dialog)
-    Logger:add("Signs Read")
+    Logger:add('Signs Read')
 end

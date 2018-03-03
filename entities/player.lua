@@ -49,10 +49,10 @@ end
 
 function Player:damage()
     Damagable.damage(self)
-    Logger:add("Damage taken")
+    Logger:add('Damage taken')
 end
 
 function Player:kill()
     Gamestate.push(DeathScene)
-    Logger:add("Deaths")
+    Logger:add('Deaths')
 end

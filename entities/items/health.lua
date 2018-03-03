@@ -17,5 +17,5 @@ end
 function Health:playerSensed(player)
     player:heal()
     self:kill()
-    Logger:add("Health Collected")
+    Logger:add('Health Collected')
 end
