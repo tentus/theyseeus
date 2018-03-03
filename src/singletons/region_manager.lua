@@ -68,7 +68,7 @@ function RegionManager:draw()
     local function cellText(cell, gemsFound)
         local text = cell.chosen
 
-        local list = {'Yarn', 'Upgrade', 'Map', 'Horn'}
+        local list = {Yarn.classname, Upgrade.classname, Map.classname, Horn.classname}
         for i=1, math.min(gemsFound, #list) do
             if cell[list[i]] then
                 text = text .. list[i]:sub(1,1)
