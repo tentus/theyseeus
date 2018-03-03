@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 43,
+  nextobjectid = 47,
   backgroundcolor = { 233, 185, 110 },
   properties = {},
   tilesets = {
@@ -787,6 +787,40 @@ return {
           height = 0,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 44,
+          name = "Teleport",
+          type = "Teleport",
+          shape = "polyline",
+          x = 2924.24,
+          y = 806.061,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          polyline = {
+            { x = -12, y = -9 },
+            { x = -1738.33, y = 123.909 }
+          },
+          properties = {}
+        },
+        {
+          id = 46,
+          name = "Teleport",
+          type = "Teleport",
+          shape = "polyline",
+          x = 2940,
+          y = 824,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          polyline = {
+            { x = -1752, y = -21 },
+            { x = -30.33, y = 103.909 }
+          },
           properties = {}
         }
       }
