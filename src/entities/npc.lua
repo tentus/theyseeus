@@ -1,7 +1,8 @@
 NPC = Class{
     __includes = {Minotaur, Damagable, Killable},
     classname = 'NPC',
-    force = 4000,
+    bravado = 0,    --range from 1 to 1000
+    force = 4000,   -- will have up to 1000 added on init
     goal = nil,
     angry = false,
     hearing = {},
@@ -13,6 +14,9 @@ function NPC:init(world, x, y)
 
     -- make some NPCs faster than others, to make chases more interesting
     self.force = self.force + love.math.random(1, 1000)
+
+    -- every NPC has a "bravado" value, that is used for tie-breaking mutual attacks
+    self.bravado = love.math.random(1, 1000)
 end
 
 function NPC:update(dt)
@@ -100,8 +104,15 @@ function NPC:setHearing(radius)
 end
 
 function NPC:beginContact(other)
-    if other.damage then
+    -- when two NPCs attack each other, we compare their bravado. if they happen to be tied, then they both die.
+    if other.damage and (other.bravado or 0) <= self.bravado then
         other:damage()
+
+        -- if the other guy is ko'd, then let's calm down and wander off
+        if other.health < 1 then
+            self.angry = false
+            self:pickNewGoal()
+        end
     end
 end
 
