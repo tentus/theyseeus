@@ -1,9 +1,9 @@
 Gem = Class{
     __includes = {Killable, Sensable},
     classname = 'Gem',
-    sprite = SpriteComponent("assets/sprites/items/gem.png"),
+    sprite = SpriteComponent('assets/sprites/items/gem.png'),
     glow = GlowComponent(),
-    death_audio = "assets/audio/collect.ogg",
+    death_audio = 'assets/audio/collect.ogg',
 }
 
 function Gem:init(x, y)

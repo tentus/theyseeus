@@ -5,7 +5,7 @@ RippleEffect = Class{
 
     scale = 0,      -- 0 to 1
     duration = 0.5,   -- in seconds
-    image = love.graphics.newImage("assets/sprites/effects/ripple.png"),
+    image = love.graphics.newImage('assets/sprites/effects/ripple.png'),
 }
 
 function RippleEffect:init(x, y, rgb)

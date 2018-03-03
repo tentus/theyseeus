@@ -1,6 +1,6 @@
 -- intended to a child of other entities
 ShadowComponent = Class{
-    image = love.graphics.newImage("assets/sprites/effects/shadow.png"),
+    image = love.graphics.newImage('assets/sprites/effects/shadow.png'),
     xScale = 1,
     yScale = 0.3,
 }

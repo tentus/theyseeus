@@ -1,6 +1,6 @@
 CreditsScene = {
     speed = 100,
-    logo = SpriteComponent("assets/logos/theyseeus_logo.png"),
+    logo = SpriteComponent('assets/logos/theyseeus_logo.png'),
     text = [[
 
 Colin Johnson

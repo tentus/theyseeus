@@ -1,9 +1,9 @@
 Yarn = Class{
     __includes = {Killable, Sensable},
     classname = 'Yarn',
-    sprite = SpriteComponent("assets/sprites/items/yarn.png"),
+    sprite = SpriteComponent('assets/sprites/items/yarn.png'),
     glow = GlowComponent(),
-    death_audio = "assets/audio/collect.ogg",
+    death_audio = 'assets/audio/collect.ogg',
 }
 
 function Yarn:init(x, y)

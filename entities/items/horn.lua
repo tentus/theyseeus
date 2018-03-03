@@ -1,8 +1,8 @@
 Horn = Class{
     __includes = {Killable, Sensable},
     classname = 'Horn',
-    sprite = SpriteComponent("assets/sprites/items/horn.png"),
-    death_audio = "assets/audio/collect.ogg",
+    sprite = SpriteComponent('assets/sprites/items/horn.png'),
+    death_audio = 'assets/audio/collect.ogg',
 }
 
 function Horn:init(x, y)

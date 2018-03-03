@@ -5,9 +5,9 @@ Damagable = Class{
         length = 1,
     },
     damage_audio = {
-        "assets/audio/damage1.ogg",
-        "assets/audio/damage2.ogg",
-        "assets/audio/damage3.ogg",
+        'assets/audio/damage1.ogg',
+        'assets/audio/damage2.ogg',
+        'assets/audio/damage3.ogg',
     }
 }
 

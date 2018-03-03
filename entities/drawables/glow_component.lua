@@ -2,7 +2,7 @@
 GlowComponent = Class{
     rotation = 0,
     spinrate = 1,
-    image = love.graphics.newImage("assets/sprites/effects/glow.png"),
+    image = love.graphics.newImage('assets/sprites/effects/glow.png'),
 }
 
 function GlowComponent:init()

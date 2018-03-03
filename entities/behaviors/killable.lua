@@ -1,6 +1,6 @@
 Killable = Class{
     dead = false,
-    death_audio = "assets/audio/die.ogg",
+    death_audio = 'assets/audio/die.ogg',
 }
 
 function Killable:kill()

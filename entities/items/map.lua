@@ -1,9 +1,9 @@
 Map = Class{
     __includes = {Killable, Sensable},
     classname = 'Map',
-    sprite = SpriteComponent("assets/sprites/items/map.png"),
+    sprite = SpriteComponent('assets/sprites/items/map.png'),
     glow = GlowComponent(),
-    death_audio = "assets/audio/collect.ogg",
+    death_audio = 'assets/audio/collect.ogg',
 }
 
 function Map:init(x, y)

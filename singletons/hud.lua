@@ -8,11 +8,11 @@ HUD = {
         fps       = true,
     },
     images = {
-        hearing = love.graphics.newImage("assets/sprites/hud/hearing.png"),
-        health  = love.graphics.newImage("assets/sprites/hud/health_icon.png"),
-        damage  = love.graphics.newImage("assets/sprites/hud/damage_icon.png"),
-        yarn    = love.graphics.newImage("assets/sprites/hud/yarn_icon.png"),
-        coin    = love.graphics.newImage("assets/sprites/hud/coin_icon.png"),
+        hearing = love.graphics.newImage('assets/sprites/hud/hearing.png'),
+        health  = love.graphics.newImage('assets/sprites/hud/health_icon.png'),
+        damage  = love.graphics.newImage('assets/sprites/hud/damage_icon.png'),
+        yarn    = love.graphics.newImage('assets/sprites/hud/yarn_icon.png'),
+        coin    = love.graphics.newImage('assets/sprites/hud/coin_icon.png'),
     },
 }
 

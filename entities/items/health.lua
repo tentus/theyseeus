@@ -2,8 +2,8 @@ Health = Class{
     __includes = {Killable, Sensable},
     classname = 'Health',
     radius = 16,
-    sprite = SpriteComponent("assets/sprites/hud/health_icon.png"),
-    death_audio = "assets/audio/collect.ogg",
+    sprite = SpriteComponent('assets/sprites/hud/health_icon.png'),
+    death_audio = 'assets/audio/collect.ogg',
 }
 
 function Health:init(x, y)

@@ -3,7 +3,7 @@ WeatherManager = {
     effects = {
         rain = {
             chance = 10,
-            image = love.graphics.newImage("assets/sprites/effects/rain.png"),
+            image = love.graphics.newImage('assets/sprites/effects/rain.png'),
             init = function(rain)
                 rain.particles = love.graphics.newParticleSystem(rain.image)
                 rain.particles:setEmissionRate(200)

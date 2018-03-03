@@ -1,7 +1,7 @@
 Minotaur = Class{
     classname = 'Minotaur',
     radius = 31,
-    image = love.graphics.newImage("assets/sprites/minotaur.png"),
+    image = love.graphics.newImage('assets/sprites/minotaur.png'),
     offsets = {},
     attributes = {
         possible = {
@@ -66,9 +66,9 @@ function Minotaur:draw()
 
     -- todo: overlay attributes visually
     --[[
-    local label = "\n"
+    local label = '\n'
     for k, v in pairs(self.attributes.chosen) do
-        label = label .. "\n" .. k .. ": " .. v
+        label = label .. '\n' .. k .. ': ' .. v
     end
     love.graphics.printf(label, x - self.offsets.x, y - self.offsets.y, self.image:getWidth(), "center")
     ]]

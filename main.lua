@@ -19,7 +19,7 @@ function love.load()
     requireDir('scenes')
     requireDir('singletons')
 
-    AudioManager:stream("assets/audio/bgm.ogg")
+    AudioManager:stream('assets/audio/bgm.ogg')
     love.graphics.setFont(
         love.graphics.newFont(16)
     )
