@@ -1,7 +1,7 @@
 return {
     {
         function()
-            if InventoryManager:total("Yarn") >= 5 then
+            if InventoryManager:total(Yarn.classname) >= 5 then
                 DialogScene.cursor = 5
             else
                 DialogScene.cursor = 2

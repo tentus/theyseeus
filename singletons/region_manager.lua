@@ -62,7 +62,7 @@ function RegionManager:init()
 end
 
 function RegionManager:draw()
-    local mapsFound = InventoryManager:total("Map")
+    local mapsFound = InventoryManager:total(Map.classname)
     if mapsFound == 0 then return end
 
     local function cellText(cell, gemsFound)
@@ -81,7 +81,7 @@ function RegionManager:draw()
     local w, h = 56, 32
     local spacing = 8
     local offset = ((self.width + 1) * w) - spacing
-    local gemsFound = InventoryManager:total("Gem")
+    local gemsFound = InventoryManager:total(Gem.classname)
     for y=1, self.height do
         local yPos = (y - 1) * h
         for x=1, self.width do
