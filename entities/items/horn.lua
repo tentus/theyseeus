@@ -19,6 +19,6 @@ function Horn:playerSensed()
     self:kill()
 
     if total == 1 then
-        Gamestate.push(DialogScene, "AboutHorn")
+        Gamestate.push(DialogScene, 'AboutHorn')
     end
 end

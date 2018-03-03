@@ -26,6 +26,6 @@ function Map:playerSensed(player)
     self:kill()
 
     if total == 1 then
-        Gamestate.push(DialogScene, "AboutMap")
+        Gamestate.push(DialogScene, 'AboutMap')
     end
 end

@@ -26,6 +26,6 @@ function Gem:playerSensed(player)
     self:kill()
 
     if total == 1 then
-        Gamestate.push(DialogScene, "AboutGem")
+        Gamestate.push(DialogScene, 'AboutGem')
     end
 end
