@@ -32,6 +32,6 @@ end
 function RippleEffect:update(dt)
     self.scale = self.scale + (dt / self.duration)
     if self.scale > 1 then
-        Killable:kill(self)
+        self:kill()
     end
 end

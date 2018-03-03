@@ -31,6 +31,6 @@ end
 function Explosion:update(dt)
     self.particles:update(dt)
     if self.particles:getCount() == 0 then
-        Killable.kill(self)
+        self:kill()
     end
 end
