@@ -51,7 +51,7 @@ Thank you for playing!
 
 function CreditsScene:enter()
     self.y = love.graphics.getHeight() + (self.logo.y * 2)
-    local _, count = string.gsub(self.text, "\n", "")
+    local _, count = string.gsub(self.text, '\n', '')
     self.limit = count * -18
 end
 

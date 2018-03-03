@@ -7,7 +7,7 @@ function Interactable:playerContact(player)
 end
 
 function Interactable:beginContact(other)
-    if other.classname == "Player" then
+    if other.classname == 'Player' then
         self:playerContact(other)
     end
 end

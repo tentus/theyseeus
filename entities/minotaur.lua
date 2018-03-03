@@ -11,7 +11,7 @@ Minotaur = Class{
         },
         chosen = {},
     },
-    currentAnim = "walkDown",
+    currentAnim = 'walkDown',
     anims = {},
 }
 
@@ -48,12 +48,12 @@ function Minotaur:update(dt)
     -- only animate if we're moving
     if absX > threshold or absY > threshold then
         if absX > threshold and absX > absY then
-            self.currentAnim = "walkRight"
+            self.currentAnim = 'walkRight'
             self.anims[self.currentAnim].flippedH = (xVel < 0)
         elseif yVel > threshold then
-            self.currentAnim = "walkDown"
+            self.currentAnim = 'walkDown'
         elseif yVel < -threshold then
-            self.currentAnim = "walkUp"
+            self.currentAnim = 'walkUp'
         end
         self.anims[self.currentAnim]:update(dt)
     end

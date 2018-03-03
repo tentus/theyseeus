@@ -3,12 +3,12 @@ local sti = require "libraries.sti"
 WorldScene = {
     entered = false,
     entityLayers = {
-        "Minotaurs", "Pickups", "Misc", "Player"
+        'Minotaurs', 'Pickups', 'Misc', 'Player'
     },
     navPoints = {},      -- places the Minotaurs will wander to
     transition = 0,
     transitionLength = 0.25,
-    enteringFrom = "Start",
+    enteringFrom = 'Start',
     -- background = BackgroundLayer,
     -- map = sti map,
     -- physics = physics world,
@@ -22,7 +22,7 @@ function WorldScene:init()
     love.physics.setMeter(64)
 
     -- special case for init
-    self:loadRegion("Start")
+    self:loadRegion('Start')
 end
 
 function WorldScene:update(dt)
@@ -86,8 +86,8 @@ function WorldScene:draw()
 end
 
 function WorldScene:keypressed(key)
-    if key == "p" then
-        HUD:toggle("map")
+    if key == 'p' then
+        HUD:toggle('map')
     end
 end
 
@@ -165,7 +165,7 @@ function WorldScene:loadRegion(enteringFrom)
     end
 
     -- since we persist the player outside the normal layers we have to alias it back in too
-    self.map.layers["Player"].ents = {
+    self.map.layers['Player'].ents = {
         self.player
     }
 
@@ -175,6 +175,7 @@ function WorldScene:loadRegion(enteringFrom)
     Fader:start(255, self.transitionLength)
 
     Logger:add("Transitions")
+    print(love.graphics.getStats().texturememory)
 end
 
 function WorldScene:spawnEntities()
@@ -200,27 +201,27 @@ function WorldScene:spawnEntities()
 
     for _, object in pairs(self.map.objects) do
         -- we'll use npc spawn points as well as explicit NavPoints to make the npcs wander
-        if object.type == "NPC" or object.type == "NavPoint"  then
+        if object.type == 'NPC' or object.type == 'NavPoint'  then
             table.insert(self.navPoints, NavPoint(snapToGrid(object)))
         end
 
         local obj, entType
-        if object.type == "NPC" then
+        if object.type == 'NPC' then
             local x, y = snapToGrid(object)
-            entType = "Minotaurs"
+            entType = 'Minotaurs'
             obj = NPC(self.physics, x, y)
-            Logger:add("NPCs Spawned")
+            Logger:add('NPCs Spawned')
         elseif pickups[object.type] then
-            entType = "Pickups"
+            entType = 'Pickups'
             obj = _G[object.type](object.x, object.y)
         elseif inventory[object.type] then
             if RegionManager:currentCell()[object.type] and not InventoryManager:has(object.type) then
-                entType = "Pickups"
+                entType = 'Pickups'
                 obj = _G[object.type](object.x, object.y)
             end
         elseif misc[object.type] then
             local x, y = snapToGrid(object)
-            entType = "Misc"
+            entType = 'Misc'
             obj = _G[object.type](self.physics, x, y, object.name)
         end
 
@@ -241,18 +242,18 @@ function WorldScene:changeRegion()
 
     if x < buffer then
         dx = -1
-        df = "East"
+        df = 'East'
     elseif x > (self.map.width * self.map.tilewidth) - buffer then
         dx = 1
-        df = "West"
+        df = 'West'
     end
 
     if y < buffer then
         dy = -1
-        df = "South"
+        df = 'South'
     elseif y > (self.map.height * self.map.tileheight) - buffer then
         dy = 1
-        df = "North"
+        df = 'North'
     end
 
     if df then

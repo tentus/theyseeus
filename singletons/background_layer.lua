@@ -22,7 +22,7 @@ end
 
 function BackgroundLayer:firstTile(map)
     for _, layer in pairs(map.layers) do
-        if layer.type == "tilelayer" then
+        if layer.type == 'tilelayer' then
             for y=1, map.height do
                 for x=1, map.width do
                     if layer.data[y][x] then return layer.data[y][x] end

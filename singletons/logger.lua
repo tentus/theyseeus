@@ -11,9 +11,9 @@ function Logger:add(event, value)
 end
 
 function Logger:print()
-    local str = ""
+    local str = ''
     for k, v in pairs(self.events) do
-        str = str .. k .. "  :  " .. math.floor(v) .. "\n\n"
+        str = str .. k .. '  :  ' .. math.floor(v) .. '\n\n'
     end
     return str
 end

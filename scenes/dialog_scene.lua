@@ -1,7 +1,7 @@
 DialogScene = {
     cursor = 1,
     dialog = {},
-    hint = "Press space to continue.  ",
+    hint = 'Press space to continue.  ',
     hintFont = love.graphics.newFont(10),
     height = 64,
 }
@@ -10,7 +10,7 @@ function DialogScene:enter(from, dialogFile)
     self.from = from -- record previous state
 
     self.cursor = 1
-    self.dialog = require("scenes.dialog." .. dialogFile)
+    self.dialog = require('scenes.dialog.' .. dialogFile)
 
     -- the first entry could be a dialog branch, so run it before we get start drawing
     -- if it's just text then no harm no foul

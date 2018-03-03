@@ -29,7 +29,7 @@ function PathManager:init(map)
 
     -- iterate through each collidable layer, and collectively set their tiles as non-walkable
     for _, layer in pairs(map.layers) do
-        if layer.type == "tilelayer" and layer.properties.collidable == true then
+        if layer.type == 'tilelayer' and layer.properties.collidable == true then
             -- sti organizes the data as rows
             for y, tiles in pairs(layer.data) do
                 for x, _ in pairs(tiles) do
@@ -69,7 +69,7 @@ end
 
 function PathManager:lastNodeInSight(path)
     -- if the first two nodes have the same x values, look for the first change in x values
-    local lookat = (path[1].x == path[2].x) and "x" or "y"
+    local lookat = (path[1].x == path[2].x) and 'x' or 'y'
     for node, count in path:iter() do
         if (node[lookat] ~= path[1][lookat]) then
             return path[count - 1]

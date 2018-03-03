@@ -1,7 +1,7 @@
 Sign = Class{
     __includes = {Interactable},
     classname = 'Sign',
-    dialog = "",
+    dialog = '',
 
     -- our body the same dimensions as a normal tile
     width = 64,
