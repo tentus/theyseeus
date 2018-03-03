@@ -222,6 +222,10 @@ function WorldScene:spawnEntities()
         elseif misc[object.type] then
             local x, y = snapToGrid(object)
             self:addEnt('Misc', _G[object.type](self.physics, x, y, object.name))
+        elseif object.type == Teleport.classname then
+            local x, y = snapToGrid(object.polyline[1])
+            local dx, dy = snapToGrid(object.polyline[2])
+            self:addEnt('Misc', Teleport(x, y, dx, dy))
         end
     end
 end
