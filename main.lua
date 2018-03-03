@@ -31,3 +31,13 @@ function love.update(dt)
     Fader:update(dt)
     Bindings:update()
 end
+
+function love.keypressed(key)
+    if key == 'f1' then
+        love.window.setFullscreen(not love.window.getFullscreen())
+    elseif key == 'f2' then
+        love.system.openURL("http://" .. lovebird.whitelist[1] .. ":" .. lovebird.port )
+    elseif key == 'f4' then
+        love.event.quit()
+    end
+end
