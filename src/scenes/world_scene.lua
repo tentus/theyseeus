@@ -175,7 +175,6 @@ function WorldScene:loadRegion(enteringFrom)
     Fader:start(255, self.transitionLength)
 
     Logger:add('Transitions')
-    print(love.graphics.getStats().texturememory)
 end
 
 function WorldScene:spawnEntities()
