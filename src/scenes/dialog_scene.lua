@@ -10,7 +10,7 @@ function DialogScene:enter(from, dialogFile)
     self.from = from -- record previous state
 
     self.cursor = 1
-    self.dialog = require('scenes.dialog.' .. dialogFile)
+    self.dialog = require('src.dialog.' .. dialogFile)
 
     -- the first entry could be a dialog branch, so run it before we get start drawing
     -- if it's just text then no harm no foul
