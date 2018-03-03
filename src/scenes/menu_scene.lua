@@ -1,45 +1,45 @@
 local back = {
-    "Back",
-    "root"
+    'Back',
+    'root'
 }
 
 MenuScene = {
-    level = "root",
+    level = 'root',
     cursor = 1,
     options = {
         root = {   -- top menu
             {
                 function()
-                    return WorldScene.entered and "Continue" or "Play"
+                    return WorldScene.entered and 'Continue' or 'Play'
                 end,
                 function()
                     MenuScene:playGame()
                 end
             },
             {
-                "HUD Settings",
-                "hud"
+                'HUD Settings',
+                'hud'
             },
             {
-                "Video Settings",
-                "settings"
+                'Video Settings',
+                'settings'
             },
             {
-                "Audio Settings",
-                "audio"
+                'Audio Settings',
+                'audio'
             },
             {
-                "Stats",
-                "stats"
+                'Stats',
+                'stats'
             },
             {
-                "Credits",
+                'Credits',
                 function()
                     Gamestate.switch(CreditsScene)
                 end
             },
             {
-                "Quit",
+                'Quit',
                 function()
                     love.event.quit()
                 end
@@ -47,59 +47,59 @@ MenuScene = {
         },
         settings = {
             {
-                "Fullscreen",
+                'Fullscreen',
                 function()
                     love.window.setFullscreen(not love.window.getFullscreen())
                 end
             },
             {
-                "VSYNC",
+                'VSYNC',
                 function()
-                    MenuScene:setWindowFlag("vsync")
+                    MenuScene:setWindowFlag('vsync')
                 end
             },
             {
-                "Window Border",
+                'Window Border',
                 function()
-                    MenuScene:setWindowFlag("borderless")
+                    MenuScene:setWindowFlag('borderless')
                 end
             },
             back
         },
         hud = {
             {
-                "Toggle FPS",
+                'Toggle FPS',
                 function()
-                    HUD:toggle("fps")
+                    HUD:toggle('fps')
                 end
             },
             {
-                "Toggle Map",
+                'Toggle Map',
                 function()
-                    HUD:toggle("map")
+                    HUD:toggle('map')
                 end
             },
             {
-                "Toggle Health",
+                'Toggle Health',
                 function()
-                    HUD:toggle("health")
+                    HUD:toggle('health')
                 end
             },
             {
-                "Toggle Inventory",
+                'Toggle Inventory',
                 function()
-                    HUD:toggle("inventory")
+                    HUD:toggle('inventory')
                 end
             },
             {
-                "Toggle Hearing",
+                'Toggle Hearing',
                 function()
-                    HUD:toggle("hearing")
+                    HUD:toggle('hearing')
                 end
             },
             {
                 function()
-                    return "Edge Distance: " .. HUD.edge
+                    return 'Edge Distance: ' .. HUD.edge
                 end,
                 function()
                     HUD:changeEdge(10)
@@ -110,26 +110,26 @@ MenuScene = {
         audio = {
             {
                 function()
-                    return "Master Volume: " .. AudioManager:getVolume("master")
+                    return 'Master Volume: ' .. AudioManager:getVolume('master')
                 end,
                 function()
-                    AudioManager:changeVolume("master", -.1)
+                    AudioManager:changeVolume('master', -.1)
                 end
             },
             {
                 function()
-                    return "Music Volume: " .. AudioManager:getVolume("music")
+                    return 'Music Volume: ' .. AudioManager:getVolume('music')
                 end,
                 function()
-                    AudioManager:changeVolume("music", -.1)
+                    AudioManager:changeVolume('music', -.1)
                 end
             },
             {
                 function()
-                    return "SFX Volume: " .. AudioManager:getVolume("sfx")
+                    return 'SFX Volume: ' .. AudioManager:getVolume('sfx')
                 end,
                 function()
-                    AudioManager:changeVolume("sfx", -.1)
+                    AudioManager:changeVolume('sfx', -.1)
                 end
             },
             back
@@ -139,7 +139,7 @@ MenuScene = {
                 function()
                     return Logger:print()
                 end,
-                "root"
+                'root'
             },
         },
     },
@@ -184,8 +184,8 @@ function MenuScene:update(dt)
             self:goTo(action)
         end
     elseif Bindings:pressed('cancel') then
-        if self.level ~= "root" then
-            self:goTo("root")
+        if self.level ~= 'root' then
+            self:goTo('root')
         elseif WorldScene.entered then
             self:playGame()
         end

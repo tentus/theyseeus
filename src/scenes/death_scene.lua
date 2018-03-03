@@ -27,7 +27,7 @@ end
 function DeathScene:keypressed()
     RegionManager:warpHome()
     WorldScene.player.health = WorldScene.player.maxHealth
-    WorldScene:loadRegion("Start")
+    WorldScene:loadRegion('Start')
     Gamestate.pop()
 end
 

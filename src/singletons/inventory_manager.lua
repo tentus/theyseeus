@@ -10,7 +10,7 @@ function InventoryManager:collect(thing)
     end
     local key = self:regionKey()
     self.collected[thing][key] = (self.collected[thing][key] or 0) + 1
-    Logger:add(thing .. " Collected")
+    Logger:add(thing .. ' Collected')
     return self:total(thing)
 end
 
