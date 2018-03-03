@@ -43,7 +43,7 @@ end
 function DialogScene:getCurrent()
     -- get the current text, after executing if needed
     local current = self.dialog[self.cursor][1]
-    if type(current) == "function" then
+    if type(current) == 'function' then
         return current()
     end
     return current

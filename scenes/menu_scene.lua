@@ -178,7 +178,7 @@ function MenuScene:update(dt)
         end
     elseif Bindings:pressed('action') then
         local action = self.options[self.level][self.cursor][2]
-        if type(action) == "function" then
+        if type(action) == 'function' then
             action()
         else
             self:goTo(action)
@@ -194,7 +194,7 @@ end
 
 -- if the value passed is a function, return its return value
 function MenuScene:value(value)
-    if type(value) == "function" then
+    if type(value) == 'function' then
         value = value()
     end
     return value
