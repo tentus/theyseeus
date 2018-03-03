@@ -1,5 +1,5 @@
 -- no autoloader in lua :'(
-require 'entities.sign'
+require 'src.entities.sign'
 
 Kid = Class{
     __includes = Sign,      -- sorry, kid
