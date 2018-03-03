@@ -21,7 +21,7 @@ function Map:update(dt)
 end
 
 function Map:playerSensed(player)
-    WorldScene:addEnt("Pickups", RippleEffect(self.x, self.y, {255, 128, 128}))
+    WorldScene:addEnt('Pickups', RippleEffect(self.x, self.y, {255, 128, 128}))
     local total = InventoryManager:collect(self.classname)
     self:kill()
 

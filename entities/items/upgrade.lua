@@ -21,7 +21,7 @@ function Upgrade:update(dt)
 end
 
 function Upgrade:playerSensed(player)
-    WorldScene:addEnt("Pickups", RippleEffect(self.x, self.y, {128, 255, 128}))
+    WorldScene:addEnt('Pickups', RippleEffect(self.x, self.y, {128, 255, 128}))
     InventoryManager:collect(self.classname)
     player:incrementHealth()
     self:kill()

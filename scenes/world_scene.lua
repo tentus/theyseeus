@@ -205,28 +205,19 @@ function WorldScene:spawnEntities()
             table.insert(self.navPoints, NavPoint(snapToGrid(object)))
         end
 
-        local obj, entType
         if object.type == 'NPC' then
             local x, y = snapToGrid(object)
-            entType = 'Minotaurs'
-            obj = NPC(self.physics, x, y)
+            self:addEnt('Minotaurs', NPC(self.physics, x, y))
             Logger:add('NPCs Spawned')
         elseif pickups[object.type] then
-            entType = 'Pickups'
-            obj = _G[object.type](object.x, object.y)
+            self:addEnt('Pickups', _G[object.type](object.x, object.y))
         elseif inventory[object.type] then
             if RegionManager:currentCell()[object.type] and not InventoryManager:has(object.type) then
-                entType = 'Pickups'
-                obj = _G[object.type](object.x, object.y)
+                self:addEnt('Pickups', _G[object.type](object.x, object.y))
             end
         elseif misc[object.type] then
             local x, y = snapToGrid(object)
-            entType = 'Misc'
-            obj = _G[object.type](self.physics, x, y, object.name)
-        end
-
-        if obj then
-            self:addEnt(entType, obj)
+            self:addEnt('Misc', _G[object.type](self.physics, x, y, object.name))
         end
     end
 end
