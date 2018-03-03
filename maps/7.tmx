@@ -299,19 +299,19 @@
   <object id="9" name="1" type="NPC" x="2131.33" y="2835.7">
    <point/>
   </object>
-  <object id="10" name="2" type="NPC" x="2336.73" y="907.45">
+  <object id="10" name="1" type="NPC" x="2336.73" y="907.45">
    <point/>
   </object>
-  <object id="11" name="3" type="NPC" x="3236.61" y="1349.94">
+  <object id="11" name="2" type="NPC" x="3236.61" y="1349.94">
    <point/>
   </object>
-  <object id="12" name="4" type="NPC" x="960" y="1364">
+  <object id="12" name="2" type="NPC" x="960" y="1364">
    <point/>
   </object>
-  <object id="13" name="5" type="NPC" x="1311" y="2289">
+  <object id="13" name="0" type="NPC" x="1311" y="2289">
    <point/>
   </object>
-  <object id="19" name="6" type="NPC" x="2660.36" y="3215.39">
+  <object id="19" name="0" type="NPC" x="2660.36" y="3215.39">
    <point/>
   </object>
  </objectgroup>

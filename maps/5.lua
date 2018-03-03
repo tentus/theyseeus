@@ -8,7 +8,7 @@ return {
   height = 48,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 32,
+  nextobjectid = 35,
   backgroundcolor = { 245, 121, 0 },
   properties = {},
   tilesets = {
@@ -714,7 +714,21 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 32,
+          name = "Roadsign",
+          type = "Sign",
+          shape = "point",
+          x = 1606.67,
+          y = 2454.67,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "objectgroup",
@@ -731,8 +745,8 @@ return {
           name = "NavPoint",
           type = "NavPoint",
           shape = "point",
-          x = 1220,
-          y = 2020,
+          x = 1307.88,
+          y = 1774.55,
           width = 0,
           height = 0,
           rotation = 0,
@@ -805,7 +819,7 @@ return {
       objects = {
         {
           id = 26,
-          name = "6",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 3732,
@@ -818,7 +832,7 @@ return {
         },
         {
           id = 27,
-          name = "5",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 4476,
@@ -831,7 +845,7 @@ return {
         },
         {
           id = 28,
-          name = "4",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 4524,
@@ -844,7 +858,7 @@ return {
         },
         {
           id = 29,
-          name = "3",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 2752,
@@ -857,7 +871,7 @@ return {
         },
         {
           id = 30,
-          name = "2",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 2072,
@@ -870,11 +884,37 @@ return {
         },
         {
           id = 31,
-          name = "1",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 1304,
           y = 756,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "1",
+          type = "NPC",
+          shape = "point",
+          x = 1012.12,
+          y = 2309.09,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 34,
+          name = "0",
+          type = "NPC",
+          shape = "point",
+          x = 2327.27,
+          y = 2396.97,
           width = 0,
           height = 0,
           rotation = 0,

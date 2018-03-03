@@ -907,7 +907,7 @@ return {
       objects = {
         {
           id = 9,
-          name = "1",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 831.333,
@@ -920,7 +920,7 @@ return {
         },
         {
           id = 10,
-          name = "2",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 3332.73,
@@ -933,7 +933,7 @@ return {
         },
         {
           id = 11,
-          name = "3",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 1288.61,
@@ -946,7 +946,7 @@ return {
         },
         {
           id = 12,
-          name = "4",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 1792,
@@ -959,7 +959,7 @@ return {
         },
         {
           id = 13,
-          name = "5",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 2515,
@@ -972,7 +972,7 @@ return {
         },
         {
           id = 19,
-          name = "6",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 3236.36,

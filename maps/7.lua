@@ -945,7 +945,7 @@ return {
         },
         {
           id = 10,
-          name = "2",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 2336.73,
@@ -958,7 +958,7 @@ return {
         },
         {
           id = 11,
-          name = "3",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 3236.61,
@@ -971,7 +971,7 @@ return {
         },
         {
           id = 12,
-          name = "4",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 960,
@@ -984,7 +984,7 @@ return {
         },
         {
           id = 13,
-          name = "5",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 1311,
@@ -997,7 +997,7 @@ return {
         },
         {
           id = 19,
-          name = "6",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 2660.36,

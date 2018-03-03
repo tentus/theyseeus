@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 36,
+  nextobjectid = 40,
   backgroundcolor = { 153, 136, 119 },
   properties = {},
   tilesets = {
@@ -845,8 +845,47 @@ return {
           name = "NavPoint",
           type = "NavPoint",
           shape = "point",
-          x = 1354.55,
-          y = 3424.24,
+          x = 712.126,
+          y = 2312.12,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 37,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 1363.64,
+          y = 3415.15,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 38,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 2942.42,
+          y = 3454.55,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 39,
+          name = "NavPoint",
+          type = "NavPoint",
+          shape = "point",
+          x = 3069.7,
+          y = 896.97,
           width = 0,
           height = 0,
           rotation = 0,
@@ -867,7 +906,7 @@ return {
       objects = {
         {
           id = 9,
-          name = "1",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 828.305,
@@ -879,8 +918,21 @@ return {
           properties = {}
         },
         {
+          id = 13,
+          name = "0",
+          type = "NPC",
+          shape = "point",
+          x = 2557.42,
+          y = 3020.39,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
           id = 10,
-          name = "2",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 2844.85,
@@ -893,7 +945,7 @@ return {
         },
         {
           id = 11,
-          name = "3",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 1142.55,
@@ -905,8 +957,21 @@ return {
           properties = {}
         },
         {
+          id = 20,
+          name = "0",
+          type = "NPC",
+          shape = "point",
+          x = 3242.42,
+          y = 1457.58,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
           id = 12,
-          name = "4",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 1449.58,
@@ -918,21 +983,8 @@ return {
           properties = {}
         },
         {
-          id = 13,
-          name = "5",
-          type = "NPC",
-          shape = "point",
-          x = 2557.42,
-          y = 3020.39,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 18,
-          name = "6",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 1460.61,
@@ -944,12 +996,12 @@ return {
           properties = {}
         },
         {
-          id = 20,
-          name = "7",
+          id = 36,
+          name = "0",
           type = "NPC",
           shape = "point",
-          x = 3242.42,
-          y = 1457.58,
+          x = 669.697,
+          y = 3424.24,
           width = 0,
           height = 0,
           rotation = 0,

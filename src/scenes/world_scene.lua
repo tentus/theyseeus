@@ -199,6 +199,8 @@ function WorldScene:spawnEntities()
         return snap(object.x, self.map.tilewidth), snap(object.y, self.map.tileheight)
     end
 
+    local yarn = InventoryManager:total(Yarn.classname)
+
     for _, object in pairs(self.map.objects) do
         -- we'll use npc spawn points as well as explicit NavPoints to make the npcs wander
         if object.type == 'NPC' or object.type == 'NavPoint'  then
@@ -206,9 +208,12 @@ function WorldScene:spawnEntities()
         end
 
         if object.type == 'NPC' then
-            local x, y = snapToGrid(object)
-            self:addEnt('Minotaurs', NPC(self.physics, x, y))
-            Logger:add('NPCs Spawned')
+            -- ramp up the difficulty by spawning more minotaurs as we find more yarn
+            if yarn >= tonumber(object.name) then
+                local x, y = snapToGrid(object)
+                self:addEnt('Minotaurs', NPC(self.physics, x, y))
+                Logger:add('NPCs Spawned')
+            end
         elseif pickups[object.type] then
             self:addEnt('Pickups', _G[object.type](object.x, object.y))
         elseif inventory[object.type] then

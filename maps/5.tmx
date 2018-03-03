@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="96" height="48" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#f57900" nextobjectid="32">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="96" height="48" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#f57900" nextobjectid="35">
  <tileset firstgid="1" source="sand_tileset.tsx"/>
  <tileset firstgid="17" source="object_tileset.tsx"/>
  <tileset firstgid="81" source="bg_tileset.tsx"/>
@@ -210,9 +210,13 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup name="Misc"/>
+ <objectgroup name="Misc">
+  <object id="32" name="Roadsign" type="Sign" x="1606.67" y="2454.67">
+   <point/>
+  </object>
+ </objectgroup>
  <objectgroup name="Nav">
-  <object id="8" name="NavPoint" type="NavPoint" x="1220" y="2020">
+  <object id="8" name="NavPoint" type="NavPoint" x="1307.88" y="1774.55">
    <point/>
   </object>
   <object id="9" name="NavPoint" type="NavPoint" x="1916" y="2100">
@@ -229,22 +233,28 @@
   </object>
  </objectgroup>
  <objectgroup name="Minotaurs">
-  <object id="26" name="6" type="NPC" x="3732" y="936">
+  <object id="26" name="2" type="NPC" x="3732" y="936">
    <point/>
   </object>
-  <object id="27" name="5" type="NPC" x="4476" y="1220">
+  <object id="27" name="1" type="NPC" x="4476" y="1220">
    <point/>
   </object>
-  <object id="28" name="4" type="NPC" x="4524" y="1928">
+  <object id="28" name="0" type="NPC" x="4524" y="1928">
    <point/>
   </object>
-  <object id="29" name="3" type="NPC" x="2752" y="1612">
+  <object id="29" name="2" type="NPC" x="2752" y="1612">
    <point/>
   </object>
-  <object id="30" name="2" type="NPC" x="2072" y="1100">
+  <object id="30" name="0" type="NPC" x="2072" y="1100">
    <point/>
   </object>
-  <object id="31" name="1" type="NPC" x="1304" y="756">
+  <object id="31" name="2" type="NPC" x="1304" y="756">
+   <point/>
+  </object>
+  <object id="33" name="1" type="NPC" x="1012.12" y="2309.09">
+   <point/>
+  </object>
+  <object id="34" name="0" type="NPC" x="2327.27" y="2396.97">
    <point/>
   </object>
  </objectgroup>

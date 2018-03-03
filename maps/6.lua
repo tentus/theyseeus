@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 43,
+  nextobjectid = 45,
   backgroundcolor = { 233, 185, 110 },
   properties = {},
   tilesets = {
@@ -965,8 +965,8 @@ return {
           name = "NavPoint",
           type = "NavPoint",
           shape = "point",
-          x = 3307.76,
-          y = 2812.97,
+          x = 2298.67,
+          y = 1840.24,
           width = 0,
           height = 0,
           rotation = 0,
@@ -987,7 +987,7 @@ return {
       objects = {
         {
           id = 9,
-          name = "1",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 927.333,
@@ -1000,7 +1000,7 @@ return {
         },
         {
           id = 10,
-          name = "2",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 2076.73,
@@ -1013,7 +1013,7 @@ return {
         },
         {
           id = 11,
-          name = "3",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 1672.61,
@@ -1026,7 +1026,7 @@ return {
         },
         {
           id = 12,
-          name = "4",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 3116,
@@ -1039,7 +1039,7 @@ return {
         },
         {
           id = 13,
-          name = "5",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 1483,
@@ -1052,11 +1052,37 @@ return {
         },
         {
           id = 19,
-          name = "6",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 2720.36,
           y = 1483.39,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 43,
+          name = "1",
+          type = "NPC",
+          shape = "point",
+          x = 739.394,
+          y = 1630.3,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 44,
+          name = "2",
+          type = "NPC",
+          shape = "point",
+          x = 3375.76,
+          y = 2948.48,
           width = 0,
           height = 0,
           rotation = 0,

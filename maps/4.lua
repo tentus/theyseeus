@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 40,
+  nextobjectid = 41,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -807,8 +807,8 @@ return {
           name = "NavPoint",
           type = "NavPoint",
           shape = "point",
-          x = 3003.03,
-          y = 2975.76,
+          x = 2871.03,
+          y = 2407.76,
           width = 0,
           height = 0,
           rotation = 0,
@@ -868,7 +868,7 @@ return {
       objects = {
         {
           id = 9,
-          name = "1",
+          name = "2",
           type = "NPC",
           shape = "point",
           x = 1207.09,
@@ -894,7 +894,7 @@ return {
         },
         {
           id = 11,
-          name = "3",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 766.788,
@@ -907,7 +907,7 @@ return {
         },
         {
           id = 12,
-          name = "4",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 1792,
@@ -920,7 +920,7 @@ return {
         },
         {
           id = 13,
-          name = "5",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 2127.12,
@@ -933,7 +933,7 @@ return {
         },
         {
           id = 15,
-          name = "6",
+          name = "1",
           type = "NPC",
           shape = "point",
           x = 3136.36,
@@ -946,11 +946,24 @@ return {
         },
         {
           id = 16,
-          name = "7",
+          name = "0",
           type = "NPC",
           shape = "point",
           x = 2360.61,
           y = 1339.39,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 40,
+          name = "2",
+          type = "NPC",
+          shape = "point",
+          x = 2976,
+          y = 2988,
           width = 0,
           height = 0,
           rotation = 0,

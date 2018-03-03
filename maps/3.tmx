@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#669966" nextobjectid="34">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#669966" nextobjectid="35">
  <tileset firstgid="1" source="bg_tileset.tsx"/>
  <tileset firstgid="65" source="object_tileset.tsx"/>
  <tileset firstgid="129" source="sand_tileset.tsx"/>
@@ -219,24 +219,27 @@
   <object id="31" name="NavPoint" type="NavPoint" x="3040" y="1254">
    <point/>
   </object>
-  <object id="32" name="NavPoint" type="NavPoint" x="2342" y="648">
+  <object id="32" name="NavPoint" type="NavPoint" x="2145.03" y="1014.67">
    <point/>
   </object>
  </objectgroup>
  <objectgroup name="Minotaurs">
-  <object id="9" name="1" type="NPC" x="1073.76" y="715.45">
+  <object id="9" name="0" type="NPC" x="1073.76" y="715.45">
    <point/>
   </object>
-  <object id="10" name="2" type="NPC" x="3028.85" y="2411.09">
+  <object id="10" name="0" type="NPC" x="3028.85" y="2411.09">
    <point/>
   </object>
-  <object id="11" name="3" type="NPC" x="1058.55" y="2375.27">
+  <object id="11" name="1" type="NPC" x="1058.55" y="2375.27">
    <point/>
   </object>
-  <object id="12" name="4" type="NPC" x="3113.58" y="805.64">
+  <object id="12" name="1" type="NPC" x="3113.58" y="805.64">
    <point/>
   </object>
-  <object id="13" name="5" type="NPC" x="2043.42" y="1532.39">
+  <object id="13" name="2" type="NPC" x="2043.42" y="1532.39">
+   <point/>
+  </object>
+  <object id="34" name="2" type="NPC" x="2321.21" y="669.697">
    <point/>
   </object>
  </objectgroup>
