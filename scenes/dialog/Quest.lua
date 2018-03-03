@@ -9,17 +9,17 @@ return {
         end
     },
     {
-        "Oh! You're finally awake. Those guys really did a number on you, huh?",
+        'Oh! You\'re finally awake. Those guys really did a number on you, huh?',
     },
     {
-        "... Look, I know you're angry, but we don't have to fight. We could always leave.",
+        '... Look, I get it, but we can\'t fight these guys. We need to leave.',
     },
     {
-        "I'm not saying we have to, but if you could find 5 yarn then I think we could escape this place.",
+        'If you can find 5 yarn then I think we can escape the maze.',
         function() Gamestate.pop() end
     },
     {
-        "Wow! You got them!",
+        'Wow! You got them!',
         function()
             InventoryManager:reset()
             Player:kill()

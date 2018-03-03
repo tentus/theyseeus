@@ -1,8 +1,8 @@
 return {
     {
-        "You have a limited amount of health, which is indicated in the top left.",
+        'You have a limited amount of health, which is indicated in the top left.',
     },
     {
-        "If you run out of health you're respawn in this area.",
+        'If you run out of health you will respawn in this area.',
     },
 }

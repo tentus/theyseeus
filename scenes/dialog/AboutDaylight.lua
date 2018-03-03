@@ -1,5 +1,5 @@
 return {
     {
-        "Tip: it's harder to see at night!",
+        'Tip: it\'s harder to see at night!',
     },
 }
