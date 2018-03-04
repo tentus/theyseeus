@@ -175,6 +175,10 @@ function WorldScene:loadRegion(enteringFrom)
     Fader:start(255, self.transitionLength)
 
     Logger:add('Transitions')
+
+    -- now is a good time to clean up unreachable data.
+    -- without this, the texturememory can double over the course of a normal session
+    collectgarbage()
 end
 
 function WorldScene:spawnEntities()
