@@ -1,9 +1,10 @@
 Map = Class{
-    __includes = {Killable, Sensable},
+    __includes = {Killable, Rippleable, Sensable},
     classname = 'Map',
     sprite = SpriteComponent('assets/sprites/items/map.png'),
     glow = GlowComponent(),
     death_audio = 'assets/audio/collect.ogg',
+    rippleColor = {255, 128, 128},
 }
 
 function Map:init(x, y)
@@ -21,7 +22,7 @@ function Map:update(dt)
 end
 
 function Map:playerSensed(player)
-    WorldScene:addEnt('Pickups', RippleEffect(self.x, self.y, {255, 128, 128}))
+    self:addRipple()
     local total = InventoryManager:collect(self.classname)
     self:kill()
 

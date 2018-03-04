@@ -1,9 +1,10 @@
 Gem = Class{
-    __includes = {Killable, Sensable},
+    __includes = {Killable, Rippleable, Sensable},
     classname = 'Gem',
     sprite = SpriteComponent('assets/sprites/items/gem.png'),
     glow = GlowComponent(),
     death_audio = 'assets/audio/collect.ogg',
+    rippleColor = {128, 255, 255},
 }
 
 function Gem:init(x, y)
@@ -21,7 +22,7 @@ function Gem:update(dt)
 end
 
 function Gem:playerSensed(player)
-    WorldScene:addEnt('Pickups', RippleEffect(self.x, self.y, {128, 255, 255}))
+    self:addRipple()
     local total = InventoryManager:collect(self.classname)
     self:kill()
 

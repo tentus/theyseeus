@@ -1,9 +1,10 @@
 Upgrade = Class{
-    __includes = {Killable, Sensable},
+    __includes = {Killable, Rippleable, Sensable},
     classname = 'Upgrade',
     sprite = SpriteComponent('assets/sprites/items/upgrade.png'),
     glow = GlowComponent(),
     death_audio = 'assets/audio/collect.ogg',
+    rippleColor = {128, 255, 128},
 }
 
 function Upgrade:init(x, y)
@@ -21,7 +22,7 @@ function Upgrade:update(dt)
 end
 
 function Upgrade:playerSensed(player)
-    WorldScene:addEnt('Pickups', RippleEffect(self.x, self.y, {128, 255, 128}))
+    self:addRipple()
     InventoryManager:collect(self.classname)
     player:incrementHealth()
     self:kill()

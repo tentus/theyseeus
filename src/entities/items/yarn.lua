@@ -1,9 +1,10 @@
 Yarn = Class{
-    __includes = {Killable, Sensable},
+    __includes = {Killable, Rippleable, Sensable},
     classname = 'Yarn',
     sprite = SpriteComponent('assets/sprites/items/yarn.png'),
     glow = GlowComponent(),
     death_audio = 'assets/audio/collect.ogg',
+    rippleColor = {128, 128, 255},
 }
 
 function Yarn:init(x, y)
@@ -21,7 +22,7 @@ function Yarn:update(dt)
 end
 
 function Yarn:playerSensed(player)
-    WorldScene:addEnt('Pickups', RippleEffect(self.x, self.y, {128, 128, 255}))
+    self:addRipple()
     InventoryManager:collect(self.classname)
     self:kill()
 end

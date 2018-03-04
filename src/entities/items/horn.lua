@@ -1,8 +1,9 @@
 Horn = Class{
-    __includes = {Killable, Sensable},
+    __includes = {Killable, RippleEffect, Sensable},
     classname = 'Horn',
     sprite = SpriteComponent('assets/sprites/items/horn.png'),
     death_audio = 'assets/audio/collect.ogg',
+    rippleColor = {255, 255, 128},
 }
 
 function Horn:init(x, y)
@@ -14,7 +15,7 @@ function Horn:draw()
 end
 
 function Horn:playerSensed()
-    WorldScene:addEnt('Pickups', RippleEffect(self.x, self.y, {255, 255, 128}))
+    self:addRipple()
     local total = InventoryManager:collect(self.classname)
     self:kill()
 
