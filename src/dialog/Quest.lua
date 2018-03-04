@@ -25,6 +25,7 @@ return {
         function()
             WorldScene:init()
             InventoryManager.collected  = {}
+            Gamestate.pop()
             Gamestate.switch(CreditsScene)
         end
     },

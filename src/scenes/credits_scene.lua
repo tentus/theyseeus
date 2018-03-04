@@ -73,5 +73,5 @@ function CreditsScene:keypressed()
 end
 
 function CreditsScene:finish()
-    Gamestate.switch(MenuScene)
+    Gamestate.pop()
 end

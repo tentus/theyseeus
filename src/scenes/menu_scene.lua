@@ -35,7 +35,7 @@ MenuScene = {
             {
                 'Credits',
                 function()
-                    Gamestate.switch(CreditsScene)
+                    Gamestate.push(CreditsScene)
                 end
             },
             {
@@ -206,7 +206,7 @@ function MenuScene:goTo(level)
 end
 
 function MenuScene:playGame()
-    Gamestate.switch(WorldScene)
+    Gamestate.push(WorldScene)
 end
 
 function MenuScene:setWindowFlag(flag)

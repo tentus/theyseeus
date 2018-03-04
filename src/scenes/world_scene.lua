@@ -29,7 +29,7 @@ end
 
 function WorldScene:update(dt)
     if Bindings:pressed('cancel') then
-        Gamestate.switch(MenuScene)
+        Gamestate.pop()
     end
 
     if self.transition > 0 then
