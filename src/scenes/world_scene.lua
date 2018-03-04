@@ -28,7 +28,7 @@ function WorldScene:init()
 end
 
 function WorldScene:update(dt)
-    if Bindings:pressed('cancel') then
+    if Bindings:released('cancel') then
         Gamestate.pop()
     end
 

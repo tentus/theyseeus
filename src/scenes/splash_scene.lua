@@ -34,7 +34,7 @@ function SplashScene:draw()
     Fader:draw()
 end
 
-function SplashScene:keypressed()
+function SplashScene:keyreleased()
     self:proceed()
 end
 

@@ -68,7 +68,7 @@ function CreditsScene:draw()
     love.graphics.printf(self.text, 0, math.floor(self.y), width, "center")
 end
 
-function CreditsScene:keypressed()
+function CreditsScene:keyreleased()
     self.finish()
 end
 

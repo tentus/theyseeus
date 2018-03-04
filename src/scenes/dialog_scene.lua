@@ -36,7 +36,7 @@ function DialogScene:draw()
     love.graphics.printf(self:getCurrent(), 8, height - self.height + 4, width - 16, "left")
 end
 
-function DialogScene:keypressed()
+function DialogScene:keyreleased()
     self:proceed()
 end
 
