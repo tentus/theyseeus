@@ -8,6 +8,7 @@ Logger = {
 
 function Logger:add(event, value)
     self.events[event] = (self.events[event] or 0) + (value or 1)
+    return self.events[event]
 end
 
 function Logger:print()
