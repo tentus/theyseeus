@@ -218,6 +218,10 @@ function WorldScene:spawnEntities()
             if RegionManager:currentCell()[object.type] and not InventoryManager:has(object.type) then
                 self:addEnt('Pickups', _G[object.type](object.x, object.y))
             end
+        elseif object.type == Freeze.classname then
+            if love.math.random(Freeze.chance) == 1 then
+                self:addEnt('Pickups', Freeze(object.x, object.y))
+            end
         elseif misc[object.type] then
             local x, y = snapToGrid(object)
             self:addEnt('Misc', _G[object.type](self.physics, x, y, object.name))

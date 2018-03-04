@@ -5,6 +5,9 @@ Freeze = Class{
     sprite = SpriteComponent('assets/sprites/items/freeze.png'),
     glow = GlowComponent(),
     death_audio = 'assets/audio/collect.ogg',
+
+    -- the odds we'll spawn, eg 1 in 10 chance per region loaded
+    chance = 10,
 }
 
 function Freeze:init(x, y)
