@@ -1,7 +1,9 @@
+local yarn = 5
+
 return {
     {
         function()
-            if InventoryManager:total(Yarn.classname) >= 5 then
+            if InventoryManager:total(Yarn.classname) >= yarn then
                 DialogScene.cursor = 5
             else
                 DialogScene.cursor = 2
@@ -15,7 +17,7 @@ return {
         '... Look, I get it, but we can\'t fight these guys. We need to leave.',
     },
     {
-        'If you can find 5 yarn then I think we can escape the maze.',
+        'If you can find ' .. yarn .. ' yarn then I think we can escape the maze.',
         function() Gamestate.pop() end
     },
     {
