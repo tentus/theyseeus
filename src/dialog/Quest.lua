@@ -23,7 +23,7 @@ return {
     {
         'Wow! You got them!',
         function()
-            InventoryManager:reset()
+            InventoryManager.collected  = {}
             Player:kill()
             Gamestate.switch(CreditsScene)
         end

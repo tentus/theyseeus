@@ -18,12 +18,6 @@ function InventoryManager:has(thing)
     return self.collected[thing] and (self.collected[thing][self:regionKey()] or 0) > 0
 end
 
-function InventoryManager:reset()
-    for _, section in pairs(self.collected) do
-        section = {}
-    end
-end
-
 function InventoryManager:total(thing)
     local count = 0
     for _, v in pairs(self.collected[thing] or {}) do
