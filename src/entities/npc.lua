@@ -58,6 +58,15 @@ end
 function NPC:draw()
     Minotaur.draw(self)
 
+    -- bluish overlay if we're frozen
+    if self.frozen then
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(0, 128, 255)
+        Minotaur.draw(self)
+        love.graphics.setColor(255, 255, 255)
+        love.graphics.setBlendMode("alpha")
+    end
+
     if npc_debug then
         local x, y = self.body:getPosition()
         love.graphics.circle("line", x, y, self.radius)
