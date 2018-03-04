@@ -63,20 +63,15 @@ function WorldScene:update(dt)
 end
 
 function WorldScene:draw()
-    love.graphics.push()
-
     -- determine how much we need to translate around to see the player
     local width, height = love.window.getMode()
     local tx = (width / 2) - self.player.body:getX()
     local ty = (height / 2) - self.player.body:getY()
-    love.graphics.translate(tx, ty)
 
     self.background:draw(-tx, -ty)
 
     -- Draw map
     self.map:draw(tx, ty)
-
-    love.graphics.pop()
 
     WeatherManager:draw()
     DaylightManager:draw()

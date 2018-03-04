@@ -16,7 +16,7 @@ end
 
 function BackgroundLayer:draw(x, y)
     if self.batch then
-        love.graphics.draw(self.batch, x - (x % self.tilewidth), y - (y % self.tileheight))
+        love.graphics.draw(self.batch, -(x % self.tilewidth), -(y % self.tileheight))
     end
 end
 
