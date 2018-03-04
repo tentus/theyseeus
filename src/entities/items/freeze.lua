@@ -32,5 +32,8 @@ function Freeze:playerSensed(player)
     end
 
     self:kill()
-    Logger:add('Freeze Collected')
+    local total = Logger:add('Freeze Collected')
+    if total == 1 then
+        Gamestate.push(DialogScene, 'AboutFreeze')
+    end
 end
