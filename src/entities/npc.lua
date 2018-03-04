@@ -20,6 +20,9 @@ function NPC:init(world, x, y)
 end
 
 function NPC:update(dt)
+    -- if we've been frozen, then no updates for us
+    if self.frozen then return end
+
     Damagable.update(self, dt)
     Minotaur.update(self, dt)
 
