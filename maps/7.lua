@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 47,
+  nextobjectid = 48,
   backgroundcolor = { 233, 185, 110 },
   properties = {},
   tilesets = {
@@ -647,6 +647,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 47,
+          name = "Freeze",
+          type = "Freeze",
+          shape = "point",
+          x = 2080,
+          y = 2276,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -678,8 +691,8 @@ return {
           name = "Coin",
           type = "Coin",
           shape = "point",
-          x = 2083,
-          y = 2240,
+          x = 2077.67,
+          y = 2154.67,
           width = 0,
           height = 0,
           rotation = 0,

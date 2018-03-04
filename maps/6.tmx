@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="45">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="46">
  <tileset firstgid="1" source="bg_tileset.tsx"/>
  <tileset firstgid="65" source="object_tileset.tsx"/>
  <tileset firstgid="129" source="rock_tileset.tsx"/>
@@ -292,13 +292,16 @@
   <object id="29" name="Gem" type="Gem" x="1636.36" y="3301.21">
    <point/>
   </object>
-  <object id="17" name="Health" type="Health" x="2784" y="1586">
+  <object id="17" name="Health" type="Health" x="3099.15" y="1316.3">
    <point/>
   </object>
   <object id="38" name="Horn" type="Horn" x="2153.33" y="2257.33">
    <point/>
   </object>
   <object id="42" name="Health" type="Health" x="1384" y="2720">
+   <point/>
+  </object>
+  <object id="45" name="Freeze" type="Freeze" x="2787.88" y="1581.82">
    <point/>
   </object>
  </objectgroup>
