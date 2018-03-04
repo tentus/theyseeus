@@ -9,7 +9,10 @@ NPC = Class{
 }
 
 function NPC:init(world, x, y)
-    Minotaur.init(self, world, x, y)
+    Minotaur.init(self)
+
+    -- set up physics bodies
+    self:createBody(world, x, y)
     self:setHearing(192)
 
     -- make some NPCs faster than others, to make chases more interesting

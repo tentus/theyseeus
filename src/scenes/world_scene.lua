@@ -21,6 +21,8 @@ function WorldScene:init()
 
     love.physics.setMeter(64)
 
+    self.player = Player()
+
     -- special case for init
     self:loadRegion('Start')
 end
@@ -153,11 +155,7 @@ function WorldScene:loadRegion(enteringFrom)
 
     -- create our player instance based on the spawn points we just created
     local spawn = self:findSpawn(enteringFrom)
-    if not self.player then
-        self.player = Player(self.physics, spawn.x, spawn.y)
-    else
-        self.player:createBody(self.physics, spawn.x, spawn.y)
-    end
+    self.player:createBody(self.physics, spawn.x, spawn.y)
 
     -- since we persist the player outside the normal layers we have to alias it back in too
     self:namedLayer('Player').ents = {

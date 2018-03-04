@@ -15,7 +15,7 @@ Minotaur = Class{
     anims = {},
 }
 
-function Minotaur:init(world, x, y)
+function Minotaur:init()
     local gridsize = 128
     -- set offsets for image drawing, since it won't change
     self.offsets.x = gridsize * 0.5
@@ -32,9 +32,6 @@ function Minotaur:init(world, x, y)
     for k, v in pairs(self.attributes.possible) do
         self.attributes.chosen[k] = v[love.math.random(#v)]
     end
-
-    -- set up physics body
-    self:createBody(world, x, y)
 
     -- set the shadow here, so it is inherited properly
     self.shadow = ShadowComponent(32, -64)
