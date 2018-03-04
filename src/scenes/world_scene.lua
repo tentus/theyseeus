@@ -49,14 +49,14 @@ function WorldScene:update(dt)
     Logger:add('Playtime', dt)
 
     -- now that we're done with other updates, bring our your dead
-    for _, entType in pairs(self.entityLayers) do
-        local layer = self.map.layers[entType]
-        for k, ent in pairs(layer.ents) do
+    for _, entityLayer in pairs(self.entityLayers) do
+        local ents = self:namedLayer(entityLayer).ents
+        for k, ent in pairs(ents) do
             if ent.dead then
                 if ent.body then
                     ent.body:destroy()
                 end
-                table.remove(layer.ents, k)
+                table.remove(ents, k)
             end
         end
     end
@@ -130,8 +130,8 @@ function WorldScene:loadRegion(enteringFrom)
     self.map:box2d_init(self.physics)
 
     -- entities are rendered & updated by map layers they spawn from
-    for _, entType in pairs(self.entityLayers) do
-        local layer = self.map.layers[entType]
+    for _, entityLayer in pairs(self.entityLayers) do
+        local layer = self:namedLayer(entityLayer)
         layer.ents = {}
         function layer:update(dt)
             for k, ent in pairs(self.ents) do
@@ -160,7 +160,7 @@ function WorldScene:loadRegion(enteringFrom)
     end
 
     -- since we persist the player outside the normal layers we have to alias it back in too
-    self.map.layers['Player'].ents = {
+    self:namedLayer('Player').ents = {
         self.player
     }
 
@@ -230,7 +230,11 @@ function WorldScene:spawnEntities()
 end
 
 function WorldScene:addEnt(layer, ent)
-    table.insert(self.map.layers[layer].ents, ent)
+    table.insert(self:namedLayer(layer).ents, ent)
+end
+
+function WorldScene:namedLayer(layer)
+    return self.map.layers[layer]
 end
 
 function WorldScene:changeRegion()
