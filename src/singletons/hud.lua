@@ -1,3 +1,7 @@
+local function hudImage(file)
+    return love.graphics.newImage('assets/sprites/hud/' .. file)
+end
+
 HUD = {
     edge = 10,
     show = {
@@ -8,11 +12,11 @@ HUD = {
         fps       = true,
     },
     images = {
-        hearing = love.graphics.newImage('assets/sprites/hud/hearing.png'),
-        health  = love.graphics.newImage('assets/sprites/hud/health_icon.png'),
-        damage  = love.graphics.newImage('assets/sprites/hud/damage_icon.png'),
-        yarn    = love.graphics.newImage('assets/sprites/hud/yarn_icon.png'),
-        coin    = love.graphics.newImage('assets/sprites/hud/coin_icon.png'),
+        hearing = hudImage('hearing.png'),
+        health  = hudImage('health_icon.png'),
+        damage  = hudImage('damage_icon.png'),
+        yarn    = hudImage('yarn_icon.png'),
+        coin    = hudImage('coin_icon.png'),
     },
 }
 
