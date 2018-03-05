@@ -3,7 +3,7 @@ local sti = require 'libraries.sti'
 WorldScene = {
     entered = false,
     entityLayers = {
-        'Minotaurs', 'Pickups', 'Misc', 'Player'
+        'Minotaurs', 'Pickups', 'Misc',
     },
     navPoints = {},      -- places the Minotaurs will wander to
     transition = 0,
@@ -151,16 +151,16 @@ function WorldScene:loadRegion(enteringFrom)
         end
     end
 
-    self:spawnEntities()
-
     -- create our player instance based on the spawn points we just created
     local spawn = self:findSpawn(enteringFrom)
     self.player:createBody(self.physics, spawn.x, spawn.y)
 
     -- since we persist the player outside the normal layers we have to alias it back in too
-    self:namedLayer('Player').ents = {
+    self:namedLayer('Minotaurs').ents = {
         self.player
     }
+
+    self:spawnEntities()
 
     -- calculate what can be walked on and rig up a pathfinder
     self.pathManager = PathManager(self.map)
