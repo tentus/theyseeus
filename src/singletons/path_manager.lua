@@ -1,6 +1,19 @@
 local Grid       = require 'libraries.jumper.grid'
 local Pathfinder = require 'libraries.jumper.pathfinder'
 
+local lastNodeInSight = function(path)
+    -- if the first two nodes have the same x values, look for the first change in x values
+    local lookat = (path[1].x == path[2].x) and 'x' or 'y'
+    for node, count in path:iter() do
+        if (node[lookat] ~= path[1][lookat]) then
+            return path[count - 1]
+        end
+    end
+
+    -- the whole path is one long line, so go with the final node
+    return path[#path]
+end
+
 PathManager = Class{
     tilewidth = 0,
     tileheight = 0,
@@ -59,23 +72,10 @@ function PathManager:getNextPathNode(startX, startY, endX, endY)
     )
 
     if pathLength > 0 then
-        local last = self:lastNodeInSight(path)
+        local last = lastNodeInSight(path)
         node.x = (last.x * self.tilewidth) - (self.tilewidth / 2)
         node.y = (last.y * self.tileheight) - (self.tileheight / 2)
     end
 
     return node, pathLength
-end
-
-function PathManager:lastNodeInSight(path)
-    -- if the first two nodes have the same x values, look for the first change in x values
-    local lookat = (path[1].x == path[2].x) and 'x' or 'y'
-    for node, count in path:iter() do
-        if (node[lookat] ~= path[1][lookat]) then
-            return path[count - 1]
-        end
-    end
-
-    -- the whole path is one long line, so go with the final node
-    return path[#path]
 end

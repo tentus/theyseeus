@@ -3,6 +3,21 @@ local back = {
     'root'
 }
 
+-- if the value passed is a function, return its return value
+local function value(v)
+    return (type(v) == 'function') and v() or v
+end
+
+local function playGame()
+    Gamestate.push(WorldScene)
+end
+
+local function setWindowFlag(flag)
+    local w, h, f = love.window.getMode()
+    f[flag] = not f[flag]
+    love.window.setMode(w, h, f)
+end
+
 MenuScene = {
     level = 'root',
     cursor = 1,
@@ -13,7 +28,7 @@ MenuScene = {
                     return WorldScene.entered and 'Continue' or 'Play'
                 end,
                 function()
-                    MenuScene:playGame()
+                    playGame()
                 end
             },
             {
@@ -55,13 +70,13 @@ MenuScene = {
             {
                 'VSYNC',
                 function()
-                    MenuScene:setWindowFlag('vsync')
+                    setWindowFlag('vsync')
                 end
             },
             {
                 'Window Border',
                 function()
-                    MenuScene:setWindowFlag('borderless')
+                    setWindowFlag('borderless')
                 end
             },
             back
@@ -159,7 +174,7 @@ function MenuScene:draw()
             love.graphics.print('->', halfWidth - 32, halfHeight + (i * self.lineHeight))
         end
 
-        love.graphics.print(self:value(self.options[self.level][i][1]), halfWidth, halfHeight + (i * self.lineHeight))
+        love.graphics.print(value(self.options[self.level][i][1]), halfWidth, halfHeight + (i * self.lineHeight))
     end
 
     HUD:drawFPS()
@@ -187,30 +202,12 @@ function MenuScene:update(dt)
         if self.level ~= 'root' then
             self:goTo('root')
         elseif WorldScene.entered then
-            self:playGame()
+            playGame()
         end
     end
-end
-
--- if the value passed is a function, return its return value
-function MenuScene:value(value)
-    if type(value) == 'function' then
-        value = value()
-    end
-    return value
 end
 
 function MenuScene:goTo(level)
     self.cursor = 1
     self.level = level
-end
-
-function MenuScene:playGame()
-    Gamestate.push(WorldScene)
-end
-
-function MenuScene:setWindowFlag(flag)
-    local w, h, f = love.window.getMode()
-    f[flag] = not f[flag]
-    love.window.setMode(w, h, f)
 end

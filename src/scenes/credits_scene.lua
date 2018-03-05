@@ -1,3 +1,7 @@
+local function finish()
+    Gamestate.pop()
+end
+
 CreditsScene = {
     speed = 100,
     logo = SpriteComponent('assets/logos/theyseeus_logo.png'),
@@ -58,20 +62,16 @@ end
 function CreditsScene:update(dt)
     self.y = self.y - (self.speed * dt)
     if self.y < self.limit then
-        self.finish()
+        finish()
     end
 end
 
 function CreditsScene:draw()
-    local width, height = love.window.getMode()
+    local width = love.graphics.getWidth()
     self.logo:draw(width / 2, math.floor(self.y) - self.logo.y)
     love.graphics.printf(self.text, 0, math.floor(self.y), width, "center")
 end
 
 function CreditsScene:keyreleased()
-    self.finish()
-end
-
-function CreditsScene:finish()
-    Gamestate.pop()
+    finish()
 end

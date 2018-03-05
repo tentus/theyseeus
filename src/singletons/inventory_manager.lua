@@ -1,3 +1,8 @@
+local function regionKey()
+    local c = RegionManager.cursor
+    return c.x .. 'x' .. c.y
+end
+
 InventoryManager = {
     -- which items have been collected (keyed by region coords)
     collected = {
@@ -8,14 +13,14 @@ function InventoryManager:collect(thing)
     if not self.collected[thing] then
         self.collected[thing] = {}
     end
-    local key = self:regionKey()
+    local key = regionKey()
     self.collected[thing][key] = (self.collected[thing][key] or 0) + 1
     Logger:add(thing .. ' Collected')
     return self:total(thing)
 end
 
 function InventoryManager:has(thing)
-    return self.collected[thing] and (self.collected[thing][self:regionKey()] or 0) > 0
+    return self.collected[thing] and (self.collected[thing][regionKey()] or 0) > 0
 end
 
 function InventoryManager:total(thing)
@@ -24,9 +29,4 @@ function InventoryManager:total(thing)
         count = count + v
     end
     return count
-end
-
-function InventoryManager:regionKey()
-    local c = RegionManager.cursor
-    return c.x .. 'x' .. c.y
 end

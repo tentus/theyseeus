@@ -1,8 +1,20 @@
+local function firstTile(map)
+    for _, layer in pairs(map.layers) do
+        if layer.type == 'tilelayer' then
+            for y=1, map.height do
+                for x=1, map.width do
+                    if layer.data[y][x] then return layer.data[y][x] end
+                end
+            end
+        end
+    end
+end
+
 BackgroundLayer = Class{
 }
 
 function BackgroundLayer:init(map)
-    local tile = self:firstTile(map)
+    local tile = firstTile(map)
 
     if not tile then return end
 
@@ -17,18 +29,6 @@ end
 function BackgroundLayer:draw(x, y)
     if self.batch then
         love.graphics.draw(self.batch, -(x % self.tilewidth), -(y % self.tileheight))
-    end
-end
-
-function BackgroundLayer:firstTile(map)
-    for _, layer in pairs(map.layers) do
-        if layer.type == 'tilelayer' then
-            for y=1, map.height do
-                for x=1, map.width do
-                    if layer.data[y][x] then return layer.data[y][x] end
-                end
-            end
-        end
     end
 end
 

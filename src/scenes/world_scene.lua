@@ -141,7 +141,7 @@ function WorldScene:loadRegion(enteringFrom)
         local layer = self:namedLayer(entityLayer)
         layer.ents = {}
         function layer:update(dt)
-            for k, ent in pairs(self.ents) do
+            for _, ent in pairs(self.ents) do
                 if not ent.dead and ent.update then
                     ent:update(dt)
                 end
