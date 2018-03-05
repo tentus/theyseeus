@@ -65,6 +65,11 @@ function WorldScene:update(dt)
 end
 
 function WorldScene:draw()
+    -- sort all minotaurs by their Y position
+    table.sort(self:namedLayer('Minotaurs').ents, function (a, b)
+        return a.body and b.body and a.body:getY() < b.body:getY()
+    end)
+
     -- determine how much we need to translate around to see the player
     local width, height = love.window.getMode()
     local tx = (width / 2) - self.player.body:getX()
