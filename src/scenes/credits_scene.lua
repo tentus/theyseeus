@@ -1,7 +1,3 @@
-local function finish()
-    Gamestate.pop()
-end
-
 CreditsScene = {
     speed = 100,
     logo = SpriteComponent('assets/logos/theyseeus_logo.png'),
@@ -60,9 +56,18 @@ function CreditsScene:enter()
 end
 
 function CreditsScene:update(dt)
-    self.y = self.y - (self.speed * dt)
-    if self.y < self.limit then
-        finish()
+    dt = self.speed * dt
+    if Bindings:down('up') then
+        dt = -dt
+    end
+    if Bindings:down('action') or Bindings:down('move') then
+        dt = dt * 2
+    end
+
+    self.y = self.y - dt
+
+    if self.y < self.limit or Bindings:down('cancel') then
+        Gamestate.pop()
     end
 end
 
@@ -72,6 +77,3 @@ function CreditsScene:draw()
     love.graphics.printf(self.text, 0, math.floor(self.y), width, "center")
 end
 
-function CreditsScene:keyreleased()
-    finish()
-end
