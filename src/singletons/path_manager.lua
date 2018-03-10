@@ -52,7 +52,6 @@ function PathManager:init(map)
         end
     end
 
-    -- copy the grid over, expanding each filled cell as we go
     local grid = Grid(temp)
 
     self.finder = Pathfinder(grid, 'ASTAR', self.walkable)
