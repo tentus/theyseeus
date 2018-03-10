@@ -58,7 +58,7 @@ function RegionManager:init()
 
     -- the point of origin is always the same
     self.data[self.home.y][self.home.x].chosen = 'home'
-    self:markVisited()
+    self:warpHome()
 end
 
 function RegionManager:draw()
@@ -101,9 +101,14 @@ function RegionManager:draw()
     end
 end
 
+function RegionManager:warpTo(x, y)
+    self.cursor.x = x
+    self.cursor.y = y
+    self:currentCell().visited = true
+end
+
 function RegionManager:warpHome()
-    self.cursor.x = self.home.x
-    self.cursor.y = self.home.y
+    self:warpTo(self.home.x, self.home.y)
 end
 
 function RegionManager:currentCell()
@@ -115,13 +120,10 @@ function RegionManager:move(x, y)
         val = (val + delta) % max
         return (val < 1) and max or val
     end
-    self.cursor.x = within(self.cursor.x, x, self.width)
-    self.cursor.y = within(self.cursor.y, y, self.height)
-    self:markVisited()
-end
-
-function RegionManager:markVisited()
-    self:currentCell().visited = true
+    self:warpTo(
+        within(self.cursor.x, x, self.width),
+        within(self.cursor.y, y, self.height)
+    )
 end
 
 function RegionManager:chooseRandom()
