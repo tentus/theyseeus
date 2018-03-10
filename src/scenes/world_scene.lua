@@ -267,10 +267,14 @@ function WorldScene:changeRegion()
 
     if df then
         RegionManager:move(dx, dy)
-        Fader:start(0, self.transitionLength)
-        self.transition = self.transitionLength
-        self.enteringFrom = df
+        self:startTransition(df)
     end
+end
+
+function WorldScene:startTransition(enteringFrom)
+    Fader:start(0, self.transitionLength)
+    self.transition = self.transitionLength
+    self.enteringFrom = enteringFrom
 end
 
 -- returns both a random nav point and the size of the set we chose from
