@@ -102,7 +102,12 @@ function RegionManager:draw()
             if cell.visited or mapsFound > 1 then
                 local xPos = (x * w) - offset
                 local text = cellText(cell, gemsFound)
-                local opacity = (x == self.cursor.x and y == self.cursor.y) and 192 or 128
+                local isCurrent = (x == self.cursor.x and y == self.cursor.y)
+                local opacity = isCurrent and 192 or 128
+
+                if isCurrent then
+                    love.graphics.rectangle('line', xPos, yPos, w - spacing, h - spacing)
+                end
 
                 love.graphics.setColor(0, (cell.visited and 96 or 0), 0, opacity)
                 love.graphics.rectangle('fill', xPos, yPos, w - spacing, h - spacing)
