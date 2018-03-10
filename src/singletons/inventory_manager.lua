@@ -1,6 +1,7 @@
+local glue = 'x'
 local function regionKey()
     local c = RegionManager.cursor
-    return c.x .. 'x' .. c.y
+    return c.x .. glue .. c.y
 end
 
 InventoryManager = {
