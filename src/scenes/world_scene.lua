@@ -109,14 +109,6 @@ function WorldScene:onScreen(x, y)
     return not (x < px-w or x > px+w or y < py-h or y > py+h)
 end
 
-function WorldScene:findSpawn(name)
-    for _, object in pairs(self.map.objects) do
-        if object.name == name then
-            return object
-        end
-    end
-end
-
 function WorldScene:loadRegion(enteringFrom)
     -- Load map
     self.map = sti("maps/" .. RegionManager:currentCell().chosen .. ".lua", {"box2d"})
@@ -156,9 +148,13 @@ function WorldScene:loadRegion(enteringFrom)
         end
     end
 
-    -- create our player instance based on the spawn points we just created
-    local spawn = self:findSpawn(enteringFrom)
-    self.player:createBody(self.physics, spawn.x, spawn.y)
+    -- create a body for the player based on the names of the spawn points
+    for _, object in pairs(self.map.objects) do
+        if object.type == 'Spawn' and object.name == enteringFrom then
+            self.player:createBody(self.physics, object.x, object.y)
+            break
+        end
+    end
 
     -- since we persist the player outside the normal layers we have to alias it back in too
     self:namedLayer('Minotaurs').ents = {
