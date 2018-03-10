@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 42,
+  nextobjectid = 44,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -750,6 +750,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 43,
+          name = "Portal",
+          type = "Portal",
+          shape = "point",
+          x = 674.667,
+          y = 641.333,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -846,8 +859,8 @@ return {
           name = "NavPoint",
           type = "NavPoint",
           shape = "point",
-          x = 715.152,
-          y = 657.576,
+          x = 831.485,
+          y = 639.576,
           width = 0,
           height = 0,
           rotation = 0,
@@ -1041,6 +1054,19 @@ return {
           shape = "point",
           x = 1164,
           y = 3452,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 42,
+          name = "Portal",
+          type = "Spawn",
+          shape = "point",
+          x = 830,
+          y = 708,
           width = 0,
           height = 0,
           rotation = 0,

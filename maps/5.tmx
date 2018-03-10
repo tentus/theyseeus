@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="96" height="48" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#f57900" nextobjectid="36">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="96" height="48" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#f57900" nextobjectid="39">
  <tileset firstgid="1" source="sand_tileset.tsx"/>
  <tileset firstgid="17" source="object_tileset.tsx"/>
  <tileset firstgid="81" source="bg_tileset.tsx"/>
@@ -191,10 +191,10 @@
   <object id="17" name="Coin" type="Coin" x="4406" y="2270">
    <point/>
   </object>
-  <object id="18" name="Coin" type="Coin" x="2954" y="2422">
+  <object id="18" name="Coin" type="Coin" x="2946" y="2430">
    <point/>
   </object>
-  <object id="19" name="Coin" type="Coin" x="3080" y="2418">
+  <object id="19" name="Coin" type="Coin" x="3073" y="2430">
    <point/>
   </object>
   <object id="20" name="Coin" type="Coin" x="1020" y="1714">
@@ -217,6 +217,9 @@
   <object id="32" name="Roadsign" type="Sign" x="1606.67" y="2454.67">
    <point/>
   </object>
+  <object id="37" name="Portal" type="Portal" x="3520" y="2368">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup name="Nav">
   <object id="8" name="NavPoint" type="NavPoint" x="1307.88" y="1774.55">
@@ -228,7 +231,7 @@
   <object id="10" name="NavPoint" type="NavPoint" x="4080" y="2296">
    <point/>
   </object>
-  <object id="11" name="NavPoint" type="NavPoint" x="3372" y="2392">
+  <object id="11" name="NavPoint" type="NavPoint" x="3390.67" y="2431.33">
    <point/>
   </object>
   <object id="12" name="NavPoint" type="NavPoint" x="5044" y="824">
@@ -272,6 +275,9 @@
    <point/>
   </object>
   <object id="4" name="South" type="Spawn" x="2050" y="2502">
+   <point/>
+  </object>
+  <object id="36" name="Portal" type="Spawn" x="3392.67" y="2369.33">
    <point/>
   </object>
  </objectgroup>
