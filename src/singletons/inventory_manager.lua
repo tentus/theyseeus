@@ -31,3 +31,18 @@ function InventoryManager:total(thing)
     end
     return count
 end
+
+function InventoryManager:list(thing)
+    local list = {}
+    for k, _ in pairs(self.collected[thing] or {}) do
+        local x, y = k:match('(%d+)' .. glue .. '(%d+)')
+        table.insert(list, {
+            x = tonumber(x),
+            y = tonumber(y),
+        })
+    end
+    table.sort(list, function (a, b)
+        return a.y < b.y
+    end)
+    return list
+end
