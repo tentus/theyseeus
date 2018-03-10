@@ -13,6 +13,15 @@ RegionManager = {
         Horn = 1,
     },
 
+    -- the portals are at predetermined places, spread out as much as they can be, considering that the world wraps
+    portals = {
+        {x = 3, y = 3},
+        {x = 2, y = 1},
+        {x = 5, y = 2},
+        {x = 1, y = 4},
+        {x = 4, y = 5},
+    },
+
     -- current overall position in the region grid
     cursor = {
         x = 3,
@@ -54,6 +63,10 @@ function RegionManager:init()
                 i = i + 1
             end
         end
+    end
+
+    for _, value in pairs(self.portals) do
+        self.data[value.y][value.x][Portal.classname] = true
     end
 
     -- the point of origin is always the same
