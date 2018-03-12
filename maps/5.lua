@@ -8,7 +8,7 @@ return {
   height = 48,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 42,
+  nextobjectid = 43,
   backgroundcolor = { 245, 121, 0 },
   properties = {},
   tilesets = {
@@ -787,6 +787,19 @@ return {
           shape = "point",
           x = 4385.33,
           y = 872.667,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 42,
+          name = "ArrowTrap",
+          type = "ArrowTrap",
+          shape = "point",
+          x = 2587.88,
+          y = 1193.94,
           width = 0,
           height = 0,
           rotation = 0,

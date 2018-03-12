@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 46,
+  nextobjectid = 47,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -576,8 +576,8 @@ return {
           name = "Gem",
           type = "Gem",
           shape = "point",
-          x = 3350.3,
-          y = 2087.09,
+          x = 3360.3,
+          y = 2159.09,
           width = 0,
           height = 0,
           rotation = 0,
@@ -789,6 +789,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 46,
+          name = "Locked",
+          type = "ArrowTrap",
+          shape = "point",
+          x = 3232,
+          y = 1966,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -988,8 +1001,8 @@ return {
           name = "1",
           type = "NPC",
           shape = "point",
-          x = 3136.36,
-          y = 2100,
+          x = 3108.36,
+          y = 2094,
           width = 0,
           height = 0,
           rotation = 0,
