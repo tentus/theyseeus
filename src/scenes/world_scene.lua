@@ -184,7 +184,7 @@ function WorldScene:spawnEntities()
         Yarn = 1, Upgrade = 1, Map = 1, Gem = 1, Horn = 1,
     }
     local misc = {
-        Sign = 1, Kid = 1, SpikeTrap = 1
+        Sign = 1, Kid = 1, SpikeTrap = 1, ArrowTrap = 1
     }
 
     self.navPoints = {}
