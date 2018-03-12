@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="52">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="56">
  <tileset firstgid="1" source="bg_tileset.tsx"/>
  <tileset firstgid="65" source="object_tileset.tsx"/>
  <tileset firstgid="129" source="rock_tileset.tsx"/>
@@ -277,10 +277,22 @@
   <object id="49" name="Portal" type="Portal" x="3072" y="2494.67">
    <point/>
   </object>
-  <object id="50" name="Locked" type="ArrowTrap" x="2458" y="749.333">
+  <object id="50" name="BombTrap" type="BombTrap" x="2458" y="749.333">
    <point/>
   </object>
-  <object id="51" name="Locked" type="ArrowTrap" x="1632" y="748">
+  <object id="51" name="BombTrap" type="BombTrap" x="1632" y="748">
+   <point/>
+  </object>
+  <object id="52" name="BombTrap" type="BombTrap" x="1248.48" y="1512.12">
+   <point/>
+  </object>
+  <object id="53" name="BombTrap" type="BombTrap" x="1949.52" y="2543.33">
+   <point/>
+  </object>
+  <object id="54" name="BombTrap" type="BombTrap" x="1887" y="2933">
+   <point/>
+  </object>
+  <object id="55" name="BombTrap" type="BombTrap" x="3036.36" y="1648.48">
    <point/>
   </object>
  </objectgroup>
