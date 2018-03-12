@@ -267,7 +267,7 @@
   <object id="16" name="AboutYarn" type="Sign" x="1858.33" y="1921.83">
    <point/>
   </object>
-  <object id="43" name="3x3" type="Portal" x="1089" y="1471">
+  <object id="43" name="Portal" type="Portal" x="1089" y="1471">
    <point/>
   </object>
   <object id="47" name="SpikeTrap" type="SpikeTrap" x="3361.33" y="2789.33">

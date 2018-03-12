@@ -779,7 +779,7 @@ return {
         },
         {
           id = 43,
-          name = "3x3",
+          name = "Portal",
           type = "Portal",
           shape = "point",
           x = 1089,

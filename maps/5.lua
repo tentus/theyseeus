@@ -8,7 +8,7 @@ return {
   height = 48,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 41,
+  nextobjectid = 42,
   backgroundcolor = { 245, 121, 0 },
   properties = {},
   tilesets = {
@@ -540,8 +540,8 @@ return {
           name = "Freeze",
           type = "Freeze",
           shape = "point",
-          x = 4539.39,
-          y = 827.273,
+          x = 4573.39,
+          y = 815.273,
           width = 0,
           height = 0,
           rotation = 0,
@@ -779,6 +779,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 41,
+          name = "ArrowTrap",
+          type = "ArrowTrap",
+          shape = "point",
+          x = 4385.33,
+          y = 872.667,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -887,8 +900,8 @@ return {
           name = "1",
           type = "NPC",
           shape = "point",
-          x = 4476,
-          y = 1220,
+          x = 4520,
+          y = 1206,
           width = 0,
           height = 0,
           rotation = 0,

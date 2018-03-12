@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="48">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="49">
  <tileset firstgid="1" source="bg_tileset.tsx"/>
  <tileset firstgid="65" source="object_tileset.tsx"/>
  <tileset firstgid="129" source="rock_tileset.tsx"/>
@@ -286,7 +286,7 @@
   <object id="15" name="Upgrade" type="Upgrade" x="918.061" y="883.27">
    <point/>
   </object>
-  <object id="28" name="Map" type="Map" x="1268.33" y="1673.67">
+  <object id="28" name="Map" type="Map" x="1250.33" y="1707.67">
    <point/>
   </object>
   <object id="29" name="Gem" type="Gem" x="1636.36" y="3301.21">
@@ -338,6 +338,9 @@
   <object id="46" name="Portal" type="Portal" x="1409.33" y="2628">
    <point/>
   </object>
+  <object id="48" name="Locked" type="ArrowTrap" x="1826" y="1389">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup name="Nav">
   <object id="21" name="NavPoint" type="NavPoint" x="814" y="2100">
@@ -355,7 +358,7 @@
   <object id="26" name="NavPoint" type="NavPoint" x="1838" y="3368">
    <point/>
   </object>
-  <object id="27" name="NavPoint" type="NavPoint" x="1698" y="1424">
+  <object id="27" name="NavPoint" type="NavPoint" x="1314" y="1522">
    <point/>
   </object>
   <object id="39" name="NavPoint" type="NavPoint" x="793.45" y="762.909">

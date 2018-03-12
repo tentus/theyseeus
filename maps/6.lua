@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 48,
+  nextobjectid = 49,
   backgroundcolor = { 233, 185, 110 },
   properties = {},
   tilesets = {
@@ -643,8 +643,8 @@ return {
           name = "Map",
           type = "Map",
           shape = "point",
-          x = 1268.33,
-          y = 1673.67,
+          x = 1250.33,
+          y = 1707.67,
           width = 0,
           height = 0,
           rotation = 0,
@@ -869,6 +869,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 48,
+          name = "Locked",
+          type = "ArrowTrap",
+          shape = "point",
+          x = 1826,
+          y = 1389,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -952,8 +965,8 @@ return {
           name = "NavPoint",
           type = "NavPoint",
           shape = "point",
-          x = 1698,
-          y = 1424,
+          x = 1314,
+          y = 1522,
           width = 0,
           height = 0,
           rotation = 0,
