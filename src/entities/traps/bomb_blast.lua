@@ -42,7 +42,7 @@ function BombBlast:draw()
 end
 
 function BombBlast:createBody(world, x, y)
-    self.body = love.physics.newBody(world, x, y, "static")
+    self.body = love.physics.newBody(world, x, y, "dynamic")
 
     self.shape   = love.physics.newCircleShape(self.radius)
     self.fixture = love.physics.newFixture(self.body, self.shape)

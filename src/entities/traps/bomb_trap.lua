@@ -42,7 +42,7 @@ function BombTrap:createBody(world, x, y)
 end
 
 function BombTrap:beginContact(other)
-    if other.damage and self.state == IDLE then
+    if (other.damage or other.classname == BombBlast.classname) and self.state == IDLE then
         self.state = TRIPPED
         AudioManager:play('assets/audio/bomb_hiss.ogg')
     end
