@@ -12,9 +12,7 @@ BombTrap = Class{
 }
 
 function BombTrap:init(world, x, y)
-    self.x = x
-    self.y = y
-    self:createBody(world)
+    self:createBody(world, x, y)
 end
 
 function BombTrap:update(dt)
@@ -22,7 +20,7 @@ function BombTrap:update(dt)
         self.delay = self.delay - dt
         if self.delay < 0 then
             self:kill()
-            WorldScene:addEnt('Misc', BombBlast(WorldScene.physics, self.x, self.y))
+            WorldScene:addEnt('Misc', BombBlast(WorldScene.physics, self.body:getPosition()))
         end
     end
 end
@@ -30,12 +28,13 @@ end
 function BombTrap:draw()
     local color = (self.delay * 255)
     love.graphics.setColor(255, color, color)
-    self.sprite:draw(self.x, self.y)
+    local x, y = self.body:getPosition()
+    self.sprite:draw(x, y)
     love.graphics.setColor(255, 255, 255)
 end
 
-function BombTrap:createBody(world)
-    self.body = love.physics.newBody(world, self.x, self.y, "dynamic")
+function BombTrap:createBody(world, x, y)
+    self.body = love.physics.newBody(world, x, y, "dynamic")
 
     self.shape   = love.physics.newCircleShape(self.radius)
     self.fixture = love.physics.newFixture(self.body, self.shape)
