@@ -9,6 +9,9 @@ Player = Class{
     -- override default health
     health = 3,
     maxHealth = 3,
+
+    -- as a performance optimization, cache magnet range on player rather than recalcing each frame
+    magnetRange = 0,
 }
 
 function Player:update(dt)
