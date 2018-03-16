@@ -11,6 +11,7 @@ RegionManager = {
         Map = 2,
         Gem = 4,
         Horn = 1,
+        Magnet = 12,
     },
 
     -- the portals are at predetermined places, spread out as much as they can be, considering that the world wraps
@@ -81,7 +82,7 @@ function RegionManager:draw()
     local function cellText(cell, gemsFound)
         local text = cell.chosen
 
-        local list = {Yarn.classname, Upgrade.classname, Map.classname, Horn.classname}
+        local list = {Yarn.classname, Upgrade.classname, Magnet.classname, Horn.classname}
         for i=1, math.min(gemsFound, #list) do
             if cell[list[i]] then
                 text = text .. list[i]:sub(1,1)
