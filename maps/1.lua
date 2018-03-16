@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 51,
+  nextobjectid = 52,
   backgroundcolor = { 102, 153, 102 },
   properties = {},
   tilesets = {
@@ -617,6 +617,19 @@ return {
           shape = "point",
           x = 1470,
           y = 2497.67,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "Magnet",
+          type = "Magnet",
+          shape = "point",
+          x = 2594.67,
+          y = 2288,
           width = 0,
           height = 0,
           rotation = 0,

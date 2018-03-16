@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="51">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#e9b96e" nextobjectid="52">
  <tileset firstgid="1" source="bg_tileset.tsx"/>
  <tileset firstgid="65" source="object_tileset.tsx"/>
  <tileset firstgid="129" source="rock_tileset.tsx"/>
@@ -304,6 +304,9 @@
   <object id="45" name="Freeze" type="Freeze" x="2787.88" y="1581.82">
    <point/>
   </object>
+  <object id="51" name="Magnet" type="Magnet" x="1441.33" y="1074.67">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup name="Coins">
   <object id="37" name="Coin" type="Coin" x="2348" y="3309.33">
@@ -318,7 +321,7 @@
   <object id="34" name="Coin" type="Coin" x="2274" y="1566">
    <point/>
   </object>
-  <object id="33" name="Coin" type="Coin" x="1590" y="1086">
+  <object id="33" name="Coin" type="Coin" x="1894" y="1132.67">
    <point/>
   </object>
   <object id="32" name="Coin" type="Coin" x="1630" y="2878">

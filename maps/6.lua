@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 51,
+  nextobjectid = 52,
   backgroundcolor = { 233, 185, 110 },
   properties = {},
   tilesets = {
@@ -715,6 +715,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 51,
+          name = "Magnet",
+          type = "Magnet",
+          shape = "point",
+          x = 1441.33,
+          y = 1074.67,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -785,8 +798,8 @@ return {
           name = "Coin",
           type = "Coin",
           shape = "point",
-          x = 1590,
-          y = 1086,
+          x = 1894,
+          y = 1132.67,
           width = 0,
           height = 0,
           rotation = 0,
