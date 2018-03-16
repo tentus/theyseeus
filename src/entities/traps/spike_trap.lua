@@ -2,9 +2,15 @@
 local LOADED, TRIPPED, SPRUNG = 'loaded', 'tripped', 'sprung'
 
 SpikeTrap = Class{
+    __includes = {Physical},
     classname = 'SpikeTrap',
     image = love.graphics.newImage('assets/sprites/traps/spikes.png'),
     quads = {},
+
+    radius = 32,
+    bodyType = 'static',
+    isSensor = true,
+
     width = 64,
     height = 64,
     state = LOADED,
@@ -14,7 +20,7 @@ SpikeTrap = Class{
 function SpikeTrap:init(world, x, y)
     self.x = x
     self.y = y
-    self:createBody(world)
+    self:createBody(world, x, y)
 
     local ix, iy = self.image:getDimensions()
     self.quads[LOADED]  = love.graphics.newQuad(0, 0,           self.width, self.height, ix, iy)
@@ -38,15 +44,6 @@ end
 function SpikeTrap:changeState(state)
     self.state = state
     AudioManager:play('assets/audio/spike_trap_' .. state .. '.ogg')
-end
-
-function SpikeTrap:createBody(world)
-    self.body = love.physics.newBody(world, self.x, self.y, "static")
-
-    self.shape   = love.physics.newCircleShape(self.width / 2)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setSensor(true)
-    self.fixture:setUserData(self)
 end
 
 function SpikeTrap:beginContact(other)

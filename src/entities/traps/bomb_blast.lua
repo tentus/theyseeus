@@ -1,9 +1,10 @@
 BombBlast = Class{
-    __includes = {Killable},
+    __includes = {Killable, Physical},
     classname = 'BombBlast',
 
     image = love.graphics.newImage('assets/sprites/effects/cloud.png'),
 
+    isSensor = true,
     radius = 256,
 }
 
@@ -37,15 +38,6 @@ end
 
 function BombBlast:draw()
     love.graphics.draw(self.particles)
-end
-
-function BombBlast:createBody(world, x, y)
-    self.body = love.physics.newBody(world, x, y, "dynamic")
-
-    self.shape   = love.physics.newCircleShape(self.radius)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setSensor(true)
-    self.fixture:setUserData(self)
 end
 
 function BombBlast:beginContact(other)

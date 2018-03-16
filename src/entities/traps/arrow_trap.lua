@@ -1,8 +1,10 @@
 ArrowTrap = Class{
+    __includes = {Physical},
     classname = 'ArrowTrap',
     image = love.graphics.newImage('assets/sprites/traps/arrow-trap.png'),
     quads = {},
 
+    bodyType = 'static',
     radius = 16,
 
     rotation = 0,
@@ -18,7 +20,7 @@ ArrowTrap = Class{
 function ArrowTrap:init(world, x, y, name)
     self.x = x
     self.y = y
-    self:createBody(world)
+    self:createBody(world, x, y)
 
     if name == 'Locked' then
         self.rotationSpeed = 0  -- todo: this could be a lot more flexible with some minor tweaks
@@ -79,12 +81,4 @@ function ArrowTrap:rayPoints()
            self.y + math.sin(self.rotation + offset) * self.deadzone,
            self.x + math.cos(self.rotation + offset) * self.range,
            self.y + math.sin(self.rotation + offset) * self.range
-end
-
-function ArrowTrap:createBody(world)
-    self.body = love.physics.newBody(world, self.x, self.y, "static")
-
-    self.shape   = love.physics.newCircleShape(self.radius)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setUserData(self)
 end

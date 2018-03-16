@@ -2,7 +2,7 @@
 local IDLE, TRIPPED = 'idle', 'tripped'
 
 BombTrap = Class{
-    __includes = {Killable},
+    __includes = {Killable, Physical},
     classname = 'BombTrap',
     sprite = SpriteComponent('assets/sprites/traps/bomb.png'),
     radius = 32,
@@ -30,14 +30,6 @@ function BombTrap:draw()
     local x, y = self.body:getPosition()
     self.sprite:draw(x, y)
     love.graphics.setColor(255, 255, 255)
-end
-
-function BombTrap:createBody(world, x, y)
-    self.body = love.physics.newBody(world, x, y, "dynamic")
-
-    self.shape   = love.physics.newCircleShape(self.radius)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setUserData(self)
 end
 
 function BombTrap:beginContact(other)

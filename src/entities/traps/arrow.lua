@@ -1,5 +1,5 @@
 Arrow = Class{
-    __includes = {Killable},
+    __includes = {Killable, Physical},
     classname = 'Arrow',
     image = love.graphics.newImage('assets/sprites/traps/arrow-trap.png'),
     --quad = Quad,
@@ -45,13 +45,9 @@ function Arrow:draw()
     love.graphics.setColor(255, 255, 255)
 end
 
-function Arrow:createBody(world, x, y)
-    self.body = love.physics.newBody(world, x, y, "dynamic")
-
+function Arrow:makeShape()
     -- note that the body is significantly skinnier than the image
-    self.shape   = love.physics.newRectangleShape(4, 48)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setUserData(self)
+    return love.physics.newRectangleShape(4, 48)
 end
 
 function Arrow:beginContact(other)
