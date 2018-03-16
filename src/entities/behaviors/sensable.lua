@@ -10,8 +10,7 @@ end
 
 function Sensable:update(dt)
     local player = WorldScene.player
-    local x, y = player.body:getPosition()
-    if math.sqrt((self.x - x) ^ 2 + (self.y - y) ^ 2) <= (self.radius + player.radius) then
+    if WorldScene:distFromPlayer(self.x, self.y) <= (self.radius + player.radius) then
         self:playerSensed(player)
     end
 end

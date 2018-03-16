@@ -33,7 +33,7 @@ function HUD:draw()
         for _, ent in pairs(WorldScene:namedLayer('Minotaurs').ents) do
             if ent.classname == NPC.classname and ent.body and not ent.body:isDestroyed() then
                 local x2, y2 = ent.body:getPosition()
-                local dist = ((x2 - x) ^ 2 + (y2 - y) ^ 2) ^ 0.5
+                local dist = WorldScene:distFromPlayer(x2, y2) ^ 0.5
                 local r = math.atan2(y2 - y, x2 - x)
 
                 love.graphics.setColor(255, 255, 255, math.min((512 / dist) * 128, 255))

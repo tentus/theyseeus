@@ -282,3 +282,12 @@ function WorldScene:randNavPoint()
     local count = #self.navPoints
     return self.navPoints[love.math.random(count)], count
 end
+
+
+function WorldScene:distFromPlayer(x, y)
+    local px, py = self.player.body:getPosition()
+    return math.sqrt(
+        ((x - px) ^ 2) +
+        ((y - py) ^ 2)
+    )
+end
