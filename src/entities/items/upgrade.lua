@@ -1,8 +1,9 @@
 Upgrade = Class{
-    __includes = {BaseItem, Rippleable},
+    __includes = {BaseItem, Explicable, Rippleable},
     classname = 'Upgrade',
     sprite = SpriteComponent('assets/sprites/items/upgrade.png'),
     glow = GlowComponent(),
+    explanationDialog = 'AboutUpgrades',
     rippleColor = {128, 255, 128},
 }
 
@@ -17,8 +18,9 @@ function Upgrade:update(dt)
 end
 
 function Upgrade:playerSensed(player)
+    player:incrementHealth()
     self:addRipple()
     InventoryManager:collect(self.classname)
-    player:incrementHealth()
+    self:explain()
     self:kill()
 end
