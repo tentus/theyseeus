@@ -1,5 +1,5 @@
 Freeze = Class{
-    __includes = {BaseItem},
+    __includes = {BaseItem, Explicable},
     classname = 'Freeze',
     radius = 16,
     sprite = SpriteComponent('assets/sprites/items/freeze.png'),
@@ -7,6 +7,9 @@ Freeze = Class{
 
     -- the odds we'll spawn, eg 1 in 10 chance per region loaded
     chance = 10,
+
+    explanationDialog = 'AboutFreeze',
+    logEvent = 'Freeze Collected',
 }
 
 function Freeze:draw()
@@ -27,8 +30,10 @@ function Freeze:playerSensed(player)
     end
 
     self:kill()
-    local total = Logger:add('Freeze Collected')
-    if total == 1 then
-        Gamestate.push(DialogScene, 'AboutFreeze')
-    end
+    Logger:add(self.logEvent)
+    self:explain()
+end
+
+function Freeze:shouldExplain()
+    return Logger.events[self.logEvent] == 1
 end
