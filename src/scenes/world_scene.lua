@@ -287,10 +287,10 @@ function WorldScene:playerPosition()
     return self.player.body:getPosition()
 end
 
+-- returns absolute total distance, then the independent distances
+-- eg, given 60,50 and player=100,100 we'll get back 64.03,-40,-50
 function WorldScene:distFromPlayer(x, y)
     local px, py = self:playerPosition()
-    return math.sqrt(
-        ((x - px) ^ 2) +
-        ((y - py) ^ 2)
-    )
+    local dx, dy = (x - px), (y - py)
+    return math.sqrt((dx ^ 2) + (dy ^ 2)), dx, dy
 end

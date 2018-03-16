@@ -28,14 +28,13 @@ function HUD:draw()
     local width, height = love.window.getMode()
 
     if self.show.hearing and InventoryManager:total(Horn.classname) > 0 then
-        local x, y = WorldScene:playerPosition()
         for _, ent in pairs(WorldScene:namedLayer('Minotaurs').ents) do
             if ent.classname == NPC.classname and ent.body and not ent.body:isDestroyed() then
                 local x2, y2 = ent.body:getPosition()
-                local dist = WorldScene:distFromPlayer(x2, y2) ^ 0.5
-                local r = math.atan2(y2 - y, x2 - x)
+                local dist, dx, dy = WorldScene:distFromPlayer(x2, y2)
+                local r = math.atan2(dy, dx)
 
-                love.graphics.setColor(255, 255, 255, math.min((512 / dist) * 128, 255))
+                love.graphics.setColor(255, 255, 255, math.min((512 / (dist ^ 0.5)) * 128, 255))
                 love.graphics.draw(self.images.hearing, width / 2, height / 2, r, 1, 1, 0, 64)
             end
         end
