@@ -1,7 +1,9 @@
 Sign = Class{
-    __includes = {Interactable},
+    __includes = {Interactable, Physical},
     classname = 'Sign',
     dialog = '',
+
+    bodyType = 'static',
 
     -- our body the same dimensions as a normal tile
     width = 64,
@@ -20,11 +22,8 @@ function Sign:draw()
     self.sprite:draw(x, y)
 end
 
-function Sign:createBody(world, x, y)
-    self.body = love.physics.newBody(world, x, y, "static")
-    self.shape   = love.physics.newRectangleShape(self.width, self.height)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setUserData(self)
+function Sign:makeShape()
+    return love.physics.newRectangleShape(self.width, self.height)
 end
 
 function Sign:playerContact(other)

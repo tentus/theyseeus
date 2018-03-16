@@ -1,6 +1,8 @@
 Kid = Class{
-    __includes = Interactable,
+    __includes = {Interactable, Physical},
     classname = 'Kid',
+
+    bodyType = 'static',
 
     -- tile and a half in size
     width = 64,
@@ -20,11 +22,8 @@ function Kid:draw()
     self.sprite:draw(x, y)
 end
 
-function Kid:createBody(world, x, y)
-    self.body    = love.physics.newBody(world, x, y, "static")
-    self.shape   = love.physics.newRectangleShape(self.width, self.height)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setUserData(self)
+function Kid:makeShape()
+    return love.physics.newRectangleShape(self.width, self.height)
 end
 
 function Kid:playerContact(other)
