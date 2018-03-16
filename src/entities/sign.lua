@@ -10,10 +10,7 @@ Sign = Class{
 }
 
 function Sign:init(world, x, y, dialog)
-    self.body = love.physics.newBody(world, x, y, "static")
-    self.shape   = love.physics.newRectangleShape(self.width, self.height)
-    self.fixture = love.physics.newFixture(self.body, self.shape)
-    self.fixture:setUserData(self)
+    self:createBody(world, x, y)
 
     self.dialog = dialog
 end
@@ -21,6 +18,13 @@ end
 function Sign:draw()
     local x, y = self.body:getPosition()
     self.sprite:draw(x, y)
+end
+
+function Sign:createBody(world, x, y)
+    self.body = love.physics.newBody(world, x, y, "static")
+    self.shape   = love.physics.newRectangleShape(self.width, self.height)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setUserData(self)
 end
 
 function Sign:playerContact(other)
