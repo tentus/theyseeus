@@ -1,5 +1,5 @@
 Horn = Class{
-    __includes = {BaseItem, Explicable, RippleEffect},
+    __includes = {BaseItem, Explicable, Rippleable},
     classname = 'Horn',
     sprite = SpriteComponent('assets/sprites/items/horn.png'),
     explanationDialog = 'AboutHorn',
