@@ -7,8 +7,8 @@ GlowComponent = Class{
 
 function GlowComponent:init()
     -- set offsets for image drawing, since it won't change
-    self.x = self.image:getWidth() / 2
-    self.y = self.image:getHeight() / 2
+    self.ox = self.image:getWidth() / 2
+    self.oy = self.image:getHeight() / 2
 end
 
 function GlowComponent:draw(x, y)
@@ -18,7 +18,7 @@ function GlowComponent:draw(x, y)
         x, y,
         self.rotation,
         scale, scale,
-        self.x, self.y
+        self.ox, self.oy
     )
 end
 
