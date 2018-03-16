@@ -181,7 +181,7 @@ function WorldScene:spawnEntities()
         Health = 1, Coin = 1,
     }
     local inventory = {
-        Yarn = 1, Upgrade = 1, Map = 1, Gem = 1, Horn = 1,
+         Yarn = 1, Upgrade = 1, Map = 1, Gem = 1, Horn = 1, Magnet = 1,
     }
     local misc = {
         Sign = 1, Kid = 1, SpikeTrap = 1, ArrowTrap = 1, BombTrap = 1
