@@ -11,21 +11,18 @@ SpikeTrap = Class{
     bodyType = 'static',
     isSensor = true,
 
-    width = 64,
-    height = 64,
     state = LOADED,
     delay = 1,
 }
 
 function SpikeTrap:init(world, x, y)
-    self.x = x
-    self.y = y
     self:createBody(world, x, y)
 
     local ix, iy = self.image:getDimensions()
-    self.quads[LOADED]  = love.graphics.newQuad(0, 0,           self.width, self.height, ix, iy)
-    self.quads[TRIPPED] = love.graphics.newQuad(self.width, 0,  self.width, self.height, ix, iy)
-    self.quads[SPRUNG]  = love.graphics.newQuad(0, self.height, self.width, self.height, ix, iy)
+    local width, height = 64, 64
+    self.quads[LOADED]  = love.graphics.newQuad(0, 0,      width, height, ix, iy)
+    self.quads[TRIPPED] = love.graphics.newQuad(width, 0,  width, height, ix, iy)
+    self.quads[SPRUNG]  = love.graphics.newQuad(0, height, width, height, ix, iy)
 end
 
 function SpikeTrap:update(dt)
@@ -38,7 +35,8 @@ function SpikeTrap:update(dt)
 end
 
 function SpikeTrap:draw()
-    love.graphics.draw(self.image, self.quads[self.state], self.x, self.y, 0, 1, 1, self.width / 2, self.height / 2)
+    local x, y = self.body:getPosition()
+    love.graphics.draw(self.image, self.quads[self.state], x, y, 0, 1, 1, self.radius, self.radius)
 end
 
 function SpikeTrap:changeState(state)
