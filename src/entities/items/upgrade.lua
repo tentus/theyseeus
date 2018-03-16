@@ -1,15 +1,10 @@
 Upgrade = Class{
-    __includes = {Killable, Rippleable, Sensable},
+    __includes = {BaseItem, Rippleable},
     classname = 'Upgrade',
     sprite = SpriteComponent('assets/sprites/items/upgrade.png'),
     glow = GlowComponent(),
-    death_audio = 'assets/audio/collect.ogg',
     rippleColor = {128, 255, 128},
 }
-
-function Upgrade:init(x, y)
-    Sensable.init(self, x, y)
-end
 
 function Upgrade:draw()
     self.glow:draw(self.x, self.y)

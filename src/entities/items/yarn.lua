@@ -1,15 +1,10 @@
 Yarn = Class{
-    __includes = {Killable, Rippleable, Sensable},
+    __includes = {BaseItem, Rippleable},
     classname = 'Yarn',
     sprite = SpriteComponent('assets/sprites/items/yarn.png'),
     glow = GlowComponent(),
-    death_audio = 'assets/audio/collect.ogg',
     rippleColor = {128, 128, 255},
 }
-
-function Yarn:init(x, y)
-    Sensable.init(self, x, y)
-end
 
 function Yarn:draw()
     self.glow:draw(self.x, self.y)

@@ -1,15 +1,10 @@
 Gem = Class{
-    __includes = {Killable, Rippleable, Sensable},
+    __includes = {BaseItem, Rippleable},
     classname = 'Gem',
     sprite = SpriteComponent('assets/sprites/items/gem.png'),
     glow = GlowComponent(),
-    death_audio = 'assets/audio/collect.ogg',
     rippleColor = {128, 255, 255},
 }
-
-function Gem:init(x, y)
-    Sensable.init(self, x, y)
-end
 
 function Gem:draw()
     self.glow:draw(self.x, self.y)

@@ -1,18 +1,13 @@
 Freeze = Class{
-    __includes = {Killable, Sensable},
+    __includes = {BaseItem},
     classname = 'Freeze',
     radius = 16,
     sprite = SpriteComponent('assets/sprites/items/freeze.png'),
     glow = GlowComponent(),
-    death_audio = 'assets/audio/collect.ogg',
 
     -- the odds we'll spawn, eg 1 in 10 chance per region loaded
     chance = 10,
 }
-
-function Freeze:init(x, y)
-    Sensable.init(self, x, y)
-end
 
 function Freeze:draw()
     self.glow:draw(self.x, self.y)

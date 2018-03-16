@@ -1,18 +1,9 @@
 Horn = Class{
-    __includes = {Killable, RippleEffect, Sensable},
+    __includes = {BaseItem, RippleEffect},
     classname = 'Horn',
     sprite = SpriteComponent('assets/sprites/items/horn.png'),
-    death_audio = 'assets/audio/collect.ogg',
     rippleColor = {255, 255, 128},
 }
-
-function Horn:init(x, y)
-    Sensable.init(self, x, y)
-end
-
-function Horn:draw()
-    self.sprite:draw(self.x, self.y)
-end
 
 function Horn:playerSensed()
     self:addRipple()

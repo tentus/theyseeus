@@ -1,15 +1,10 @@
 Map = Class{
-    __includes = {Killable, Rippleable, Sensable},
+    __includes = {BaseItem, Rippleable},
     classname = 'Map',
     sprite = SpriteComponent('assets/sprites/items/map.png'),
     glow = GlowComponent(),
-    death_audio = 'assets/audio/collect.ogg',
     rippleColor = {255, 128, 128},
 }
-
-function Map:init(x, y)
-    Sensable.init(self, x, y)
-end
 
 function Map:draw()
     self.glow:draw(self.x, self.y)
