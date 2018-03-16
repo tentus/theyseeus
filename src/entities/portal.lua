@@ -43,6 +43,8 @@ function Portal:playerSensed(player)
         local next = Portal:next()
         RegionManager:warpTo(next.x, next.y)
 
+        AudioManager:play('assets/audio/portal.ogg')
+
         -- note: we can't just load the region directly, because we're in the middle of the update loop
         -- instead we queue the transition up and let it happen normally
         WorldScene:startTransition('Portal')
