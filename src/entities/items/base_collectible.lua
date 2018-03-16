@@ -2,7 +2,7 @@ BaseCollectible = Class{
     __includes = {Killable, Magnetic, Sensable, Explicable, Rippleable},
     classname = 'BaseCollectible',
 
-    death_audio = 'assets/audio/collect.ogg',
+    death_audio = 'assets/audio/update.ogg',
 
     x = 0,
     y = 0,
