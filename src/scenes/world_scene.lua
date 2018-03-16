@@ -105,7 +105,7 @@ end
 
 function WorldScene:onScreen(x, y)
     local w, h = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
-    local px, py = self.player.body:getPosition()
+    local px, py = self:playerPosition()
     return not (x < px-w or x > px+w or y < py-h or y > py+h)
 end
 
@@ -246,7 +246,7 @@ end
 
 function WorldScene:changeRegion()
     local buffer = 512
-    local x, y = self.player.body:getPosition()
+    local x, y = self:playerPosition()
     local df, dx, dy = nil, 0, 0
 
     if x < buffer then
@@ -283,9 +283,12 @@ function WorldScene:randNavPoint()
     return self.navPoints[love.math.random(count)], count
 end
 
+function WorldScene:playerPosition()
+    return self.player.body:getPosition()
+end
 
 function WorldScene:distFromPlayer(x, y)
-    local px, py = self.player.body:getPosition()
+    local px, py = self:playerPosition()
     return math.sqrt(
         ((x - px) ^ 2) +
         ((y - py) ^ 2)

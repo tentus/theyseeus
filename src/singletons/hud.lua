@@ -26,10 +26,9 @@ end
 
 function HUD:draw()
     local width, height = love.window.getMode()
-    local player = WorldScene.player
 
     if self.show.hearing and InventoryManager:total(Horn.classname) > 0 then
-        local x, y = player.body:getPosition()
+        local x, y = WorldScene:playerPosition()
         for _, ent in pairs(WorldScene:namedLayer('Minotaurs').ents) do
             if ent.classname == NPC.classname and ent.body and not ent.body:isDestroyed() then
                 local x2, y2 = ent.body:getPosition()
@@ -47,6 +46,7 @@ function HUD:draw()
 
     -- health in top left
     if self.show.health then
+        local player = WorldScene.player
         for i=1, player.maxHealth do
             local icon = ((player.health < i) and self.images.damage or self.images.health)
             love.graphics.draw(icon, ((i - 1) * spacing) + self.edge, self.edge)
