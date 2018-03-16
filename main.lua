@@ -3,6 +3,8 @@ Gamestate   = require 'libraries.hump.gamestate'
 lovebird    = require 'libraries.lovebird'
 anim8       = require 'libraries.animation.anim8'
 
+YARN_REQUIREMENT = 5
+
 function love.load()
     local function requireDir(dir)
         local files = love.filesystem.getDirectoryItems(dir)
