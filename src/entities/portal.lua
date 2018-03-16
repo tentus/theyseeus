@@ -1,8 +1,9 @@
 Portal = Class{
-    __includes = {Sensable},
+    __includes = {Explicable, Sensable},
     classname = 'Portal',
     sprite = SpriteComponent('assets/sprites/portal.png'),
     activated = false,
+    explanationDialog = 'AboutPortals',
     radius = 64,
     pulse = 0,
     pulseRate = 4,
@@ -32,11 +33,9 @@ end
 function Portal:playerSensed(player)
     -- mark the portal as collected, for future use
     if not self.activated then
-        local total = InventoryManager:collect(self.classname)
+        InventoryManager:collect(self.classname)
         self.activated = true
-        if total == 1 then
-            Gamestate.push(DialogScene, 'AboutPortals')
-        end
+        self:explain()
     end
 
     -- and if we have activated another portal, let's goooo
