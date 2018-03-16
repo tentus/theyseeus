@@ -58,7 +58,7 @@ function Minotaur:update(dt)
 end
 
 function Minotaur:draw()
-    local x, y = self.body:getPosition()
+    local x, y = self:bodyPosition()
     self.shadow:draw(x, y)
     self.anims[self.currentAnim]:draw(self.image, x - self.offsets.x, y - self.offsets.y)
 
@@ -85,5 +85,5 @@ function Minotaur:getTargetPosition()
     if self.body:isDestroyed() then
         return 0, 0
     end
-    return self.body:getPosition()
+    return self:bodyPosition()
 end

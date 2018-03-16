@@ -30,7 +30,7 @@ function HUD:draw()
     if self.show.hearing and InventoryManager:total(Horn.classname) > 0 then
         for _, ent in pairs(WorldScene:namedLayer('Minotaurs').ents) do
             if ent.classname == NPC.classname and ent.body and not ent.body:isDestroyed() then
-                local x2, y2 = ent.body:getPosition()
+                local x2, y2 = ent:bodyPosition()
                 local dist, dx, dy = WorldScene:distFromPlayer(x2, y2)
                 local r = math.atan2(dy, dx)
 

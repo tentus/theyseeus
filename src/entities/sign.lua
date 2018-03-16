@@ -18,7 +18,7 @@ function Sign:init(world, x, y, dialog)
 end
 
 function Sign:draw()
-    local x, y = self.body:getPosition()
+    local x, y = self:bodyPosition()
     self.sprite:draw(x, y)
 end
 

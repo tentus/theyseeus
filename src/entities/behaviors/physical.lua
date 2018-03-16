@@ -18,3 +18,7 @@ end
 function Physical:makeShape()
     return love.physics.newCircleShape(self.radius)
 end
+
+function Physical:bodyPosition()
+    return self.body:getPosition()
+end

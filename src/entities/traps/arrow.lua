@@ -39,7 +39,7 @@ function Arrow:update(dt)
 end
 
 function Arrow:draw()
-    local x, y = self.body:getPosition()
+    local x, y = self:bodyPosition()
     love.graphics.setColor(255, 255, 255, math.min(self.lifespan, 2) * 128)
     love.graphics.draw(self.image, self.quad, x, y, self.body:getAngle(), 0.5, 0.5, self.width, self.height)
     love.graphics.setColor(255, 255, 255)

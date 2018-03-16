@@ -284,7 +284,7 @@ function WorldScene:randNavPoint()
 end
 
 function WorldScene:playerPosition()
-    return self.player.body:getPosition()
+    return self.player:bodyPosition()
 end
 
 -- returns absolute total distance, then the independent distances

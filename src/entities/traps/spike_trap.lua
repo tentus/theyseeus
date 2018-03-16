@@ -35,7 +35,7 @@ function SpikeTrap:update(dt)
 end
 
 function SpikeTrap:draw()
-    local x, y = self.body:getPosition()
+    local x, y = self:bodyPosition()
     love.graphics.draw(self.image, self.quads[self.state], x, y, 0, 1, 1, self.radius, self.radius)
 end
 

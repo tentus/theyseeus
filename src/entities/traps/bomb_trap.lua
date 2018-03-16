@@ -19,7 +19,7 @@ function BombTrap:update(dt)
         self.delay = self.delay - dt
         if self.delay < 0 then
             self:kill()
-            WorldScene:addEnt('Misc', BombBlast(WorldScene.physics, self.body:getPosition()))
+            WorldScene:addEnt('Misc', BombBlast(WorldScene.physics, self:bodyPosition()))
         end
     end
 end
@@ -27,7 +27,7 @@ end
 function BombTrap:draw()
     local color = (self.delay * 255)
     love.graphics.setColor(255, color, color)
-    local x, y = self.body:getPosition()
+    local x, y = self:bodyPosition()
     self.sprite:draw(x, y)
     love.graphics.setColor(255, 255, 255)
 end

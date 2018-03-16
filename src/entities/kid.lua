@@ -17,7 +17,7 @@ function Kid:init(world, x, y)
 end
 
 function Kid:draw()
-    local x, y = self.body:getPosition()
+    local x, y = self:bodyPosition()
     self.shadow:draw(x, y)
     self.sprite:draw(x, y)
 end

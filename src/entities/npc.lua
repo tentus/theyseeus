@@ -35,7 +35,7 @@ function NPC:update(dt)
         self:pickNewGoal()
     end
 
-    local x, y = self.body:getPosition()
+    local x, y = self:bodyPosition()
     local px, py = self.goal:getTargetPosition()
 
     -- once we're within touching distance of our goal, pick a new goal for the next update
@@ -72,7 +72,7 @@ function NPC:draw()
     end
 
     if npc_debug then
-        local x, y = self.body:getPosition()
+        local x, y = self:bodyPosition()
         love.graphics.circle("line", x, y, self.radius)
         love.graphics.circle("line", x, y, self.hearing.shape:getRadius())
         if self.nextNode then
@@ -107,7 +107,7 @@ function NPC:setHearing(radius)
             if other.getTargetPosition then
                 -- don't let npcs attack each other if it's not onscreen
                 -- this is a mix of rule-of-cool and "wait why is that dying sound playing"
-                if other.classname ~= Player.classname and not WorldScene:onScreen(self.body:getPosition()) then return end
+                if other.classname ~= Player.classname and not WorldScene:onScreen(self:bodyPosition()) then return end
 
                 self.goal = other
                 self.angry = true
@@ -134,7 +134,7 @@ end
 
 function NPC:kill()
     -- we're counting on the NPCs to have been spawned in the layer matching their type
-    WorldScene:addEnt('Minotaurs', ExplosionEffect(self.body:getPosition()))
+    WorldScene:addEnt('Minotaurs', ExplosionEffect(self:bodyPosition()))
     Killable.kill(self)
     Logger:add('NPCs killed')
 end
