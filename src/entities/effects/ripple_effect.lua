@@ -1,7 +1,6 @@
 RippleEffect = Class{
     __includes = {Killable},
     classname = 'RippleEffect',
-    death_audio = false,
 
     scale = 0,      -- 0 to 1
     duration = 0.5,   -- in seconds

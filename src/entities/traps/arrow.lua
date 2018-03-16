@@ -12,7 +12,6 @@ Arrow = Class{
     rotation = 0,
 
     lifespan = 8,
-    death_audio = false,
 }
 
 function Arrow:init(world, x, y, rotation)

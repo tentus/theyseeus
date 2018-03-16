@@ -1,7 +1,6 @@
 FreezeEffect = Class{
     __includes = {Killable},
     classname = 'Freeze',
-    death_audio = false,
     image = love.graphics.newImage('assets/sprites/effects/cloud.png'),
 }
 

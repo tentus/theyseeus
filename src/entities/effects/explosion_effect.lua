@@ -2,7 +2,6 @@
 ExplosionEffect = Class{
     __includes = {Killable},
     classname = 'Explosion',
-    death_audio = false,
     image = love.graphics.newImage('assets/sprites/effects/cloud.png'),
 }
 

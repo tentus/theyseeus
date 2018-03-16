@@ -6,6 +6,7 @@ NPC = Class{
     goal = nil,
     angry = false,
     hearing = {},
+    death_audio = 'assets/audio/die.ogg',
 }
 
 function NPC:init(world, x, y)

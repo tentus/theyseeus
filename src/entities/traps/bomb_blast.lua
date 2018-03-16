@@ -5,8 +5,6 @@ BombBlast = Class{
     image = love.graphics.newImage('assets/sprites/effects/cloud.png'),
 
     radius = 256,
-
-    death_audio = false,
 }
 
 function BombBlast:init(world, x, y)

@@ -8,7 +8,6 @@ BombTrap = Class{
     radius = 32,
     state = IDLE,
     delay = 1,
-    death_audio = false,
 }
 
 function BombTrap:init(world, x, y)
