@@ -3,7 +3,7 @@ Explicable = Class{
 }
 
 function Explicable:explain()
-    if self:shouldExplain() then
+    if self.explanationDialog and self:shouldExplain() then
         Gamestate.push(DialogScene, self.explanationDialog)
     end
 end
