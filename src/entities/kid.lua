@@ -1,20 +1,34 @@
--- no autoloader in lua :'(
-require 'src.entities.sign'
-
 Kid = Class{
-    __includes = Sign,      -- sorry, kid
+    __includes = Interactable,
     classname = 'Kid',
-    height = 96,
+
+    -- tile and a half in size
+    width = 64,
+    height = 64,
+
     shadow = ShadowComponent(32, -96),
     sprite = SpriteComponent('assets/sprites/kid.png'),
 }
 
-function Kid:init(world, x, y, dialog)
-    Sign.init(self, world, x, y, dialog)
+function Kid:init(world, x, y)
+    self:createBody(world, x, y)
 end
 
 function Kid:draw()
     local x, y = self.body:getPosition()
     self.shadow:draw(x, y)
     self.sprite:draw(x, y)
+end
+
+function Kid:createBody(world, x, y)
+    self.body    = love.physics.newBody(world, x, y, "static")
+    self.shape   = love.physics.newRectangleShape(self.width, self.height)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setUserData(self)
+end
+
+function Kid:playerContact(other)
+    local dialog = (InventoryManager:total(Yarn.classname) >= YARN_REQUIREMENT) and 'Victory' or 'Quest'
+    Gamestate.push(DialogScene, dialog)
+    Logger:add('Conversations')
 end
