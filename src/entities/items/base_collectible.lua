@@ -1,5 +1,5 @@
 BaseCollectible = Class{
-    __includes = {Killable, Sensable, Explicable, Rippleable},
+    __includes = {Killable, Magnetic, Sensable, Explicable, Rippleable},
     classname = 'BaseCollectible',
 
     death_audio = 'assets/audio/collect.ogg',
@@ -22,6 +22,7 @@ end
 
 function BaseCollectible:update(dt)
     self.glow:update(dt)
+    Magnetic.update(self, dt)
     Sensable.update(self, dt)
 end
 
