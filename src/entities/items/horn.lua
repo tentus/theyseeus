@@ -1,16 +1,14 @@
 Horn = Class{
-    __includes = {BaseItem, RippleEffect},
+    __includes = {BaseItem, Explicable, RippleEffect},
     classname = 'Horn',
     sprite = SpriteComponent('assets/sprites/items/horn.png'),
+    explanationDialog = 'AboutHorn',
     rippleColor = {255, 255, 128},
 }
 
 function Horn:playerSensed()
     self:addRipple()
-    local total = InventoryManager:collect(self.classname)
+    InventoryManager:collect(self.classname)
+    self:explain()
     self:kill()
-
-    if total == 1 then
-        Gamestate.push(DialogScene, 'AboutHorn')
-    end
 end

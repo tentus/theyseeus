@@ -1,8 +1,9 @@
 Gem = Class{
-    __includes = {BaseItem, Rippleable},
+    __includes = {BaseItem, Explicable, Rippleable},
     classname = 'Gem',
     sprite = SpriteComponent('assets/sprites/items/gem.png'),
     glow = GlowComponent(),
+    explanationDialog = 'AboutGem',
     rippleColor = {128, 255, 255},
 }
 
@@ -18,10 +19,7 @@ end
 
 function Gem:playerSensed(player)
     self:addRipple()
-    local total = InventoryManager:collect(self.classname)
+    InventoryManager:collect(self.classname)
+    self:explain()
     self:kill()
-
-    if total == 1 then
-        Gamestate.push(DialogScene, 'AboutGem')
-    end
 end

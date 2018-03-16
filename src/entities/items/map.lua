@@ -1,8 +1,9 @@
 Map = Class{
-    __includes = {BaseItem, Rippleable},
+    __includes = {BaseItem, Explicable, Rippleable},
     classname = 'Map',
     sprite = SpriteComponent('assets/sprites/items/map.png'),
     glow = GlowComponent(),
+    explanationDialog = 'AboutMap',
     rippleColor = {255, 128, 128},
 }
 
@@ -18,10 +19,7 @@ end
 
 function Map:playerSensed(player)
     self:addRipple()
-    local total = InventoryManager:collect(self.classname)
+    InventoryManager:collect(self.classname)
+    self:explain()
     self:kill()
-
-    if total == 1 then
-        Gamestate.push(DialogScene, 'AboutMap')
-    end
 end
