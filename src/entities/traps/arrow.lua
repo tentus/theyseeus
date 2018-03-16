@@ -27,6 +27,8 @@ function Arrow:init(world, x, y, rotation)
 
     local ix, iy = self.image:getDimensions()
     self.quad = love.graphics.newQuad(0, 16, 64, 128, ix, iy)
+
+    AudioManager:play('assets/audio/arrow.ogg')
 end
 
 function Arrow:update(dt)
