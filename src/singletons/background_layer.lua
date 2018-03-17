@@ -28,7 +28,9 @@ end
 
 function BackgroundLayer:draw(x, y)
     if self.batch then
-        love.graphics.draw(self.batch, -(x % self.tilewidth), -(y % self.tileheight))
+        -- render offset by one tile, to avoid having a gap at the edge
+        local tw, th = self.tilewidth, self.tileheight
+        love.graphics.draw(self.batch, (x % tw) - tw, (y % th) - th)
     end
 end
 

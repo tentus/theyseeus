@@ -75,7 +75,7 @@ function WorldScene:draw()
     local tx = (width / 2) - self.player.body:getX()
     local ty = (height / 2) - self.player.body:getY()
 
-    self.background:draw(-tx, -ty)
+    self.background:draw(tx, ty)
 
     -- Draw map
     self.map:draw(tx, ty)
