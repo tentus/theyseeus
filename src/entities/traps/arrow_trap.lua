@@ -15,6 +15,9 @@ ArrowTrap = Class{
 
     range = 1024,   -- how far we can see. don't want to be firing at the player if they can't see us
     deadzone = 24,  -- needs to be larger than the radius, so we don't shoot ourselves
+
+    -- prevent npcs from trying to path through us
+    fillsGrid = true,
 }
 
 function ArrowTrap:init(world, x, y, name)
