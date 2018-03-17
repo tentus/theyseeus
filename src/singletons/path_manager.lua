@@ -19,7 +19,7 @@ PathManager = Class{
     tileheight = 0,
 
     -- a collision map of walkable/filled tiles
-    collision = {},
+    tiles = {},
 
     -- the pathfinder instance
     finder = nil;
@@ -35,9 +35,9 @@ function PathManager:init(map)
 
     -- first, fill up a temp grid with walkable
     -- assumption: no AI is going to try to walk outside the perimeter of the map
-    self.collision = self:collisionFromMap(map)
+    self.tiles = self:tileCollisions(map)
 
-    local grid = Grid(self.collision)
+    local grid = Grid(self.tiles)
 
     self.finder = Pathfinder(grid, 'ASTAR', self.walkable)
     self.finder:setMode('ORTHOGONAL')
@@ -54,7 +54,7 @@ function PathManager:blank(map)
     return temp
 end
 
-function PathManager:collisionFromMap(map)
+function PathManager:tileCollisions(map)
     local temp = self:blank(map)
 
     -- iterate through each collidable layer, and collectively set their tiles as non-walkable
