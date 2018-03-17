@@ -67,17 +67,19 @@ function PathManager:collisionFromMap(map)
     return temp
 end
 
+function PathManager:convertCoords(x, y)
+    return math.floor(x / self.tilewidth) + 1,
+        math.floor(y / self.tileheight) + 1
+end
+
 function PathManager:getNextPathNode(startX, startY, endX, endY)
     -- if we can't find a route, default to staying in place
     local node = {x = startX, y = startY}
 
     -- we're expecting the inputs to be in physics units, which we convert to tile coords
-    local path, pathLength = self.finder:getPath(
-        math.floor(startX / self.tilewidth) + 1,
-        math.floor(startY / self.tileheight) + 1,
-        math.floor(endX / self.tilewidth) + 1,
-        math.floor(endY / self.tileheight) + 1
-    )
+    local a, b = self:convertCoords(startX, startY)
+    local c, d = self:convertCoords(endX, endY)
+    local path, pathLength = self.finder:getPath(a, b, c, d)
 
     if pathLength > 0 then
         local last = lastNodeInSight(path)
