@@ -107,7 +107,7 @@ function NPC:setHearing(radius)
             if other.getTargetPosition then
                 -- don't let npcs attack each other if it's not onscreen
                 -- this is a mix of rule-of-cool and "wait why is that dying sound playing"
-                if other.classname ~= Player.classname and not WorldScene:onScreen(self:bodyPosition()) then return end
+                if other.classname ~= Player.classname and not WorldScene.camera:onScreen(self:bodyPosition()) then return end
 
                 self.goal = other
                 self.angry = true

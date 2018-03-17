@@ -10,6 +10,7 @@ WorldScene = {
     transitionLength = 0.25,
     enteringFrom = 'Start',
     -- background = BackgroundLayer,
+    -- camera = Camera,
     -- map = sti map,
     -- physics = physics world,
     -- player = Player instance,
@@ -22,6 +23,7 @@ function WorldScene:init()
     love.physics.setMeter(64)
 
     self.player = Player()
+    self.camera = Camera(self.player)
 
     -- special case for init
     self:loadRegion('Start')
@@ -43,6 +45,7 @@ function WorldScene:update(dt)
 
     WeatherManager:update(dt)
     DaylightManager:update(dt)
+    self.camera:update(dt)
     self.physics:update(dt)
     self.map:update(dt)
 
@@ -71,9 +74,7 @@ function WorldScene:draw()
     end)
 
     -- determine how much we need to translate around to see the player
-    local width, height = love.window.getMode()
-    local tx = (width / 2) - self.player.body:getX()
-    local ty = (height / 2) - self.player.body:getY()
+    local tx, ty = self.camera:translate()
 
     self.background:draw(tx, ty)
 
@@ -101,12 +102,6 @@ end
 function WorldScene:resize(w, h)
     self.map:resize(w, h)
     self.background:fillBatch()
-end
-
-function WorldScene:onScreen(x, y)
-    local w, h = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
-    local px, py = self:playerPosition()
-    return not (x < px-w or x > px+w or y < py-h or y > py+h)
 end
 
 function WorldScene:loadRegion(enteringFrom)
