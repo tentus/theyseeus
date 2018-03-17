@@ -37,6 +37,10 @@ function PathManager:init(map)
     -- assumption: no AI is going to try to walk outside the perimeter of the map
     self.tiles = self:tileCollisions(map)
 
+    self:build()
+end
+
+function PathManager:build()
     local grid = Grid(self.tiles)
 
     self.finder = Pathfinder(grid, 'ASTAR', self.walkable)
