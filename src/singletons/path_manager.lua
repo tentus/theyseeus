@@ -43,7 +43,7 @@ function PathManager:init(map)
     self.finder:setMode('ORTHOGONAL')
 end
 
-function PathManager:collisionFromMap(map)
+function PathManager:blank(map)
     local temp = {}
     for y = 1, map.height do
         temp[y] = {}
@@ -51,6 +51,11 @@ function PathManager:collisionFromMap(map)
             temp[y][x] = self.walkable
         end
     end
+    return temp
+end
+
+function PathManager:collisionFromMap(map)
+    local temp = self:blank(map)
 
     -- iterate through each collidable layer, and collectively set their tiles as non-walkable
     for _, layer in pairs(map.layers) do
