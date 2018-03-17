@@ -158,6 +158,8 @@ function WorldScene:loadRegion(enteringFrom)
 
     self:spawnEntities()
 
+    self.camera:jump()
+
     -- calculate what can be walked on and rig up a pathfinder
     self.pathManager = PathManager(self.map)
 

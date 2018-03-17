@@ -25,6 +25,10 @@ function Camera:update(dt)
     self.y = pan(self.y, ty, dt)
 end
 
+function Camera:jump()
+    self.x, self.y = self.target:getTargetPosition()
+end
+
 function Camera:translate()
     local width, height = mid_screen()
     return width - self.x, height - self.y
