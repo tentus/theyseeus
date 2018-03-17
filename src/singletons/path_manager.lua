@@ -18,8 +18,9 @@ PathManager = Class{
     tilewidth = 0,
     tileheight = 0,
 
-    -- a collision map of walkable/filled tiles
+    -- a collision map of walkable/filled tiles and ents
     tiles = {},
+    ents = {},
 
     -- the pathfinder instance
     finder = nil;
@@ -36,12 +37,22 @@ function PathManager:init(map)
     -- first, fill up a temp grid with walkable
     -- assumption: no AI is going to try to walk outside the perimeter of the map
     self.tiles = self:tileCollisions(map)
+    self.ents = self:entCollisions(map)
 
     self:build()
 end
 
 function PathManager:build()
-    local grid = Grid(self.tiles)
+    local merged = self.tiles
+    for y, row in pairs(self.ents) do
+        for x, cell in pairs(row) do
+            if cell == self.filled then
+                merged[y][x] = self.filled
+            end
+        end
+    end
+
+    local grid = Grid(merged)
 
     self.finder = Pathfinder(grid, 'ASTAR', self.walkable)
     self.finder:setMode('ORTHOGONAL')
@@ -69,6 +80,23 @@ function PathManager:tileCollisions(map)
                 for x, _ in pairs(tiles) do
                     temp[y][x] = self.filled
                 end
+            end
+        end
+    end
+
+    return temp
+end
+
+function PathManager:entCollisions(map)
+    local temp = self:blank(map)
+
+    for _, layer in pairs(map.layers) do
+        for _, ent in pairs(layer.ents or {}) do
+            if ent.fillsGrid then
+                local x, y = self:convertCoords(ent:bodyPosition())
+
+                if not temp[y] then temp[y] = {} end
+                temp[y][x] = self.filled
             end
         end
     end
