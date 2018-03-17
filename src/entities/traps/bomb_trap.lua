@@ -8,6 +8,9 @@ BombTrap = Class{
     radius = 32,
     state = IDLE,
     delay = 1,
+
+    -- prevent npcs from trying to path through us while idle
+    fillsGrid = true,
 }
 
 function BombTrap:init(world, x, y)
@@ -36,5 +39,9 @@ function BombTrap:beginContact(other)
     if (other.damage or other.classname == BombBlast.classname) and self.state == IDLE then
         self.state = TRIPPED
         AudioManager:play('assets/audio/bomb_hiss.ogg')
+
+        -- once tripped we might be in motion, so better to go ahead and make this item invisible to the grid
+        self.fillsGrid = false
+        WorldScene.pathManager = PathManager(WorldScene.map)
     end
 end
