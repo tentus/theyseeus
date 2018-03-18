@@ -12,17 +12,22 @@ InventoryManager = {
     spent = {},
 }
 
-function InventoryManager:collect(thing, qty)
-    if not self.collected[thing] then
-        self.collected[thing] = {}
+function InventoryManager:record(act, thing, qty)
+    local bucket = self[act]
+    if not bucket[thing] then
+        bucket[thing] = {}
     end
     local key = regionKey()
-    self.collected[thing][key] = (self.collected[thing][key] or 0) + (qty or 1)
-    Logger:add(thing .. ' Collected')
+    bucket[thing][key] = (bucket[thing][key] or 0) + (qty or 1)
+    Logger:add(thing .. ' ' .. act)
+end
+
+function InventoryManager:collect(thing, qty)
+    self:record('collected', thing, qty)
 end
 
 function InventoryManager:spend(thing, qty)
-    -- todo
+    self:record('spent', thing, qty)
 end
 
 function InventoryManager:has(thing)
