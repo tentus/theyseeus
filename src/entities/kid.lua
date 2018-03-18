@@ -26,7 +26,7 @@ function Kid:makeShape()
     return love.physics.newRectangleShape(self.width, self.height)
 end
 
-function Kid:playerContact(other)
+function Kid:playerContact()
     local dialog = (InventoryManager:total(Yarn.classname) >= YARN_REQUIREMENT) and 'Victory' or 'Quest'
     Gamestate.push(DialogScene, dialog)
     Logger:add('Conversations')

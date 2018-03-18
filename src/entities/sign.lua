@@ -29,7 +29,7 @@ function Sign:makeShape()
     return love.physics.newRectangleShape(self.width, self.height)
 end
 
-function Sign:playerContact(other)
+function Sign:playerContact()
     Gamestate.push(DialogScene, self.dialog)
     Logger:add('Signs Read')
 end
