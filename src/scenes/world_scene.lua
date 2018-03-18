@@ -181,7 +181,8 @@ function WorldScene:spawnEntities()
          Yarn = 1, Upgrade = 1, Map = 1, Gem = 1, Horn = 1, Magnet = 1,
     }
     local misc = {
-        Sign = 1, Kid = 1, SpikeTrap = 1, ArrowTrap = 1, BombTrap = 1
+        Sign = 1, Kid = 1,
+        SpikeTrap = 1, ArrowTrap = 1, BombTrap = 1
     }
 
     self.navPoints = {}
@@ -221,6 +222,11 @@ function WorldScene:spawnEntities()
         elseif misc[object.type] then
             local x, y = snapToGrid(object)
             self:addEnt('Misc', _G[object.type](self.physics, x, y, object.name))
+        elseif object.type == Toll.classname then
+            if not InventoryManager:has(object.type) then
+                local x, y = snapToGrid(object)
+                self:addEnt(Toll.layer, Toll(self.physics, x, y))
+            end
         elseif object.type == Portal.classname then
             if RegionManager:currentCell()[Portal.classname] then
                 self:addEnt('Misc', Portal(object.x, object.y))
