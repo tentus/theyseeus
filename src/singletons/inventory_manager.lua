@@ -10,12 +10,12 @@ InventoryManager = {
     }
 }
 
-function InventoryManager:collect(thing)
+function InventoryManager:collect(thing, qty)
     if not self.collected[thing] then
         self.collected[thing] = {}
     end
     local key = regionKey()
-    self.collected[thing][key] = (self.collected[thing][key] or 0) + 1
+    self.collected[thing][key] = (self.collected[thing][key] or 0) + (qty or 1)
     Logger:add(thing .. ' Collected')
 end
 
