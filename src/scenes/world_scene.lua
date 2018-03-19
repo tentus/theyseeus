@@ -209,27 +209,34 @@ function WorldScene:spawnEntities()
                 self:addEnt('Minotaurs', NPC(self.physics, x, y))
                 Logger:add('NPCs Spawned')
             end
+
         elseif pickups[object.type] then
             self:addEnt('Pickups', _G[object.type](object.x, object.y))
+
         elseif inventory[object.type] then
             if RegionManager:currentCell()[object.type] and not InventoryManager:has(object.type) then
                 self:addEnt('Pickups', _G[object.type](object.x, object.y))
             end
+
         elseif object.type == Freeze.classname then
             if love.math.random(Freeze.chance) == 1 then
                 self:addEnt('Pickups', Freeze(object.x, object.y))
             end
+
         elseif misc[object.type] then
             local x, y = snapToGrid(object)
             self:addEnt('Misc', _G[object.type](self.physics, x, y, object.name))
+
         elseif object.type == Toll.classname then
             if not InventoryManager:has(object.type) then
                 self:addEnt(Toll.layer, Toll(self.physics, object.x, object.y, object.width, object.height))
             end
+
         elseif object.type == Portal.classname then
             if RegionManager:currentCell()[Portal.classname] then
                 self:addEnt('Misc', Portal(object.x, object.y))
             end
+
         elseif object.type == Teleport.classname then
             local x, y = snapToGrid(object.polyline[1])
             local dx, dy = snapToGrid(object.polyline[2])
