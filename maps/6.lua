@@ -8,7 +8,7 @@ return {
   height = 64,
   tilewidth = 64,
   tileheight = 64,
-  nextobjectid = 54,
+  nextobjectid = 55,
   backgroundcolor = { 233, 185, 110 },
   properties = {},
   tilesets = {
@@ -923,27 +923,14 @@ return {
           properties = {}
         },
         {
-          id = 52,
+          id = 54,
           name = "Toll",
           type = "Toll",
-          shape = "point",
-          x = 2080.71,
-          y = 3430.32,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 53,
-          name = "Toll",
-          type = "Toll",
-          shape = "point",
-          x = 2080.49,
-          y = 3370.95,
-          width = 0,
-          height = 0,
+          shape = "rectangle",
+          x = 2047,
+          y = 3328,
+          width = 64,
+          height = 128,
           rotation = 0,
           visible = true,
           properties = {}

@@ -7,26 +7,31 @@ Toll = Class{
 
     bodyType = 'static',
 
-    -- our body the same dimensions as a normal tile
-    width = 64,
-    height = 64,
-    sprite = SpriteComponent('assets/sprites/toll.png'),
+    image = love.graphics.newImage('assets/sprites/toll.png'),
 
     -- prevent npcs from trying to path through us
     fillsGrid = true,
 }
 
-function Toll:init(world, x, y)
+function Toll:init(world, x, y, width, height)
+    self.width = width
+    self.height = height
+
+    self.image:setWrap('repeat', 'repeat')
+    local iw, ih = self.image:getDimensions()
+    self.quad = love.graphics.newQuad(0, 0, self.width, self.height, iw, ih)
+
     self:createBody(world, x, y)
 end
 
 function Toll:draw()
     local x, y = self:bodyPosition()
-    self.sprite:draw(x, y)
+    love.graphics.draw(self.image, self.quad, x, y)
 end
 
 function Toll:makeShape()
-    return love.physics.newRectangleShape(self.width, self.height)
+    -- tiled rects are made from the top-left, not the center, so we have to tweak the x & y
+    return love.physics.newRectangleShape(self.width / 2, self.height / 2, self.width, self.height)
 end
 
 function Toll:kill()

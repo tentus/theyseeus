@@ -224,8 +224,7 @@ function WorldScene:spawnEntities()
             self:addEnt('Misc', _G[object.type](self.physics, x, y, object.name))
         elseif object.type == Toll.classname then
             if not InventoryManager:has(object.type) then
-                local x, y = snapToGrid(object)
-                self:addEnt(Toll.layer, Toll(self.physics, x, y))
+                self:addEnt(Toll.layer, Toll(self.physics, object.x, object.y, object.width, object.height))
             end
         elseif object.type == Portal.classname then
             if RegionManager:currentCell()[Portal.classname] then
