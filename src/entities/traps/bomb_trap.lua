@@ -42,6 +42,6 @@ function BombTrap:beginContact(other)
 
         -- once tripped we might be in motion, so better to go ahead and make this item invisible to the grid
         self.fillsGrid = false
-        WorldScene.pathManager = PathManager(WorldScene.map)
+        WorldScene.pathManager:entCollisions():build()
     end
 end

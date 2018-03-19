@@ -54,6 +54,6 @@ function Toll:playerContact()
             end
         end
 
-        WorldScene.pathManager = PathManager(WorldScene.map)
+        WorldScene.pathManager:entCollisions():build()
     end
 end

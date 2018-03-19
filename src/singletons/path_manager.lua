@@ -31,13 +31,15 @@ PathManager = Class{
 }
 
 function PathManager:init(map)
+    self.map = map
+
     self.tilewidth = map.tilewidth
     self.tileheight = map.tileheight
 
     -- first, fill up a temp grid with walkable
     -- assumption: no AI is going to try to walk outside the perimeter of the map
-    self.tiles = self:tileCollisions(map)
-    self.ents = self:entCollisions(map)
+    self:tileCollisions()
+    self:entCollisions()
 
     self:build()
 end
@@ -58,50 +60,49 @@ function PathManager:build()
     self.finder:setMode('ORTHOGONAL')
 end
 
-function PathManager:blank(map)
+function PathManager:blank()
     local temp = {}
-    for y = 1, map.height do
+    for y = 1, self.map.height do
         temp[y] = {}
-        for x = 1, map.width do
+        for x = 1, self.map.width do
             temp[y][x] = self.walkable
         end
     end
     return temp
 end
 
-function PathManager:tileCollisions(map)
-    local temp = self:blank(map)
+function PathManager:tileCollisions()
+    self.tiles = self:blank()
 
     -- iterate through each collidable layer, and collectively set their tiles as non-walkable
-    for _, layer in pairs(map.layers) do
+    for _, layer in pairs(self.map.layers) do
         if layer.type == 'tilelayer' and layer.properties.collidable == true then
             -- sti organizes the data as rows
             for y, tiles in pairs(layer.data) do
                 for x, _ in pairs(tiles) do
-                    temp[y][x] = self.filled
+                    self.tiles[y][x] = self.filled
                 end
             end
         end
     end
 
-    return temp
+    return self
 end
 
-function PathManager:entCollisions(map)
-    local temp = self:blank(map)
+function PathManager:entCollisions()
+    self.ents = self:blank()
 
-    for _, layer in pairs(map.layers) do
+    for _, layer in pairs(self.map.layers) do
         for _, ent in pairs(layer.ents or {}) do
             if ent.fillsGrid then
                 local x, y = self:convertCoords(ent:bodyPosition())
 
-                if not temp[y] then temp[y] = {} end
-                temp[y][x] = self.filled
+                self.ents[y][x] = self.filled
             end
         end
     end
 
-    return temp
+    return self
 end
 
 function PathManager:convertCoords(x, y)
