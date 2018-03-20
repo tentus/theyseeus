@@ -45,14 +45,9 @@ function PathManager:init(map)
 end
 
 function PathManager:build()
-    local merged = self.tiles
-    for y, row in pairs(self.ents) do
-        for x, cell in pairs(row) do
-            if cell == self.filled then
-                merged[y][x] = self.filled
-            end
-        end
-    end
+    local merged = self:blank(function(x, y)
+        return (self.tiles[y][x] == self.filled or self.ents[y][x] == self.filled) and self.filled or self.walkable
+    end)
 
     local grid = Grid(merged)
 
@@ -60,12 +55,13 @@ function PathManager:build()
     self.finder:setMode('ORTHOGONAL')
 end
 
-function PathManager:blank()
+function PathManager:blank(filler)
+    filler = filler or function() return self.walkable end
     local temp = {}
     for y = 1, self.map.height do
         temp[y] = {}
         for x = 1, self.map.width do
-            temp[y][x] = self.walkable
+            temp[y][x] = filler(x, y)
         end
     end
     return temp
