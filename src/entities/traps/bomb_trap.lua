@@ -2,15 +2,12 @@
 local IDLE, TRIPPED = 'idle', 'tripped'
 
 BombTrap = Class{
-    __includes = {Killable, Physical},
+    __includes = {Fillable, Killable, Physical},
     classname = 'BombTrap',
     sprite = SpriteComponent('assets/sprites/traps/bomb.png'),
     radius = 32,
     state = IDLE,
     delay = 1,
-
-    -- prevent npcs from trying to path through us while idle
-    fillsGrid = true,
 }
 
 function BombTrap:init(world, x, y)

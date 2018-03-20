@@ -103,8 +103,8 @@ function PathManager:entCollisions()
 
     for _, layer in pairs(self.map.layers) do
         for _, ent in pairs(layer.ents or {}) do
-            if ent.fillsGrid then
-                local x, y = self:convertCoords(ent:bodyPosition())
+            for _, coords in pairs(ent.fillsGrid and ent:fillsGrid() or {}) do
+                local x, y = self:convertCoords(unpack(coords))
 
                 self.ents[y][x] = self.filled
             end

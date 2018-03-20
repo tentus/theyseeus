@@ -1,5 +1,5 @@
 Toll = Class{
-    __includes = {Interactable, Killable, Physical},
+    __includes = {Fillable, Interactable, Killable, Physical},
     classname = 'Toll',
     layer = 'Misc',
 
@@ -8,9 +8,6 @@ Toll = Class{
     bodyType = 'static',
 
     image = love.graphics.newImage('assets/sprites/toll.png'),
-
-    -- prevent npcs from trying to path through us
-    fillsGrid = true,
 }
 
 function Toll:init(world, x, y, width, height)
@@ -32,6 +29,20 @@ end
 function Toll:makeShape()
     -- tiled rects are made from the top-left, not the center, so we have to tweak the x & y
     return love.physics.newRectangleShape(self.width / 2, self.height / 2, self.width, self.height)
+end
+
+function Toll:fillsGrid()
+    local points = {}
+    local x, y = self:bodyPosition()
+    local tw, th = WorldScene.map.tilewidth, WorldScene.map.tileheight
+
+    for ix = x, x + self.width - tw, tw do
+        for iy = y, y + self.height - th, th do
+            table.insert(points, {ix, iy})
+        end
+    end
+
+    return points
 end
 
 function Toll:kill()

@@ -1,5 +1,5 @@
 Sign = Class{
-    __includes = {Interactable, Physical},
+    __includes = {Fillable, Interactable, Physical},
     classname = 'Sign',
     dialog = '',
 
@@ -9,9 +9,6 @@ Sign = Class{
     width = 64,
     height = 64,
     sprite = SpriteComponent('assets/sprites/sign.png'),
-
-    -- prevent npcs from trying to path through us
-    fillsGrid = true,
 }
 
 function Sign:init(world, x, y, dialog)
