@@ -193,6 +193,13 @@ function WorldScene:spawnEntities()
         end
         return snap(object.x, self.map.tilewidth), snap(object.y, self.map.tileheight)
     end
+    local function nearestCorner(object, a, b)
+        local function snap(value, grid)
+            value = value + (grid / 2)
+            return value - (value % grid)
+        end
+        return snap(object[a or 'x'], self.map.tilewidth), snap(object[b or 'y'], self.map.tileheight)
+    end
 
     local yarn = InventoryManager:total(Yarn.classname)
 
@@ -229,7 +236,9 @@ function WorldScene:spawnEntities()
 
         elseif object.type == Toll.classname then
             if not InventoryManager:has(object.type) then
-                self:addEnt(Toll.layer, Toll(self.physics, object.x, object.y, object.width, object.height))
+                local x, y = nearestCorner(object)
+                local w, h = nearestCorner(object, 'width', 'height')
+                self:addEnt(Toll.layer, Toll(self.physics, x, y, w, h))
             end
 
         elseif object.type == Portal.classname then
