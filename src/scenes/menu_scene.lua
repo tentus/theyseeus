@@ -25,7 +25,7 @@ MenuScene = {
     lineHeight = 36,
     logo = SpriteComponent('assets/logos/theyseeus_logo.png'),
 
-    options = {
+    optionsList = {
         root = {   -- top menu
             {
                 function()
@@ -182,12 +182,12 @@ function MenuScene:draw()
 
     self.logo:draw(halfWidth, halfHeight - self.logo.y)
 
-    for i=1, #self.options[self.level] do
+    for i=1, #self:options() do
         if i == self.cursor then
             love.graphics.print('->', halfWidth - 32, halfHeight + (i * self.lineHeight))
         end
 
-        love.graphics.print(value(self.options[self.level][i][1]), halfWidth, halfHeight + (i * self.lineHeight))
+        love.graphics.print(value(self:options()[i][1]), halfWidth, halfHeight + (i * self.lineHeight))
     end
 
     HUD:drawFPS()
@@ -197,17 +197,17 @@ function MenuScene:update(dt)
     if Bindings:pressed('up') then
         self.cursor = self.cursor - 1
         if self.cursor < 1 then
-            self.cursor = #self.options[self.level]
+            self.cursor = #self:options()
         end
 
     elseif Bindings:pressed('down') then
         self.cursor = self.cursor + 1
-        if self.cursor > #self.options[self.level] then
+        if self.cursor > #self:options() then
             self.cursor = 1
         end
 
     elseif Bindings:pressed('action') then
-        local action = self.options[self.level][self.cursor][2]
+        local action = self:options()[self.cursor][2]
         if type(action) == 'function' then
             action()
         elseif action then
@@ -224,6 +224,10 @@ function MenuScene:update(dt)
             playGame()
         end
     end
+end
+
+function MenuScene:options()
+    return self.optionsList[self.level]
 end
 
 function MenuScene:goBack()
