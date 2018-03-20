@@ -1,6 +1,5 @@
 local back = {
     'Back',
-    'root'
 }
 
 -- if the value passed is a function, return its return value
@@ -20,6 +19,7 @@ end
 
 MenuScene = {
     level = 'root',
+    backTrack = {},
     cursor = 1,
     options = {
         root = {   -- top menu
@@ -32,16 +32,8 @@ MenuScene = {
                 end
             },
             {
-                'HUD Settings',
-                'hud'
-            },
-            {
-                'Video Settings',
+                'Settings',
                 'settings'
-            },
-            {
-                'Audio Settings',
-                'audio'
             },
             {
                 'Stats',
@@ -61,6 +53,21 @@ MenuScene = {
             },
         },
         settings = {
+            {
+                'HUD Settings',
+                'hud'
+            },
+            {
+                'Video Settings',
+                'video'
+            },
+            {
+                'Audio Settings',
+                'audio'
+            },
+            back
+        },
+        video = {
             {
                 'Fullscreen',
                 function()
@@ -154,7 +161,6 @@ MenuScene = {
                 function()
                     return Logger:print()
                 end,
-                'root'
             },
         },
     },
@@ -195,16 +201,24 @@ function MenuScene:update(dt)
         local action = self.options[self.level][self.cursor][2]
         if type(action) == 'function' then
             action()
-        else
+        elseif action then
+            table.insert(self.backTrack, self.level)
             self:goTo(action)
+        else
+            self:goBack()
         end
     elseif Bindings:pressed('cancel') then
         if self.level ~= 'root' then
-            self:goTo('root')
+            self:goBack()
         elseif WorldScene.entered then
             playGame()
         end
     end
+end
+
+function MenuScene:goBack()
+    self:goTo(self.backTrack[#self.backTrack])
+    table.remove(self.backTrack)
 end
 
 function MenuScene:goTo(level)
