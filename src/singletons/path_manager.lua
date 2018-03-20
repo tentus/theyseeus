@@ -44,6 +44,19 @@ function PathManager:init(map)
     self:build()
 end
 
+-- for debugging
+function PathManager:draw(tx, ty)
+    for y = 1, self.map.height do
+        for x = 1, self.map.width do
+            love.graphics.print(
+                self.tiles[y][x] .. ' / ' .. self.ents[y][x],
+                tx + (x - 1) * self.map.tilewidth,
+                ty + (y - 1) * self.map.tileheight
+            )
+        end
+    end
+end
+
 function PathManager:build()
     local merged = self:blank(function(x, y)
         return (self.tiles[y][x] == self.filled or self.ents[y][x] == self.filled) and self.filled or self.walkable
