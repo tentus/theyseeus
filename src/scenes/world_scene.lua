@@ -187,7 +187,7 @@ function WorldScene:spawnEntities()
 
     self.navPoints = {}
 
-    local function snapToGrid(object)
+    local function snapToCenter(object)
         local function snap(value, grid)
             return value - (value % grid) + (grid / 2)
         end
@@ -199,13 +199,13 @@ function WorldScene:spawnEntities()
     for _, object in pairs(self.map.objects) do
         -- we'll use npc spawn points as well as explicit NavPoints to make the npcs wander
         if object.type == NPC.classname or object.type == NavPoint.classname  then
-            table.insert(self.navPoints, NavPoint(snapToGrid(object)))
+            table.insert(self.navPoints, NavPoint(snapToCenter(object)))
         end
 
         if object.type == NPC.classname then
             -- ramp up the difficulty by spawning more minotaurs as we find more yarn
             if yarn >= tonumber(object.name) then
-                local x, y = snapToGrid(object)
+                local x, y = snapToCenter(object)
                 self:addEnt('Minotaurs', NPC(self.physics, x, y))
                 Logger:add('NPCs Spawned')
             end
@@ -224,7 +224,7 @@ function WorldScene:spawnEntities()
             end
 
         elseif misc[object.type] then
-            local x, y = snapToGrid(object)
+            local x, y = snapToCenter(object)
             self:addEnt('Misc', _G[object.type](self.physics, x, y, object.name))
 
         elseif object.type == Toll.classname then
@@ -238,8 +238,8 @@ function WorldScene:spawnEntities()
             end
 
         elseif object.type == Teleport.classname then
-            local x, y = snapToGrid(object.polyline[1])
-            local dx, dy = snapToGrid(object.polyline[2])
+            local x, y = snapToCenter(object.polyline[1])
+            local dx, dy = snapToCenter(object.polyline[2])
             self:addEnt('Misc', Teleport(x, y, dx, dy))
         end
     end
