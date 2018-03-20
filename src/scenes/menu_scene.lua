@@ -21,6 +21,10 @@ MenuScene = {
     level = 'root',
     backTrack = {},
     cursor = 1,
+
+    lineHeight = 36,
+    logo = SpriteComponent('assets/logos/theyseeus_logo.png'),
+
     options = {
         root = {   -- top menu
             {
@@ -52,6 +56,7 @@ MenuScene = {
                 end
             },
         },
+
         settings = {
             {
                 'HUD Settings',
@@ -67,6 +72,7 @@ MenuScene = {
             },
             back
         },
+
         video = {
             {
                 'Fullscreen',
@@ -88,6 +94,7 @@ MenuScene = {
             },
             back
         },
+
         hud = {
             {
                 'Toggle FPS',
@@ -129,6 +136,7 @@ MenuScene = {
             },
             back
         },
+
         audio = {
             {
                 function()
@@ -156,6 +164,7 @@ MenuScene = {
             },
             back
         },
+
         stats = {
             {
                 function()
@@ -164,8 +173,6 @@ MenuScene = {
             },
         },
     },
-    lineHeight = 36,
-    logo = SpriteComponent('assets/logos/theyseeus_logo.png'),
 }
 
 function MenuScene:draw()
@@ -192,11 +199,13 @@ function MenuScene:update(dt)
         if self.cursor < 1 then
             self.cursor = #self.options[self.level]
         end
+
     elseif Bindings:pressed('down') then
         self.cursor = self.cursor + 1
         if self.cursor > #self.options[self.level] then
             self.cursor = 1
         end
+
     elseif Bindings:pressed('action') then
         local action = self.options[self.level][self.cursor][2]
         if type(action) == 'function' then
@@ -207,6 +216,7 @@ function MenuScene:update(dt)
         else
             self:goBack()
         end
+
     elseif Bindings:pressed('cancel') then
         if self.level ~= 'root' then
             self:goBack()
