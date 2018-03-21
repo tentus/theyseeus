@@ -23,8 +23,8 @@ function AudioManager:stream(file)
 end
 
 function AudioManager:changeVolume(target, increment)
-    local v = math.min(self.volume[target] + increment, 1)
-    self.volume[target] = v < 0 and 1 or v
+    local v = self.volume[target] + increment
+    self.volume[target] = (v < 0 and 1) or (v > 1 and 0) or v
     love.audio.setVolume(self.volume.master)
 
     if self.streaming then

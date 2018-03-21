@@ -131,6 +131,9 @@ MenuScene = {
                     return 'Edge Distance: ' .. HUD.edge
                 end,
                 function()
+                    HUD:changeEdge(-10)
+                end,
+                function()
                     HUD:changeEdge(10)
                 end
             },
@@ -143,6 +146,9 @@ MenuScene = {
                     return 'Master Volume: ' .. AudioManager:getVolume('master')
                 end,
                 function()
+                    AudioManager:changeVolume('master', .1)
+                end,
+                function()
                     AudioManager:changeVolume('master', -.1)
                 end
             },
@@ -151,12 +157,18 @@ MenuScene = {
                     return 'Music Volume: ' .. AudioManager:getVolume('music')
                 end,
                 function()
+                    AudioManager:changeVolume('music', .1)
+                end,
+                function()
                     AudioManager:changeVolume('music', -.1)
                 end
             },
             {
                 function()
                     return 'SFX Volume: ' .. AudioManager:getVolume('sfx')
+                end,
+                function()
+                    AudioManager:changeVolume('sfx', .1)
                 end,
                 function()
                     AudioManager:changeVolume('sfx', -.1)
@@ -206,8 +218,9 @@ function MenuScene:update(dt)
             self.cursor = 1
         end
 
-    elseif Bindings:pressed('action') then
-        local action = self:options()[self.cursor][2]
+    elseif Bindings:pressed('action') or Bindings:pressed('right') or Bindings:pressed('left') then
+        local index = Bindings:pressed('left') and 3 or 2
+        local action = self:options()[self.cursor][index]
         if type(action) == 'function' then
             action()
         elseif action then
