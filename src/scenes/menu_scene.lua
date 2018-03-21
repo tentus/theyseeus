@@ -218,11 +218,7 @@ function MenuScene:update(dt)
         end
 
     elseif Bindings:pressed('cancel') then
-        if self.level ~= 'root' then
-            self:goBack()
-        elseif WorldScene.entered then
-            playGame()
-        end
+        self:goBack()
     end
 end
 
@@ -231,8 +227,12 @@ function MenuScene:options()
 end
 
 function MenuScene:goBack()
-    self:goTo(self.backTrack[#self.backTrack])
-    table.remove(self.backTrack)
+    if self.level ~= 'root' then
+        self:goTo(self.backTrack[#self.backTrack])
+        table.remove(self.backTrack)
+    elseif WorldScene.entered then
+        playGame()
+    end
 end
 
 function MenuScene:goTo(level)
