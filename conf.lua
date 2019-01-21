@@ -1,5 +1,5 @@
 function love.conf(t)
-    t.version = '0.10.2'
+    t.version = '11.2'
     t.window.icon = 'assets/icon.png'
     t.window.resizable = true
     t.window.title = 'They See Us'
