@@ -65,9 +65,9 @@ function NPC:draw()
     -- bluish overlay if we're frozen
     if self.frozen then
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(0, 128, 255)
+        love.graphics.setColor(0, 0.5, 1)
         Minotaur.draw(self)
-        love.graphics.setColor(255, 255, 255)
+        love.graphics.setColor(1, 1, 1)
         love.graphics.setBlendMode("alpha")
     end
 

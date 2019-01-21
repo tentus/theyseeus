@@ -3,7 +3,7 @@ Upgrade = Class{
     classname = 'Upgrade',
     sprite = SpriteComponent('assets/sprites/items/upgrade.png'),
     explanationDialog = 'AboutUpgrades',
-    rippleColor = {128, 255, 128},
+    rippleColor = {0.5, 1, 0.5},
 }
 
 function Upgrade:playerSensed(player)

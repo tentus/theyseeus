@@ -42,7 +42,7 @@ function SplashScene:proceed()
     if self.step < #self.logos then
         self.time.passed = 0
         self.step = self.step + 1
-        Fader:start(255, self.time.fade)
+        Fader:start(1, self.time.fade)
     else
         Gamestate.switch(MenuScene)
     end

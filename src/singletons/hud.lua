@@ -34,11 +34,11 @@ function HUD:draw()
                 local dist, dx, dy = WorldScene:distFromPlayer(x2, y2)
                 local r = math.atan2(dy, dx)
 
-                love.graphics.setColor(255, 255, 255, math.min((512 / (dist ^ 0.5)) * 128, 255))
+                love.graphics.setColor(1, 1, 1, math.min((512 / (dist ^ 0.5)) * 0.5, 1))
                 love.graphics.draw(self.images.hearing, width / 2, height / 2, r, 1, 1, 0, 64)
             end
         end
-        love.graphics.setColor(255, 255, 255)
+        love.graphics.setColor(1, 1, 1)
     end
 
     local spacing = 40

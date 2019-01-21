@@ -1,6 +1,6 @@
 Rippleable = Class{
     rippleColor = {
-        255, 255, 255
+        1, 1, 1
     }
 }
 

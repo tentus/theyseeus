@@ -33,9 +33,9 @@ end
 
 function Player:draw()
     if self:invincible() then
-        love.graphics.setColor(255, 0, 0)
+        love.graphics.setColor(1, 0, 0)
         Minotaur.draw(self)
-        love.graphics.setColor(255, 255, 255)
+        love.graphics.setColor(1, 1, 1)
     else
         Minotaur.draw(self)
     end

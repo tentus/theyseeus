@@ -3,5 +3,5 @@ Gem = Class{
     classname = 'Gem',
     sprite = SpriteComponent('assets/sprites/items/gem.png'),
     explanationDialog = 'AboutGem',
-    rippleColor = {128, 255, 255},
+    rippleColor = {0.5, 1, 1},
 }

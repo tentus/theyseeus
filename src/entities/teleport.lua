@@ -21,10 +21,10 @@ function Teleport:update(dt)
 end
 
 function Teleport:draw()
-    local alpha = (math.abs((self.pulse % 1) - 0.5) * 255) + 128
-    love.graphics.setColor(255, 255, 255, alpha)
+    local alpha = math.abs((self.pulse % 1) - 0.5) + 0.5
+    love.graphics.setColor(1, 1, 1, alpha)
     self.sprite:draw(self.x, self.y)
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
 end
 
 function Teleport:playerSensed(player)

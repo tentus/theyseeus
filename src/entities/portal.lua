@@ -21,13 +21,13 @@ end
 
 function Portal:draw()
     -- inactive portals are half-opacity, while active ones pulse to full opacity
-    local alpha = 128
+    local alpha = 0.5
     if self.activated then
-        alpha = alpha + (math.abs((self.pulse % 1) - 0.5) * 255)
+        alpha = alpha + (math.abs((self.pulse % 1) - 0.5))
     end
-    love.graphics.setColor(255, 255, 255, alpha)
+    love.graphics.setColor(1, 1, 1, alpha)
     self.sprite:draw(self.x, self.y)
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
 end
 
 function Portal:playerSensed(player)

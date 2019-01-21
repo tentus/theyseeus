@@ -3,7 +3,7 @@ Magnet = Class{
     classname = 'Magnet',
     sprite = SpriteComponent('assets/sprites/items/magnet.png'),
     explanationDialog = 'AboutMagnets',
-    rippleColor = {255, 128, 255},
+    rippleColor = {1, 0.5, 1},
     gain = 24,
 }
 

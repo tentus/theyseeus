@@ -25,11 +25,11 @@ function BombTrap:update(dt)
 end
 
 function BombTrap:draw()
-    local color = (self.delay * 255)
-    love.graphics.setColor(255, color, color)
+    local color = self.delay
+    love.graphics.setColor(1, color, color)
     local x, y = self:bodyPosition()
     self.sprite:draw(x, y)
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
 end
 
 function BombTrap:beginContact(other)

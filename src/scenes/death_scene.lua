@@ -16,12 +16,12 @@ function DeathScene:draw()
     -- draw underlying screen
     self.from:draw()
 
-    love.graphics.setColor(255,255,255, 255 * math.min(self.alpha, 1))
+    love.graphics.setColor(1,1,1, math.min(self.alpha, 1))
     self.image:draw(
         (love.graphics.getWidth() / 2),
         (love.graphics.getHeight() / 2)
     )
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
 end
 
 function DeathScene:keyreleased()

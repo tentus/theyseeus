@@ -7,9 +7,9 @@ DaylightManager = {
     -- adjust the overall speed of the cycle
     multiplier = 1,
 
-    -- color settings (0 - 255)
-    intensity = 255,
-    alpha = 128,
+    -- color settings (0 - 1)
+    intensity = 1,
+    alpha = 0.5,
 }
 
 function DaylightManager:update(dt)

@@ -10,7 +10,7 @@ WeatherManager = {
                 rain.particles:setParticleLifetime(5)
                 rain.particles:setLinearAcceleration(-200, 400, -300, 600)
                 rain.particles:setPosition(1024, -128)
-                rain.particles:setAreaSpread("normal", 2048, 0)
+                rain.particles:setEmissionArea("normal", 2048, 0)
                 rain.particles:start()
             end,
         },

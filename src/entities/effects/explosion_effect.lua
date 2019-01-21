@@ -17,8 +17,8 @@ function ExplosionEffect:init(x, y)
     p:setSpeed(350, 375)
     p:setSpread(6.3)
     p:setColors(
-        255, 128, 64, 255,
-        128, 0, 32, 0
+        1, 0.5, 0.25, 1,
+        0.5, 0, 0.125, 0
     )
     self.particles = p
 end

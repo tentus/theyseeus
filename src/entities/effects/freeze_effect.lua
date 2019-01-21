@@ -15,8 +15,8 @@ function FreezeEffect:init(x, y)
     p:setSpeed(1500)
     p:setSpread(6.3)
     p:setColors(
-        128, 192, 255, 255,
-        255, 255, 255, 0
+        0.5, 0.75, 1, 1,
+        1, 1, 1, 0
     )
     self.particles = p
 end

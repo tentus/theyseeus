@@ -21,8 +21,8 @@ function BombBlast:init(world, x, y)
     p:setSpin(0, -10)
     p:setSpread(6.3)
     p:setColors(
-        255, 64, 64, 255,
-        128, 64, 0, 0
+        1, 0.25, 0.25, 1,
+        0.5, 0.25, 0, 0
     )
     self.particles = p
 

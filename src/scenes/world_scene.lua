@@ -163,7 +163,7 @@ function WorldScene:loadRegion(enteringFrom)
     -- calculate what can be walked on and rig up a pathfinder
     self.pathManager = PathManager(self.map)
 
-    Fader:start(255, self.transitionLength)
+    Fader:start(1, self.transitionLength)
 
     Logger:add('Transitions')
 
